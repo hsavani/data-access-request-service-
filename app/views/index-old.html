@@ -1,0 +1,121 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+      <!-- Change the page title here -->
+      <h1>
+        Requesting access to data
+
+      </h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <p>The Data Access Request Service (DARS) enables clinicians, researchers and commissioners to request the data they need to help improve NHS services.</p>
+
+<p>You can use this service if the organisation requesting the data:</p>
+<ul>
+<li>has an active Data Sharing Framework Contract (DSFC) in place</li>
+<li>wants to apply for record level data</li>
+<li>has an active registration with the ICO under the UK General Data Protection Regulation (GDPR).</li>
+</ul>
+
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <p>Do not use this service if you wish to apply for tabulated or aggregated data with small numbers suppressed. Such requests should be made via <a href="mailto:enquiries@nhsdigital.nhs.uk">enquiries@nhsdigital.nhs.uk</a> quoting ‘DARS Tabulation Request – small numbers suppressed’ in the subject field.</p>
+</div>
+
+<h3>Before you start</h3>
+
+<p>Make sure you read: </p>
+<p>You can use this service if the organisation requesting the data:</p>
+<ul>
+<li><a href="#">application guidance</a></li>
+<li><a href="#">pre-application eligibility criteria</a></li>
+<li><a href="#">how your application is assessed</a></li>
+</ul>
+
+<p>Make sure you understand: </p>
+<p>You can use this service if the organisation requesting the data:</p>
+<ul>
+<li>what <a href="#">data sets </a> you are requesting</li>
+<li>what <a href="#">legal basis </a>will apply</a></li>
+<li>the <a href="#">charges</a> that will apply for the data you are requesting</li>
+</ul>
+
+
+<p>You can see some examples of applications that have been approved in our <a href="#">Data uses register</a>. These previously accepted applications provide examples of well-written answers to questions that will support your application process.</p>
+<p>Not all requests for data will progress to the application stage. It may be that your requirement can be satisfied through existing published data or you don’t have the legal basis to access the data.</p>
+
+<h3>During your application</h3>
+<p>We’ll ask you for: </p>
+<ul>
+
+<li>evidence that controllers and processors are complying with the minimum-security standards </li>
+<li>evidence that supports the legal bases required for your application </li>
+<li>details on the purpose of your data access request</li>
+<li>details on what will be produced as a result of data processing, along with the clearly stated benefits </li>
+<li>information on how any output benefits the health and social care system</li>
+<li>evidence of any funding </li>
+<li>information on the organisations acting as the <a href="#">controllers</a>, <a href="#">processors</a> and <a href="#">data storage locations</a></li>
+</ul>
+
+<p>If you need support with your request for data contact NHS Digital on 0300 303 5678 or email enquiries@nhsdigital.nhs.uk to discuss your data access requirements.</p>
+
+<h3>After you’ve submitted your application</h3>
+
+<p>Our team will:</p>
+<ul>
+<li>review your application</li>
+<li>work with you to collect any missing details</a></li>
+</ul>
+
+<a href="/templates/question-page" class="nhsuk-button">
+Start now
+</a>
+
+<p>Using this service, you agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>.</p>
+
+      <!-- End of content -->
+
+    </div>
+  </div>
+{% endblock %}
