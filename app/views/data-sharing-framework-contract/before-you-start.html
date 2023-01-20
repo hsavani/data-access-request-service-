@@ -206,30 +206,7 @@ Go back</a>
 {% endblock %}
 
 
-<!-- NHS.UK footer -->
-{% block footer %}
-<footer role="contentinfo">
-  <div class="nhsuk-footer" id="nhsuk-footer">
-    <div class="nhsuk-width-container">
-      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
 
-      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
-    </div>
-  </div>
-</footer>
-{% endblock %}
-
-
-<!-- JavaScript hack to do nothing if search button or link href="" clicked -->
-{% block pageScripts %}
-<script>
-  $( document ).ready(function() {
-    $('a[href=""], button.nhsuk-search__submit').click(function(e) {
-      e.preventDefault();
-    });
-  });
-</script>
-{% endblock %}
 
 <!-- DARS online footer -->
 
