@@ -29,15 +29,14 @@
         </span>
       </a>
     </div>
-  
-      <div class="l-pro-signlink">Janey Mcgregor&nbsp;&nbsp;&nbsp;<a href="#" class="l-signout">Sign out</a>
-        <style>
-          .l-pro-signlink {
-            float: right;
-            color: #ffffff;
-          }
-          </style>
-        </div>
+    <div class="l-pro-signlink">Janey Mcgregor&nbsp;&nbsp;&nbsp;<a href="#" class="l-signout">Sign out</a>
+    <style>
+      .l-pro-signlink {
+        float: right;
+        color: #ffffff;
+      }
+        </style>
+    </div>
 
     <div class="nhsuk-header__content" id="content-header">
 
@@ -85,13 +84,13 @@
             </svg>
           </a>
         </li>
-        <li class="nhsuk-header__navigation-item  navigation-item__item--current">
+        <li class="nhsuk-header__navigation-item navigation-item__item--current">
           <style>
             .navigation-item__item--current {
                   box-shadow: inset 0 -4px 0 #d8dde0 !important;
                 }
                 </style>
-          <a class="nhsuk-header__navigation-link" href="/dsfc-dashboard">
+          <a class="nhsuk-header__navigation-link" href="#">
             Data Sharing Framework Contract
             <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
               <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
@@ -137,117 +136,102 @@
 <!--First page in DSFC journey -->
 {% block content %}
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <!--Back link -->
+    <div class="nhsuk-back-link">
+      <a class="nhsuk-back-link__link" href="/data-sharing-framework-contract/dashboard">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back</a>
+    </div>
     <!-- Heading  -->
 
-      <h1> <span class="nhsuk-caption-l nhsuk-caption--bottom"> University of Leeds</span>
-        Data Sharing Framework Contract</h1>
+    <h1> <span class="nhsuk-caption-l nhsuk-caption--bottom"> University of Leeds</span>
+     Your Data Sharing Framework Contract</h1>
 
     <article>
 
+<h2>Your application</h2>
+<dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
 
-            <!-- Table  -->
-    <table role="table" class="nhsuk-table-responsive nhsuk-u-padding-bottom-9">
-      <caption class="nhsuk-table__caption"></caption>
-      <thead role="rowgroup" class="nhsuk-table__head">
-        <tr role="row">
-          <th role="columnheader" class="" scope="col">
-            Reference number
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Organisation
-          </th>
-          <th role="columnheader" class="" scope="col">
-            End date
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Status
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Action
-          </th>
-          <!-- <th role="columnheader" class="" scope="col">
-            Last Updated
-          </th> -->
-        </tr>
-      </thead>
-      <tbody class="nhsuk-table__body">
-        <tr role="row" class="nhsuk-table__row">
-          <td role="cell" class="nhsuk-table__cell">
-            <span class="nhsuk-table-responsive__heading"> Reference number </span>DARS-CON-1111-ABCD-v1.3
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            <span class="nhsuk-table-responsive__heading">Organisation </span>University of Leeds
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            <span class="nhsuk-table-responsive__heading">End date </span>30-11-2022
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            <span class="nhsuk-table-responsive__heading">Status </span>
-        <strong class="nhsuk-tag nhsuk-tag--blue statuses-nhs-tag">
-  IN PROGRESS
-</strong>
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            <span class="nhsuk-table-responsive__heading">Action </span><a href="#">Open</a>
-          </td>
-
-        </tr>
-
-      </tbody>
-    </table>
-    <br>
-<a href="/data-sharing-framework-contract/dashboard-next">Next</a>
-
-
-<p></p>
-
-<a href="/data-sharing-framework-contract/before-you-start" class="nhsuk-button" type="submit">
-  New contract
-</a>
-
-<details class="nhsuk-details">
-  <summary class="nhsuk-details__summary">
-    <span class="nhsuk-details__summary-text">
-What do these statuses mean?
-    </span>
-  </summary>
-  <div class="nhsuk-details__text">
-<table class="nhs-uk-table">
-  <tbody class="nhsuk-table__body">
-    <tr role="row" class="nhsuk-table__row">
-    <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue statuses-nhs-tag">IN&nbsp;PROGRESS</strong></td>
-    <td class="nhsuk-table__cell ">Application has been started but is not yet completed</td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-    <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag statuses-nhs-tag">SUBMITTED</strong></td>
-    <td class="nhsuk-table__cell ">Application has been completed and submitted to DARS</td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-    <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag statuses-nhs-tag">FINAL&nbsp;CHECKS</strong></td>
-    <td class="nhsuk-table__cell ">Application is undergoing final checks, we may ask you for more information</td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-    <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--orange statuses-nhs-tag">READY&nbsp;TO&nbsp;SIGN</strong></td>
-    <td class="nhsuk-table__cell ">Application has been approved and awaits signature by all Controllers</td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-    <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag statuses-nhs-tag">ACTIVE&nbsp;CONTRACT</strong></td>
-    <td class="nhsuk-table__cell ">You have an existing Data Sharing Framework Contract (DSFC). You will need an active Data Sharing Agreement (DSA) before any agreed data is shared</td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-      <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--orange statuses-nhs-tag">CONTRACT&nbsp;EXPIRING</strong></td>
-      <td class="nhsuk-table__cell ">Your contract is due to expire</td>
-      </tr>
-      <tr role="row" class="nhsuk-table__row">
-        <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--grey statuses-nhs-tag">CONTRACT&nbsp;EXPIRING</strong></td>
-        <td class="nhsuk-table__cell ">Your contract has expired</td>
-        </tr>
-</table>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Reference number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      CON-123456-Q1W2E
+    </dd>
 
   </div>
-</details>
 
-</article>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      End date
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      -
+    </dd>
+
+  </div>
+
+</dl>
+<p>Once you have downloaded your Data Sharing Framework Contract (DSFC), consider changing the file name to something that will help you easily locate it.</p>
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+
+          </legend>
+
+            <style>
+          * {
+            box-sizing: border-box;
+          }
+
+          
+          .column {
+            float: left;
+            padding: 0px;
+            height: 200px;
+          }
+
+          .left {
+            width: 20%;
+          }
+
+          .right {
+            width: 80%;
+          }
+
+    
+
+          </style>
+
+          <div class="row">
+        <div class="column left" >
+
+          <svg width="109" height="150" viewBox="0 0 109 150" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect width="109" height="150" fill="url(#pattern0)"/>
+        <defs>
+        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_1776_7765" transform="translate(0 -0.0133333) scale(0.00917431 0.00666667)"/>
+        </pattern>
+        <image id="image0_1776_7765" width="109" height="152" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACYCAYAAADup2f8AAAFJUlEQVR4Ae2by24TQRBF8//fEsEGdkA2WUex5FWysSWD/FA2wCarRmXZuZMA4+pOTz9Gx9LIhadfvqdudU8SrgKv7hS46m7FLDhcHQ6HwNWXBkDrMGmBBrS+ykyv28JfTtvv92G323E1ooHxeJtcr6AZrO12y/msIQWMh3EZgnuBZkStwXq9bmjJLMV4GJeh416gGc3NZhMeHh9RqiEFjIdxGbrtFTSjulwuG1oySzEexmUU2mKxQKmGFDAeo9BWq1W4v79vaMksxXgYl/86DWjtJQnQ2mNycUVAuyhRew2A1h6TiysC2kWJ2msAtPaYXFzRZNC+/9gGLp8GFym9aQC0BpLrDZOL/wQa0JQklEZfaTSdYl84DacpZ3AaTpv1SVSp7osoj5RHZQrlkfJIeZQfjr/fnOT3aTgNp+E0nOZ3QYmKMeDhCjk9cnpUopTI0LnMIdV8EU7DacqUubigxPeQar4Ip+E0ZUqJDJ3LHFLNF+E0nKZMmYsLSnwPqeaLcBpOU6aUyNC5zCHVfBFOw2nKlLm4oMT3kGq+CKfhNGVKiQydyxxSzRdN5jTf9LRKUQBoKapV7gO0ygBSpgdaimqV+wCtMoCU6YGWolrlPkCrDCBleqClqFa5D9AqA0iZHmgpqlXuA7TKAFKmB1qKapX7AK0ygJTpgZaiWuU+QKsMIGV6oKWoVrkP0CoDSJkeaCmqVe4zGbTn5+fA5dMgNgcmgzaXv98o8T2A1sBfV8WCni00K7Xvef389fv4n+3t/T0vW4dBOTw9vWeYY98z3NiBuimPQBNaoEkLV4TTIvYfnKacwmnSwhXhNJx2PNS4smXQCKcNxPCEOC3Caefj8RzfPckybNON0+YI6/ydhkA8cTfQOD0KJ9CkhStiT4vY03CacgqnSQtXhNNwGs9pY1bhp/xj6pzunY+zud7Z0yR6N3taLvgtjiMcvghoEfvqVMB9qNSqG2iUR6BJgciII39EacJpyi7Ko7RwRTgNp/FwPWYVHq7H1Dndy308Zk+T6N3sabmToKXxhMMXAS1iX50KtA+VWnUDjfIINCkQGXHkjyhNOE3ZRXmUFq4Ip+E0Hq7HrMLD9Zg6p3u5j8fsaRK9mz0tdxK0NJ5w+CKgReyrU4H2oVKrbqBRHoEmBSIjjvwRpQmnKbsoj9LCFeE0nMbD9ZhVeLgeU+d0L/fxmD1Nonezp+VOgpbGEw5fBLSIfXUq0D5UatUNNMoj0KRAZMSRP6I04TRlF+VRWrginIbTeLgeswoP12PqnO7lPh6zp0n0bva03EnQ0njC4YuAFrGvTgXah0qtuoFGeQSaFIiMOPJHlCacpuyiPEoLV4TTcBoP12NW4eF6TJ3TvdzHY/Y0id7NnpY7CVoaTzh8EdAi9tWpQPtQqdVk0DQFUW4FgJZb0QLjAa2AyLmnAFpuRQuMB7QCIueeAmi5FS0wHtAKiJx7CqDlVrTAeEArIHLuKYCWW9EC4wGtgMi5pwBabkULjAe0AiLnngJouRUtMB7QCoicewqg5Va0wHgXoa3X67BYLAoshSm8ChgP47Lb7cLhcDheV+fAPrSby+Uy3N7ehk+fP4cPHz+G6+trrsIamO6mv3EwHqPQNptNeHh8DHd3d8cO325uwpevX7kKa2C6GzDjYDyMyz+dtt/vw3a7PVK1hkbYrGk1lausBqa76W8czGXGxficq+JLebQPjKY1MLLW2K7VasVVWIOz9sbBeAxdZpxeQbMPjKg14mpDg6HDzk77A9uYVoTnixvLAAAAAElFTkSuQmCC"/>
+        </defs>
+        </svg>
+        </div>
+
+        <div class="column right">
+        <p><a href="#">Data Sharing Framework Contract 2.02 <br> (opens in new window)</a><br>
+        PDF, less than 1MB</p>
+        </div>
+
+   </article>
+
+</div>
+</div>
 
 {% endblock %}
 
