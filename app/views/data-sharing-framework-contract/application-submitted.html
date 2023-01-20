@@ -204,27 +204,48 @@ Application submitted
 {% endblock %}
 
 
-<!-- NHS.UK footer -->
-{% block footer %}
+<!-- Body end here -->
+
+
+
+
+
+
+
+
+
+
+
 <footer role="contentinfo">
   <div class="nhsuk-footer" id="nhsuk-footer">
     <div class="nhsuk-width-container">
       <h2 class="nhsuk-u-visually-hidden">Support links</h2>
-
+      <ul class="nhsuk-footer__list nhsuk-footer__list--three-columns">
+        <li class="nhsuk-footer__list-item"><a href="/about-us" class="nhsuk-footer__list-item-link" target="_blank">About us</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Accessibility</a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/contact-us/freedom-of-information" class="nhsuk-footer__list-item-link" target="_blank">Freedom of information</a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/privacy-and-cookies" class="nhsuk-footer__list-item-link" target="_blank">Privacy and cookies</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Change cookie settings</a></li>
+        <li class="nhsuk-footer__list-item"><a href="/contact-us" class="nhsuk-footer__list-item-link" target="_blank">Contact us </a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/terms-and-conditions" class="nhsuk-footer__list-item-link" target="_blank">Terms and conditions </a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/data" class="nhsuk-footer__list-item-link" target="_blank">Data</a></li>
+      </ul>
       <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
     </div>
   </div>
 </footer>
-{% endblock %}
 
 
-<!-- JavaScript hack to do nothing if search button or link href="" clicked -->
-{% block pageScripts %}
-<script>
-  $( document ).ready(function() {
-    $('a[href=""], button.nhsuk-search__submit').click(function(e) {
-      e.preventDefault();
-    });
-  });
-</script>
-{% endblock %}
+
+
+
+
+<!-- Custom JavaScript files can be added to this file -->
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script src="/js/auto-store-data.js"></script>
+
+
+</body>
+</html>
