@@ -24,8 +24,8 @@ DARS - NHS
 <link rel="mask-icon" href="/nhsuk-frontend/assets/favicons/favicon.svg" color="#005eb8">
 <link rel="icon" sizes="192x192" href="/nhsuk-frontend/assets/favicons/favicon-192x192.png">
 <style type="text/css">
-  details{
-        margin-bottom: 0px !important;
+  .legal-basis{
+        border-bottom: 0px !important;
   }
 </style>
 </head>
@@ -226,9 +226,21 @@ Check your answers
       Linking your Participant data with NHS Digital’s data
     </dt>
     <dd class="nhsuk-summary-list__value">
-    <p>NHS Number</p>
-    <p>Date of Birth</p>
-    <p>Postcode</p>
+      <p>Required fields</p>
+    <p>- NHS Number</p>
+    <p>- Date of Birth</p>
+    <p>- Postcode</p>
+    <div class="nhsuk-u-padding-bottom-3"></div>
+    <p>Recommended fields</p>
+    <p>- Family name</p>
+    <p>- Given name</p>
+    <p>- Gender</p>
+    <div class="nhsuk-u-padding-bottom-5"></div>
+
+    <p>Any additional or relevant information</p>
+    <div class="nhsuk-u-padding-bottom-3"></div>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
     </dd>
     <dd class="nhsuk-summary-list__actions">
 
@@ -249,6 +261,12 @@ Check your answers
       <p>Data analyst</p>
       <p>University of Oxford</p>
       <p> john.smith@ox.ac.uk</p>
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <p>Jimmy Jazz</p>
+      <p>Project Manager</p>
+      <p>University of Manchester</p>
+      <p> jimmy.jazz@manchester.ac.uk</p>
+
     </dd>
 
     <dd class="nhsuk-summary-list__actions">
@@ -262,16 +280,52 @@ Check your answers
   </div>
 
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
+    <dt class="nhsuk-summary-list__key legal-basis">
       legal basis 
     </dt>
-    <dd class="nhsuk-summary-list__value">
+    <dd class="nhsuk-summary-list__value legal-basis">
       <p>Consent (Reasonable Expectation)</p>
-      <p>National Health Service Act 2006 - s251 - 'Control of patient information'.</p>
-      <p>Other</p>
+      <p>98765.pdf</p>
     </dd>
-        <dd class="nhsuk-summary-list__actions">
+     <dd class="nhsuk-summary-list__actions legal-basis">
+      <a href="#">
+        Change<span class="nhsuk-u-visually-hidden">Participant Data Contributor(s)</span>
+      </a>
 
+    </dd>
+
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key legal-basis">
+
+    </dt>
+    <dd class="nhsuk-summary-list__value legal-basis">
+      <p>National Health Service Act 2006 - s251 - 'Control of patient information' document</p>
+      <p>123456.pdf</p>
+    </dd>
+     <dd class="nhsuk-summary-list__actions legal-basis">
+      <a href="#">
+        Change<span class="nhsuk-u-visually-hidden">Participant Data Contributor(s)</span>
+      </a>
+
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row ">
+    <dt class="nhsuk-summary-list__key">
+
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <p>Other</p>
+      <p>-ABC</p>
+      <p>548796.pdf</p>
+    </dd>
+     <dd class="nhsuk-summary-list__actions">
+      <a href="#">
+        Change<span class="nhsuk-u-visually-hidden">Participant Data Contributor(s)</span>
+      </a>
 
     </dd>
 
@@ -287,7 +341,14 @@ Check your answers
 
 </dl>
 
+<p>
+<a href="/participants/have-you-completed-this-section" class="nhsuk-button">Continue</a><br />
+<a href="#">Return to this application later</a>
+</p>
+
 </div>  
+
+
 </div>
 </main>
 </div>
