@@ -5,11 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
-<style>
-    .nhsuk-card__content {background-color:#005eb8; }
-    .nhsuk-card__heading {color: #ffffff; text-align: center;}
-    .nhsuk-card__description {color: #ffffff;text-align: center;}
-</style>
 
 <title>
 DARS - NHS
@@ -72,7 +67,7 @@ Data Access Request Service
 <ul class="nhsuk-header__navigation-list">
 
 
-<li class="nhsuk-header__navigation-item">
+<li class="nhsuk-header__navigation-item app-header__navigation-item__item--current">
 <a class="nhsuk-header__navigation-link" href="/dashboard/">
 Apply for or Manage DSA
 <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"  width="34" height="34">
@@ -90,7 +85,7 @@ Active DSAs
 </a>
 </li>
 
-<li class="nhsuk-header__navigation-item app-header__navigation-item__item--current">
+<li class="nhsuk-header__navigation-item">
 <a class="nhsuk-header__navigation-link" href="/dashboard/dsfc">
 Data Sharing Framework Contract
 <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"  width="34" height="34">
@@ -127,58 +122,99 @@ Guidance
 </li>
 
 
+<li class="nhsuk-header__navigation-item  l-signout-mob">
+<a class="nhsuk-header__navigation-link" href="/">
+Signout
+<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"  width="34" height="34">
+<path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+</svg>
+</a>
+</li>
+
+
 </ul>
 </div>
 </nav>
 
 </header>
+<nav class="nhsuk-breadcrumb app-breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><strong>Reference Number:</strong> DARS-NIC-209174-W2H3G</li>
+      <li class="nhsuk-breadcrumb__item" style="float: right;"><strong>Total Estimated Cost:</strong> £1234.50</li>
+    </ol>
+  </div>
+</nav>
 
-<div class="nhsuk-width-container ">
+<div class="nhsuk-width-container "></div>  
+
+    <!-- Heading  -->
 <main class="nhsuk-main-wrapper " id="maincontent" role="main">
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-grid-column-two-thirds">
+
+
+    <div class="nhsuk-card">
+      <style>
+          .nhsuk-card__content {
+          background-color: #005eb8;
+        }
+        .nhsuk-card__heading {
+          color: #ffffff;
+          text-align: center;
+        }
+        .nhsuk-card__description {
+          color: #ffffff;
+          text-align: center;
+        }
+        </style>
+  <div class="nhsuk-card__content" >
+
+    <h1 class="nhsuk-card__heading">
+Application submitted
+    </h1>
+    <p class="nhsuk-card__description">Reference number<br><b> CON-13456-Q1W2E</b></p>
+  </div>
+</div>
+
+    <article class="nhsuk-details nhsuk-u-margin-bottom-9">
+      <h2>What happens next</h2>
+<p>We will send you and the authorised signatory (Approver) an email confirming that we have received the application.</p>
+<p>The application will be reviewed by NHS Digital’s Data Access Request Service (DARS), who will contact you within 7 days if further information is needed.</p>
+<p>The contract will then be sent to the authorised signatory to sign. (You will also receive a copy of this email.)</p>
+
+<p>
+  If you would like to speak to someone about your application, email <a href="mailto: data.applications@nhsdigital.uk">data.applications@nhsdigital.uk</a> quoting your contract reference number in the subject field.</p>
+
+
+</article>
 
 
 
-  
-<!-- The card -->
-  
-        <div class="nhsuk-card">
-            <div class="nhsuk-card__content" >
-  
-                <h1 class="nhsuk-card__heading">Application submitted</h1>
-                <p class="nhsuk-card__description">Reference number<br><b> CON-13456-Q1W2E</b></p>
-            </div>
-        </div>
-  
-<!-- More information  -->
-        <h2>What happens next</h2>
-        <p>We will send you and the authorised signatory (Approver) an email confirming that we have received the application.</p>
-        <p>The application will be reviewed by NHS Digital’s Data Access Request Service (DARS), who will contact you within 7 days if further information is needed.</p>
-        <p>The contract will then be sent to the authorised signatory to sign. (You will also receive a copy of this email.)</p>
-        <p>If you would like to speak to someone about your application, email <a href="mailto: data.applications@nhsdigital.uk">data.applications@nhsdigital.uk</a> quoting your contract reference number in the subject field.</p>
-  
-        <br>
-        <br>
-        
-  
 
+ <a href="/data-sharing-framework-contract/dashboard-next" class="nhsuk-button" type="submit">
+  Go to active DSFC
+  </a>
 
-<!-- Submit -->
-    <a href="/data-sharing-framework-contract/dashboard" class="nhsuk-button" >
-    Go to active DSFC
-    </a>
-
-
-   
-    </div>
+</div>
 </div>
 </main>
+      
 
-</div>
+{% endblock %}
 
 
-<!-- DARS online footer -->
+<!-- Body end here -->
+
+
+
+
+
+
+
+
+
+
 
 <footer role="contentinfo">
   <div class="nhsuk-footer" id="nhsuk-footer">

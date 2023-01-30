@@ -23,11 +23,26 @@ DARS - NHS
 <link rel="apple-touch-icon" href="/nhsuk-frontend/assets/favicons/apple-touch-icon-180x180.png">
 <link rel="mask-icon" href="/nhsuk-frontend/assets/favicons/favicon.svg" color="#005eb8">
 <link rel="icon" sizes="192x192" href="/nhsuk-frontend/assets/favicons/favicon-192x192.png">
+
+<script>
+    function myFunction() {
+
+        if(document.getElementById('optionone').checked) {
+            document.getElementById('linkid').href = "/identifiable-data/legal-bases-identifiable-data";
+        }
+
+      if(document.getElementById('optiontwo').checked) {
+            document.getElementById('linkid').href = "/identifiable-data/have-you-completed-this-section-id";
+        }
+
+    }
+</script>
 <style type="text/css">
-  details{
-        margin-bottom: 0px !important;
-  }
+  .bt-save-continue{
+  color: #fff !important;
+}
 </style>
+
 </head>
 <body class="">
 
@@ -149,7 +164,7 @@ Signout
 <div class="nhsuk-width-container">
 <ol class="nhsuk-breadcrumb__list">
 <li class="nhsuk-breadcrumb__item"><strong>Reference Number:</strong> DARS-NIC-209174-W2H3G</li>
-<li class="nhsuk-breadcrumb__item" style="float: right;"><strong>Total Estimated Cost:</strong> £4184.50</li>
+<li class="nhsuk-breadcrumb__item" style="float: right;"><strong>Total Estimated Cost:</strong> £1234.50</li>
 </ol>
 </div>
 </nav>
@@ -157,7 +172,7 @@ Signout
 
 <div class="nhsuk-width-container ">
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
-<a class="nhsuk-back-link__link" href="/dataset/dataset-summary">
+<a class="nhsuk-back-link__link" href="/dsa-section-list">
 <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
 <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
 </svg>
@@ -174,165 +189,43 @@ Go back</a>
 
 <br />
 <h1><span class="nhsuk-caption-l nhsuk-caption--bottom ">
-Data set > Hospital Episode Statistics Admitted Patient Care </span>
-Check your answers
+Identifiable Data</span>
+Do you want an identifiable data?
 </h1>
 
-<div class="nhsuk-inset-text">
-  <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>Check the information you have selected for this data set. If you have selected Secure Data Environment (SDE) and the data set is also available in data dissemination, you will have the option to ‘Change’ your selection, along with the data set details you have saved. </p>
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" type="radio" id="optionone" name="radio">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+         Yes
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" type="radio" id="optiontwo" name="radio">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+        No
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+
 </div>
 
-<dl class="nhsuk-summary-list">
-
-    <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Data set
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      <p>Hospital Episode Statistics Admitted Patient Care</p>
-    </dd>
-
-    <dd class="nhsuk-summary-list__actions">
-
-  <!--     <a href="#">
-        Change<span class="nhsuk-u-visually-hidden"> data set</span>
-      </a> -->
-
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row summarylist-col-adjust">
-    <dt class="nhsuk-summary-list__key">
-        SDE or
-Data dissemination
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Data dissemination  
-    </dd>
-
-    <dd class="nhsuk-summary-list__actions">
-
-      <a href="#">
-        Change<span class="nhsuk-u-visually-hidden">  SDE or
-data dissemination</span>
-      </a>
-
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row summarylist-col-adjust">
-    <dt class="nhsuk-summary-list__key">
-      Link to cohort
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Yes
-    </dd>
-
-    <dd class="nhsuk-summary-list__actions">
-
-
-    </dd>
 
 
 
-  </div>
+<br /><br />
+<p><a href="" class="nhsuk-button nhsuk-button-save-continue bt-save-continue" onclick='myFunction()' id="linkid"> Continue</a><br />
 
 
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Data duration
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-            <p>Historic annual data</p>
-
-    </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-Historic annual data
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      <p>- 2020/21</p>
-      <p>- 2019/20</p>
-      <p>- 2018/19</p>
-      <p>- 2017/18</p>
-      <p>- 2016/17</p>
-
-    </dd>
-
-        <dd class="nhsuk-summary-list__actions">
-
-
-    </dd>
-
-  </div>
-
-
-  <!-- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Future release frequency
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      <p>Quarterly</p>
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a href="#">
-        Change<span class="nhsuk-u-visually-hidden"> future release frequency</span>
-      </a>
-    </dd>
-  </div>
- -->
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Type
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      <p>Record level</p>
-    </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-
-    </dd>
-
-  </div>
-
-
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-     Fields
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      <p>Admissions Period of Care</p>
-      <p>- Admission date check flag <strong>(ADM_CFL)</strong></p>
-      <p>- Date of admission <strong>(ADMIDATE)</strong></p>
-      <p>- Method of admission <strong>(ADMIMETH)</strong></p>
-      <p>- Source of admission <strong>(ADMISORC)</strong></p>
-      <p><a href="#">+ Show all</a></p>
-    </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-
-    </dd>
-
-  </div>
-
-
- 
-
-
-</dl>
 
 </div>  
 </div>
