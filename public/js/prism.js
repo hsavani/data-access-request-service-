@@ -1,5 +1,3 @@
-"use strict";
-
 /* PrismJS 1.15.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
 var _self = "undefined" != typeof window ? window : "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? self : {},
@@ -10,18 +8,18 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
     manual: _self.Prism && _self.Prism.manual,
     disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler,
     util: {
-      encode: function encode(e) {
+      encode: function (e) {
         return e instanceof a ? new a(e.type, n.util.encode(e.content), e.alias) : "Array" === n.util.type(e) ? e.map(n.util.encode) : e.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\u00a0/g, " ");
       },
-      type: function type(e) {
+      type: function (e) {
         return Object.prototype.toString.call(e).slice(8, -1);
       },
-      objId: function objId(e) {
+      objId: function (e) {
         return e.__id || Object.defineProperty(e, "__id", {
           value: ++t
         }), e.__id;
       },
-      clone: function clone(e, t) {
+      clone: function (e, t) {
         var a = n.util.type(e);
 
         switch (t = t || {}, a) {
@@ -30,9 +28,7 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
             var r = {};
             t[n.util.objId(e)] = r;
 
-            for (var l in e) {
-              e.hasOwnProperty(l) && (r[l] = n.util.clone(e[l], t));
-            }
+            for (var l in e) e.hasOwnProperty(l) && (r[l] = n.util.clone(e[l], t));
 
             return r;
 
@@ -48,27 +44,21 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
       }
     },
     languages: {
-      extend: function extend(e, t) {
+      extend: function (e, t) {
         var a = n.util.clone(n.languages[e]);
 
-        for (var r in t) {
-          a[r] = t[r];
-        }
+        for (var r in t) a[r] = t[r];
 
         return a;
       },
-      insertBefore: function insertBefore(e, t, a, r) {
+      insertBefore: function (e, t, a, r) {
         r = r || n.languages;
         var l = r[e],
             i = {};
 
-        for (var o in l) {
-          if (l.hasOwnProperty(o)) {
-            if (o == t) for (var s in a) {
-              a.hasOwnProperty(s) && (i[s] = a[s]);
-            }
-            a.hasOwnProperty(o) || (i[o] = l[o]);
-          }
+        for (var o in l) if (l.hasOwnProperty(o)) {
+          if (o == t) for (var s in a) a.hasOwnProperty(s) && (i[s] = a[s]);
+          a.hasOwnProperty(o) || (i[o] = l[o]);
         }
 
         var u = r[e];
@@ -76,33 +66,27 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
           n === u && t != e && (this[t] = i);
         }), i;
       },
-      DFS: function DFS(e, t, a, r) {
+      DFS: function (e, t, a, r) {
         r = r || {};
 
-        for (var l in e) {
-          e.hasOwnProperty(l) && (t.call(e, l, e[l], a || l), "Object" !== n.util.type(e[l]) || r[n.util.objId(e[l])] ? "Array" !== n.util.type(e[l]) || r[n.util.objId(e[l])] || (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, l, r)) : (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, null, r)));
-        }
+        for (var l in e) e.hasOwnProperty(l) && (t.call(e, l, e[l], a || l), "Object" !== n.util.type(e[l]) || r[n.util.objId(e[l])] ? "Array" !== n.util.type(e[l]) || r[n.util.objId(e[l])] || (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, l, r)) : (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, null, r)));
       }
     },
     plugins: {},
-    highlightAll: function highlightAll(e, t) {
+    highlightAll: function (e, t) {
       n.highlightAllUnder(document, e, t);
     },
-    highlightAllUnder: function highlightAllUnder(e, t, a) {
+    highlightAllUnder: function (e, t, a) {
       var r = {
         callback: a,
         selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
       };
       n.hooks.run("before-highlightall", r);
 
-      for (var l, i = r.elements || e.querySelectorAll(r.selector), o = 0; l = i[o++];) {
-        n.highlightElement(l, t === !0, r.callback);
-      }
+      for (var l, i = r.elements || e.querySelectorAll(r.selector), o = 0; l = i[o++];) n.highlightElement(l, t === !0, r.callback);
     },
-    highlightElement: function highlightElement(t, a, r) {
-      for (var l, i, o = t; o && !e.test(o.className);) {
-        o = o.parentNode;
-      }
+    highlightElement: function (t, a, r) {
+      for (var l, i, o = t; o && !e.test(o.className);) o = o.parentNode;
 
       o && (l = (o.className.match(e) || [, ""])[1].toLowerCase(), i = n.languages[l]), t.className = t.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l, t.parentNode && (o = t.parentNode, /pre/i.test(o.nodeName) && (o.className = o.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l));
       var s = t.textContent,
@@ -125,7 +109,7 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
         }));
       } else u.highlightedCode = n.highlight(u.code, u.grammar, u.language), n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, n.hooks.run("after-highlight", u), n.hooks.run("complete", u), r && r.call(t);
     },
-    highlight: function highlight(e, t, r) {
+    highlight: function (e, t, r) {
       var l = {
         code: e,
         grammar: t,
@@ -133,83 +117,77 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
       };
       return n.hooks.run("before-tokenize", l), l.tokens = n.tokenize(l.code, l.grammar), n.hooks.run("after-tokenize", l), a.stringify(n.util.encode(l.tokens), l.language);
     },
-    matchGrammar: function matchGrammar(e, t, a, r, l, i, o) {
+    matchGrammar: function (e, t, a, r, l, i, o) {
       var s = n.Token;
 
-      for (var u in a) {
-        if (a.hasOwnProperty(u) && a[u]) {
-          if (u == o) return;
-          var g = a[u];
-          g = "Array" === n.util.type(g) ? g : [g];
+      for (var u in a) if (a.hasOwnProperty(u) && a[u]) {
+        if (u == o) return;
+        var g = a[u];
+        g = "Array" === n.util.type(g) ? g : [g];
 
-          for (var c = 0; c < g.length; ++c) {
-            var h = g[c],
-                f = h.inside,
-                d = !!h.lookbehind,
-                m = !!h.greedy,
-                p = 0,
-                y = h.alias;
+        for (var c = 0; c < g.length; ++c) {
+          var h = g[c],
+              f = h.inside,
+              d = !!h.lookbehind,
+              m = !!h.greedy,
+              p = 0,
+              y = h.alias;
 
-            if (m && !h.pattern.global) {
-              var v = h.pattern.toString().match(/[imuy]*$/)[0];
-              h.pattern = RegExp(h.pattern.source, v + "g");
-            }
+          if (m && !h.pattern.global) {
+            var v = h.pattern.toString().match(/[imuy]*$/)[0];
+            h.pattern = RegExp(h.pattern.source, v + "g");
+          }
 
-            h = h.pattern || h;
+          h = h.pattern || h;
 
-            for (var b = r, k = l; b < t.length; k += t[b].length, ++b) {
-              var w = t[b];
-              if (t.length > e.length) return;
+          for (var b = r, k = l; b < t.length; k += t[b].length, ++b) {
+            var w = t[b];
+            if (t.length > e.length) return;
 
-              if (!(w instanceof s)) {
-                if (m && b != t.length - 1) {
-                  h.lastIndex = k;
+            if (!(w instanceof s)) {
+              if (m && b != t.length - 1) {
+                h.lastIndex = k;
 
-                  var _ = h.exec(e);
+                var _ = h.exec(e);
 
-                  if (!_) break;
+                if (!_) break;
 
-                  for (var j = _.index + (d ? _[1].length : 0), P = _.index + _[0].length, A = b, x = k, O = t.length; O > A && (P > x || !t[A].type && !t[A - 1].greedy); ++A) {
-                    x += t[A].length, j >= x && (++b, k = x);
-                  }
+                for (var j = _.index + (d ? _[1].length : 0), P = _.index + _[0].length, A = b, x = k, O = t.length; O > A && (P > x || !t[A].type && !t[A - 1].greedy); ++A) x += t[A].length, j >= x && (++b, k = x);
 
-                  if (t[b] instanceof s) continue;
-                  I = A - b, w = e.slice(k, x), _.index -= k;
-                } else {
-                  h.lastIndex = 0;
+                if (t[b] instanceof s) continue;
+                I = A - b, w = e.slice(k, x), _.index -= k;
+              } else {
+                h.lastIndex = 0;
 
-                  var _ = h.exec(w),
-                      I = 1;
-                }
-
-                if (_) {
-                  d && (p = _[1] ? _[1].length : 0);
-
-                  var j = _.index + p,
-                      _ = _[0].slice(p),
-                      P = j + _.length,
-                      N = w.slice(0, j),
-                      S = w.slice(P),
-                      C = [b, I];
-
-                  N && (++b, k += N.length, C.push(N));
-                  var E = new s(u, f ? n.tokenize(_, f) : _, y, _, m);
-                  if (C.push(E), S && C.push(S), Array.prototype.splice.apply(t, C), 1 != I && n.matchGrammar(e, t, a, b, k, !0, u), i) break;
-                } else if (i) break;
+                var _ = h.exec(w),
+                    I = 1;
               }
+
+              if (_) {
+                d && (p = _[1] ? _[1].length : 0);
+
+                var j = _.index + p,
+                    _ = _[0].slice(p),
+                    P = j + _.length,
+                    N = w.slice(0, j),
+                    S = w.slice(P),
+                    C = [b, I];
+
+                N && (++b, k += N.length, C.push(N));
+                var E = new s(u, f ? n.tokenize(_, f) : _, y, _, m);
+                if (C.push(E), S && C.push(S), Array.prototype.splice.apply(t, C), 1 != I && n.matchGrammar(e, t, a, b, k, !0, u), i) break;
+              } else if (i) break;
             }
           }
         }
       }
     },
-    tokenize: function tokenize(e, t) {
+    tokenize: function (e, t) {
       var a = [e],
           r = t.rest;
 
       if (r) {
-        for (var l in r) {
-          t[l] = r[l];
-        }
+        for (var l in r) t[l] = r[l];
 
         delete t.rest;
       }
@@ -218,15 +196,13 @@ var _self = "undefined" != typeof window ? window : "undefined" != typeof Worker
     },
     hooks: {
       all: {},
-      add: function add(e, t) {
+      add: function (e, t) {
         var a = n.hooks.all;
         a[e] = a[e] || [], a[e].push(t);
       },
-      run: function run(e, t) {
+      run: function (e, t) {
         var a = n.hooks.all[e];
-        if (a && a.length) for (var r, l = 0; r = a[l++];) {
-          r(t);
-        }
+        if (a && a.length) for (var r, l = 0; r = a[l++];) r(t);
       }
     }
   },

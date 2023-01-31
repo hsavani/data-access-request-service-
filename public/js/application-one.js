@@ -1,35 +1,23 @@
-"use strict";
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function nodeListForEach(t, e) {
   if (window.NodeList.prototype.forEach) return t.forEach(e);
 
-  for (var n = 0; n < t.length; n++) {
-    e.call(window, t[n], n, t);
-  }
+  for (var n = 0; n < t.length; n++) e.call(window, t[n], n, t);
 }
 
-(void 0).Element && function (t) {
+this.Element && function (t) {
   t.matches = t.matches || t.matchesSelector || t.webkitMatchesSelector || t.msMatchesSelector || function (t) {
-    for (var e = this, n = (e.parentNode || e.document).querySelectorAll(t), o = -1; n[++o] && n[o] != e;) {
-      ;
-    }
+    for (var e = this, n = (e.parentNode || e.document).querySelectorAll(t), o = -1; n[++o] && n[o] != e;);
 
     return !!n[o];
   };
-}(Element.prototype), (void 0).Element && function (t) {
+}(Element.prototype), this.Element && function (t) {
   t.closest = t.closest || function (t) {
-    for (var e = this; e.matches && !e.matches(t);) {
-      e = e.parentNode;
-    }
+    for (var e = this; e.matches && !e.matches(t);) e = e.parentNode;
 
     return e.matches ? e : null;
   };
 }(Element.prototype), Array.prototype.indexOf || (Array.prototype.indexOf = function (t, e) {
-  for (var n = e || 0, o = this.length; n < o; n++) {
-    if (this[n] === t) return n;
-  }
+  for (var n = e || 0, o = this.length; n < o; n++) if (this[n] === t) return n;
 
   return -1;
 }), function () {
@@ -95,15 +83,11 @@ function nodeListForEach(t, e) {
       return null;
     }
 
-    return "object" != _typeof(t) && null !== t && (t = JSON.parse(t)), t;
+    return "object" != typeof t && null !== t && (t = JSON.parse(t)), t;
   }, window.GOVUK.setConsentCookie = function (t) {
     var e = window.GOVUK.getConsentCookie();
 
-    for (var n in e || (e = JSON.parse(JSON.stringify(i))), t) {
-      if (e[n] = t[n], !t[n]) for (var o in s) {
-        s[o] === n && window.GOVUK.deleteCookie(o);
-      }
-    }
+    for (var n in e || (e = JSON.parse(JSON.stringify(i))), t) if (e[n] = t[n], !t[n]) for (var o in s) s[o] === n && window.GOVUK.deleteCookie(o);
 
     window.GOVUK.setCookie("cookies_policy", JSON.stringify(e), {
       days: 365
@@ -142,9 +126,7 @@ function nodeListForEach(t, e) {
     }
   }, window.GOVUK.getCookie = function (t) {
     for (var e = t + "=", n = document.cookie.split(";"), o = 0, i = n.length; o < i; o++) {
-      for (var s = n[o]; " " === s.charAt(0);) {
-        s = s.substring(1, s.length);
-      }
+      for (var s = n[o]; " " === s.charAt(0);) s = s.substring(1, s.length);
 
       if (0 === s.indexOf(e)) return decodeURIComponent(s.substring(e.length));
     }
@@ -157,11 +139,7 @@ function nodeListForEach(t, e) {
   }, window.GOVUK.deleteUnconsentedCookies = function () {
     var t = window.GOVUK.getConsentCookie();
 
-    for (var e in t) {
-      if (!t[e]) for (var n in s) {
-        s[n] === e && window.GOVUK.deleteCookie(n);
-      }
-    }
+    for (var e in t) if (!t[e]) for (var n in s) s[n] === e && window.GOVUK.deleteCookie(n);
   };
 }(window), function (t) {
   "use strict";
@@ -175,16 +153,12 @@ function nodeListForEach(t, e) {
   window.GOVUK = window.GOVUK || {}, window.GOVUK.extendObject = function (t) {
     t = t || {};
 
-    for (var e = 1; e < arguments.length; e++) {
-      if (arguments[e]) for (var n in arguments[e]) {
-        Object.prototype.hasOwnProperty.call(arguments[e], n) && (t[n] = arguments[e][n]);
-      }
-    }
+    for (var e = 1; e < arguments.length; e++) if (arguments[e]) for (var n in arguments[e]) Object.prototype.hasOwnProperty.call(arguments[e], n) && (t[n] = arguments[e][n]);
 
     return t;
   };
 }(window), function (t, e) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? e() : "function" == typeof define && define.amd ? define("GOVUKFrontend", e) : e();
+  "object" == typeof exports && "undefined" != typeof module ? e() : "function" == typeof define && define.amd ? define("GOVUKFrontend", e) : e();
 }(0, function () {
   "use strict";
 
@@ -201,13 +175,12 @@ function nodeListForEach(t, e) {
       }
     }() || (a = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", d = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function u(t, e, n) {
       if (a && (t === window || t === document || t === Element.prototype || t instanceof Element)) return a(t, e, n);
-      if (null === t || !(t instanceof Object || "object" == _typeof(t))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === t || !(t instanceof Object || "object" == typeof t)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(e),
           i = "value" in n || "writable" in n,
-          s = "get" in n && _typeof(n.get),
-          r = "set" in n && _typeof(n.set);
+          s = "get" in n && typeof n.get,
+          r = "set" in n && typeof n.set;
 
       if (s) {
         if ("function" !== s) throw new TypeError("Getter must be a function");
@@ -227,15 +200,15 @@ function nodeListForEach(t, e) {
 
       return "value" in n && (t[o] = n.value), t;
     });
-  }).call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (p) {
+  }).call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (p) {
     var t, e, n;
     "DOMTokenList" in this && (!("classList" in (t = document.createElement("x"))) || !t.classList.toggle("x", !1) && !t.className) || ("DOMTokenList" in (e = this) && e.DOMTokenList && (!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg") || document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList) || (e.DOMTokenList = function () {
       var i = !0,
-          n = function n(t, e, _n, o) {
+          n = function (t, e, n, o) {
         Object.defineProperty ? Object.defineProperty(t, e, {
           configurable: !1 === i || !!o,
-          get: _n
-        }) : t.__defineGetter__(e, _n);
+          get: n
+        }) : t.__defineGetter__(e, n);
       };
 
       try {
@@ -250,28 +223,22 @@ function nodeListForEach(t, e) {
             c = {},
             l = 0,
             t = 0,
-            e = function e(t) {
+            e = function (t) {
           n(r, t, function () {
             return u(), a[t];
           }, !1);
         },
-            d = function d() {
-          if (t <= l) for (; t < l; ++t) {
-            e(t);
-          }
+            d = function () {
+          if (t <= l) for (; t < l; ++t) e(t);
         },
-            u = function u() {
+            u = function () {
           var t,
               e,
               n = arguments,
               o = /\s+/;
-          if (n.length) for (e = 0; e < n.length; ++e) {
-            if (o.test(n[e])) throw (t = new SyntaxError('String "' + n[e] + '" contains an invalid character')).code = 5, t.name = "InvalidCharacterError", t;
-          }
+          if (n.length) for (e = 0; e < n.length; ++e) if (o.test(n[e])) throw (t = new SyntaxError('String "' + n[e] + '" contains an invalid character')).code = 5, t.name = "InvalidCharacterError", t;
 
-          for ("" === (a = "object" == _typeof(i[s]) ? ("" + i[s].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[s]).replace(/^\s+|\s+$/g, "").split(o))[0] && (a = []), c = {}, e = 0; e < a.length; ++e) {
-            c[a[e]] = !0;
-          }
+          for ("" === (a = "object" == typeof i[s] ? ("" + i[s].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[s]).replace(/^\s+|\s+$/g, "").split(o))[0] && (a = []), c = {}, e = 0; e < a.length; ++e) c[a[e]] = !0;
 
           l = a.length, d();
         };
@@ -287,23 +254,17 @@ function nodeListForEach(t, e) {
         }, r.add = function () {
           u.apply(r, t = arguments);
 
-          for (var t, e, n = 0, o = t.length; n < o; ++n) {
-            e = t[n], c[e] || (a.push(e), c[e] = !0);
-          }
+          for (var t, e, n = 0, o = t.length; n < o; ++n) e = t[n], c[e] || (a.push(e), c[e] = !0);
 
-          l !== a.length && (l = a.length >>> 0, "object" == _typeof(i[s]) ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d());
+          l !== a.length && (l = a.length >>> 0, "object" == typeof i[s] ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d());
         }, r.remove = function () {
           u.apply(r, t = arguments);
 
-          for (var t, e = {}, n = 0, o = []; n < t.length; ++n) {
-            e[t[n]] = !0, delete c[t[n]];
-          }
+          for (var t, e = {}, n = 0, o = []; n < t.length; ++n) e[t[n]] = !0, delete c[t[n]];
 
-          for (n = 0; n < a.length; ++n) {
-            e[a[n]] || o.push(a[n]);
-          }
+          for (n = 0; n < a.length; ++n) e[a[n]] || o.push(a[n]);
 
-          l = (a = o).length >>> 0, "object" == _typeof(i[s]) ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d();
+          l = (a = o).length >>> 0, "object" == typeof i[s] ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d();
         }, r.toggle = function (t, e) {
           return u.apply(r, [t]), p !== e ? e ? (r.add(t), !0) : (r.remove(t), !1) : c[t] ? (r.remove(t), !1) : (r.add(t), !0);
         }, r;
@@ -320,9 +281,7 @@ function nodeListForEach(t, e) {
         var o = t.classList.constructor.prototype.add;
 
         t.classList.constructor.prototype.add = function () {
-          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) {
-            o.call(this, t[n]);
-          }
+          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) o.call(this, t[n]);
         };
       }
     }(), function () {
@@ -332,15 +291,13 @@ function nodeListForEach(t, e) {
         var o = t.classList.constructor.prototype.remove;
 
         t.classList.constructor.prototype.remove = function () {
-          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) {
-            o.call(this, t[n]);
-          }
+          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) o.call(this, t[n]);
         };
       }
     }());
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function t() {
         return s-- || clearTimeout(e), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), e && document.body.prototype && clearTimeout(e), !!document.body.prototype);
@@ -354,19 +311,15 @@ function nodeListForEach(t, e) {
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             a = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(t, e) {
+            l = function (t, e) {
           var n,
               o,
               i,
               s = t.childNodes || [],
               r = -1;
-          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) {
-            o = c[n], t[n] = o;
-          }
+          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) o = c[n], t[n] = o;
 
-          for (; i = e && s[++r];) {
-            l(i, e);
-          }
+          for (; i = e && s[++r];) l(i, e);
 
           return t;
         },
@@ -375,9 +328,7 @@ function nodeListForEach(t, e) {
             s = 100;
 
         a.attachEvent("onpropertychange", function (t) {
-          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) {
-            1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
-          }
+          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) 1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
 
           c[n] = i;
         }), a.constructor = Element, a.hasAttribute || (a.hasAttribute = function r(t) {
@@ -388,11 +339,11 @@ function nodeListForEach(t, e) {
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var t;
     "document" in this && "classList" in document.documentElement && "Element" in this && "classList" in Element.prototype && ((t = document.createElement("span")).classList.add("a", "b"), t.classList.contains("b")) || function (t) {
       var d = !0,
-          u = function u(t, e, n, o) {
+          u = function (t, e, n, o) {
         Object.defineProperty ? Object.defineProperty(t, e, {
           configurable: !1 === d || !!o,
           get: n
@@ -405,7 +356,7 @@ function nodeListForEach(t, e) {
         d = !1;
       }
 
-      var p = function p(t, c, l) {
+      var p = function (t, c, l) {
         u(t.prototype, c, function () {
           var t,
               e = this,
@@ -413,11 +364,9 @@ function nodeListForEach(t, e) {
           if (e[n]) return t;
 
           if (!(e[n] = !0) === d) {
-            for (var o, i = p.mirror || document.createElement("div"), s = i.childNodes, r = s.length, a = 0; a < r; ++a) {
-              if (s[a]._R === e) {
-                o = s[a];
-                break;
-              }
+            for (var o, i = p.mirror || document.createElement("div"), s = i.childNodes, r = s.length, a = 0; a < r; ++a) if (s[a]._R === e) {
+              o = s[a];
+              break;
             }
 
             o || (o = i.appendChild(document.createElement("div"))), t = DOMTokenList.call(o, e, l);
@@ -431,7 +380,7 @@ function nodeListForEach(t, e) {
 
       p(t.Element, "classList", "className"), p(t.HTMLElement, "classList", "className"), p(t.HTMLLinkElement, "relList", "rel"), p(t.HTMLAnchorElement, "relList", "rel"), p(t.HTMLAreaElement, "relList", "rel");
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {});
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {});
 }), window.GOVUK = window.GOVUK || {}, window.GOVUK.Modules = window.GOVUK.Modules || {}, function (t) {
   function e(t, e) {
     for (var n in this.$table = t, this.options = {
@@ -445,9 +394,7 @@ function nodeListForEach(t, e) {
       tableAlertText: "Table visible",
       toggleAfter: !1,
       returnReference: !1
-    }, e) {
-      this.options[n] = e[n];
-    }
+    }, e) this.options[n] = e[n];
   }
 
   e.prototype.init = function () {
@@ -457,9 +404,7 @@ function nodeListForEach(t, e) {
     if (this.options.multiple = !this.options.stacked && (this.$table.classList.contains("mc-multiple") || t), this.options.autoOutdent = this.options.autoOutdent || this.$table.classList.contains("mc-auto-outdent"), this.options.outdentAll = this.options.outdentAll || this.$table.classList.contains("mc-outdented"), this.options.multiple && this.$graph.classList.add("mc-multiple"), this.options.hasCaption = !!this.$table.querySelectorAll("caption").length, this.ENABLED && (this.apply(), this.options.applyOnInit || this.toggleLink.click()), this.options.returnReference) return this;
   }, e.prototype.detectIEVersion = function () {
     this.ie = function () {
-      for (var t, e = 3, n = document.createElement("div"), o = n.getElementsByTagName("i"); n.innerHTML = "<!--[if gt IE " + ++e + "]><i></i><![endif]-->", e < 10 && o[0];) {
-        ;
-      }
+      for (var t, e = 3, n = document.createElement("div"), o = n.getElementsByTagName("i"); n.innerHTML = "<!--[if gt IE " + ++e + "]><i></i><![endif]-->", e < 10 && o[0];);
 
       return 4 < e ? e : t;
     }();
@@ -475,9 +420,7 @@ function nodeListForEach(t, e) {
     var e = document.createElement("div");
     e.classList.add("mc-tr");
 
-    for (var n = "", o = this.$table.querySelectorAll("thead th"), i = 0; i < o.length; i++) {
-      n += '<div class="mc-th">', n += o[i].innerHTML, n += "</div>";
-    }
+    for (var n = "", o = this.$table.querySelectorAll("thead th"), i = 0; i < o.length; i++) n += '<div class="mc-th">', n += o[i].innerHTML, n += "</div>";
 
     return e.innerHTML = n, t.appendChild(e), t;
   }, e.prototype.construct.tbody = function () {
@@ -488,9 +431,7 @@ function nodeListForEach(t, e) {
       var o = document.createElement("div");
       o.classList.add("mc-tr");
 
-      for (var i = "", s = e[n].querySelectorAll("th, td"), r = 0; r < s.length; r++) {
-        i += '<div class="mc-td">', i += s[r].innerHTML, i += "</div>";
-      }
+      for (var i = "", s = e[n].querySelectorAll("th, td"), r = 0; r < s.length; r++) i += '<div class="mc-td">', i += s[r].innerHTML, i += "</div>";
 
       o.innerHTML = i, t.appendChild(o);
     }
@@ -522,20 +463,18 @@ function nodeListForEach(t, e) {
 
     this.options.toggleAfter ? this.$table.insertAdjacentElement("afterend", this.toggleLink) : this.$table.insertAdjacentElement("beforebegin", this.toggleLink), this.$graph.appendChild(t), this.$graph.appendChild(e);
   }, e.prototype.utils = {
-    isFloat: function isFloat(t) {
+    isFloat: function (t) {
       return !isNaN(parseFloat(t));
     },
-    stripValue: function stripValue(t) {
+    stripValue: function (t) {
       return t.replace(/,|\xa3|%|[a-z]/gi, "");
     },
-    returnMax: function returnMax(t) {
-      for (var e = 0, n = 0; n < t.length; n++) {
-        t[n] > e && (e = t[n]);
-      }
+    returnMax: function (t) {
+      for (var e = 0, n = 0; n < t.length; n++) t[n] > e && (e = t[n]);
 
       return e;
     },
-    isNegative: function isNegative(t) {
+    isNegative: function (t) {
       return t < 0;
     }
   }, e.prototype.addClassesToHeader = function () {
@@ -543,14 +482,10 @@ function nodeListForEach(t, e) {
         e = t.length;
     this.options.stacked && (t[e - 1].classList.add("mc-stacked-header", "mc-header-total"), e -= 1);
 
-    for (var n = 1; n < e; n++) {
-      t[n].classList.add("mc-key-header"), t[n].classList.contains("mc-stacked-header") || t[n].classList.add("mc-key-" + n);
-    }
+    for (var n = 1; n < e; n++) t[n].classList.add("mc-key-header"), t[n].classList.contains("mc-stacked-header") || t[n].classList.add("mc-key-" + n);
   }, e.prototype.calculateMaxWidth = function () {
     for (var t = [], e = 0, n = this.$graph.querySelectorAll(".mc-tr"), o = 0; o < n.length; o++) {
-      for (var i = n[o], s = i.querySelectorAll(".mc-td"), r = [], a = 1; a < s.length; a++) {
-        r.push(s[a]);
-      }
+      for (var i = n[o], s = i.querySelectorAll(".mc-td"), r = [], a = 1; a < s.length; a++) r.push(s[a]);
 
       var c = r.length;
 
@@ -580,19 +515,17 @@ function nodeListForEach(t, e) {
   }, e.prototype.applyWidths = function () {
     this.dimensions = this.calculateMaxWidth();
 
-    for (var t = this.$graph.querySelectorAll(".mc-tr"), e = 0; e < t.length; e++) {
-      for (var n = t[e].querySelectorAll(".mc-bar-cell"), o = 0; o < n.length; o++) {
-        var i = n[o],
-            s = parseFloat(this.utils.stripValue(i.innerText), 10),
-            r = s * this.dimensions.single,
-            a = Math.abs(s),
-            c = Math.abs(r);
-        if (this.options.negative) if (i.classList.contains("mc-bar-positive")) i.style.marginLeft = this.dimensions.marginLeft + "%";else if (a < this.dimensions.maxNegative) {
-          var l = (this.dimensions.maxNegative - a) * this.dimensions.single;
-          i.style.marginLeft = l + "%";
-        }
-        i.innerHTML = "<span>" + i.innerHTML + "</span>", i.style.width = c + "%";
+    for (var t = this.$graph.querySelectorAll(".mc-tr"), e = 0; e < t.length; e++) for (var n = t[e].querySelectorAll(".mc-bar-cell"), o = 0; o < n.length; o++) {
+      var i = n[o],
+          s = parseFloat(this.utils.stripValue(i.innerText), 10),
+          r = s * this.dimensions.single,
+          a = Math.abs(s),
+          c = Math.abs(r);
+      if (this.options.negative) if (i.classList.contains("mc-bar-positive")) i.style.marginLeft = this.dimensions.marginLeft + "%";else if (a < this.dimensions.maxNegative) {
+        var l = (this.dimensions.maxNegative - a) * this.dimensions.single;
+        i.style.marginLeft = l + "%";
       }
+      i.innerHTML = "<span>" + i.innerHTML + "</span>", i.style.width = c + "%";
     }
   }, e.prototype.insert = function () {
     var t = document.createElement("span"),
@@ -608,17 +541,15 @@ function nodeListForEach(t, e) {
       this.options.stacked ? (r < s && 0 < o || o < 1) && n.classList.add("mc-value-overflow") : (0 === o && n.classList.add("mc-bar-outdented"), this.options.autoOutdent && r <= s || this.options.outdentAll ? (n.classList.add("mc-bar-outdented"), i.style.marginLeft = "100%", i.style.display = "inline-block") : n.classList.add("mc-bar-indented"));
     }
   }, e.prototype.getChartId = function () {
-    for (var t = document.querySelectorAll("table.js-barchart-table"), e = null, n = 0; n < t.length; n++) {
-      t[n] === this.$table && (e = n);
-    }
+    for (var t = document.querySelectorAll("table.js-barchart-table"), e = null, n = 0; n < t.length; n++) t[n] === this.$table && (e = n);
 
     return e;
   }, t.MagnaCharta = e;
 }(window.GOVUK.Modules), window.GOVUK = window.GOVUK || {}, function (r) {
   "use strict";
 
-  var t = function t(_t) {
-    this.$element = _t;
+  var t = function (t) {
+    this.$element = t;
   };
 
   t.prototype.init = function () {
@@ -640,7 +571,7 @@ function nodeListForEach(t, e) {
   window.GOVUK = window.GOVUK || {};
 
   var t = window.GOVUK || {},
-      c = function c(t) {
+      c = function (t) {
     this.$element = t;
   };
 
@@ -686,7 +617,7 @@ function nodeListForEach(t, e) {
         n = "";
     s.channel ? (e = s.channel, n = "live_stream") : n = s.videoId;
 
-    var o = function o() {
+    var o = function () {
       new window.YT.Player(t, {
         videoId: n,
         host: "https://www.youtube-nocookie.com",
@@ -699,11 +630,11 @@ function nodeListForEach(t, e) {
           channel: e
         },
         events: {
-          onReady: function onReady(t) {
+          onReady: function (t) {
             var e = s.title;
             t.target.getIframe().title = e + " (video)";
           },
-          onStateChange: function onStateChange(t) {
+          onStateChange: function (t) {
             var e = t.data,
                 n = t.target,
                 o = {
@@ -767,9 +698,7 @@ function nodeListForEach(t, e) {
   }, c.apiScriptInserted = !1, c.playerApiReady = !1, c.queuedInserts = [], window.onYouTubePlayerAPIReady = function () {
     c.playerApiReady = !0;
 
-    for (var t = 0; t < c.queuedInserts.length; t++) {
-      c.queuedInserts[t].call();
-    }
+    for (var t = 0; t < c.queuedInserts.length; t++) c.queuedInserts[t].call();
   }, t.GovspeakYoutubeLinkEnhancement = c;
 }(), window.GOVUK = window.GOVUK || {}, window.GOVUK.Modules = window.GOVUK.Modules || {}, function (t) {
   function e(t) {
@@ -803,9 +732,7 @@ function nodeListForEach(t, e) {
   }, e.prototype.addAriaAttrs = function () {
     this.$module.toggleTrigger.setAttribute("role", "button"), this.$module.toggleTrigger.setAttribute("aria-controls", this.$module.toggleTrigger.getAttribute("data-controls")), this.$module.toggleTrigger.setAttribute("aria-expanded", this.$module.toggleTrigger.getAttribute("data-expanded")), this.$module.targets = this.getTargetElements();
 
-    for (var t = 0; t < this.$module.targets.length; t++) {
-      this.$module.targets[t].setAttribute("aria-live", "polite"), this.$module.targets[t].setAttribute("role", "region");
-    }
+    for (var t = 0; t < this.$module.targets.length; t++) this.$module.targets[t].setAttribute("aria-live", "polite"), this.$module.targets[t].setAttribute("role", "region");
   }, e.prototype.getTargetElements = function () {
     var t = "#" + this.$module.toggleTrigger.getAttribute("aria-controls").split(" ").join(", #");
     return this.$module.querySelectorAll(t);
@@ -815,15 +742,11 @@ function nodeListForEach(t, e) {
       if (t.preventDefault(), "true" === this.getAttribute("aria-expanded")) {
         this.setAttribute("aria-expanded", !1);
 
-        for (var e = 0; e < i.$module.targets.length; e++) {
-          i.$module.targets[e].classList.add(i.$module.toggleClass);
-        }
+        for (var e = 0; e < i.$module.targets.length; e++) i.$module.targets[e].classList.add(i.$module.toggleClass);
       } else {
         this.setAttribute("aria-expanded", !0);
 
-        for (var n = 0; n < i.$module.targets.length; n++) {
-          i.$module.targets[n].classList.remove(i.$module.toggleClass);
-        }
+        for (var n = 0; n < i.$module.targets.length; n++) i.$module.targets[n].classList.remove(i.$module.toggleClass);
       }
 
       var o = this.getAttribute("data-toggled-text");
@@ -845,16 +768,14 @@ function nodeListForEach(t, e) {
     Object.prototype.hasOwnProperty.call(i, "bubbles") || (i.bubbles = !0), Object.prototype.hasOwnProperty.call(i, "cancelable") || (i.cancelable = !0), "function" == typeof window.CustomEvent ? o = new window.CustomEvent(e, i) : (o = document.createEvent("CustomEvent")).initCustomEvent(e, i.bubbles, i.cancelable, i.detail), s && (o.keyCode = s), t.dispatchEvent(o);
   };
 }(window), function (t, e) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Accordion", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.Accordion = e());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Accordion", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.Accordion = e());
+}(this, function () {
   "use strict";
 
   function o(t, e) {
     if (window.NodeList.prototype.forEach) return t.forEach(e);
 
-    for (var n = 0; n < t.length; n++) {
-      e.call(window, t[n], n, t);
-    }
+    for (var n = 0; n < t.length; n++) e.call(window, t[n], n, t);
   }
 
   function t(t) {
@@ -874,13 +795,12 @@ function nodeListForEach(t, e) {
       }
     }() || (a = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", d = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function u(t, e, n) {
       if (a && (t === window || t === document || t === Element.prototype || t instanceof Element)) return a(t, e, n);
-      if (null === t || !(t instanceof Object || "object" == _typeof(t))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === t || !(t instanceof Object || "object" == typeof t)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(e),
           i = "value" in n || "writable" in n,
-          s = "get" in n && _typeof(n.get),
-          r = "set" in n && _typeof(n.set);
+          s = "get" in n && typeof n.get,
+          r = "set" in n && typeof n.set;
 
       if (s) {
         if ("function" !== s) throw new TypeError("Getter must be a function");
@@ -900,7 +820,7 @@ function nodeListForEach(t, e) {
 
       return "value" in n && (t[o] = n.value), t;
     });
-  }).call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }).call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function S(e) {
         var n,
@@ -910,7 +830,7 @@ function nodeListForEach(t, e) {
             s = t.prototype,
             r = function r() {},
             a = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             d = function d(t) {
           try {
@@ -936,29 +856,27 @@ function nodeListForEach(t, e) {
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, v = h.call(arguments, 1), b = function b() {
+        for (var y, v = h.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var t = g.apply(this, f.call(v, h.call(arguments)));
             return o(t) === t ? t : this;
           }
 
           return g.apply(e, f.call(v, h.call(arguments)));
-        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) {
-          m.call(k, "$" + L);
-        }
+        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) m.call(k, "$" + L);
 
         return y = Function("binder", "return function (" + k.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (r.prototype = g.prototype, y.prototype = new r(), r.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (p) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (p) {
     var t, e, n;
     "DOMTokenList" in this && (!("classList" in (t = document.createElement("x"))) || !t.classList.toggle("x", !1) && !t.className) || ("DOMTokenList" in (e = this) && e.DOMTokenList && (!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg") || document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList) || (e.DOMTokenList = function () {
       var i = !0,
-          n = function n(t, e, _n2, o) {
+          n = function (t, e, n, o) {
         Object.defineProperty ? Object.defineProperty(t, e, {
           configurable: !1 === i || !!o,
-          get: _n2
-        }) : t.__defineGetter__(e, _n2);
+          get: n
+        }) : t.__defineGetter__(e, n);
       };
 
       try {
@@ -973,28 +891,22 @@ function nodeListForEach(t, e) {
             c = {},
             l = 0,
             t = 0,
-            e = function e(t) {
+            e = function (t) {
           n(r, t, function () {
             return u(), a[t];
           }, !1);
         },
-            d = function d() {
-          if (t <= l) for (; t < l; ++t) {
-            e(t);
-          }
+            d = function () {
+          if (t <= l) for (; t < l; ++t) e(t);
         },
-            u = function u() {
+            u = function () {
           var t,
               e,
               n = arguments,
               o = /\s+/;
-          if (n.length) for (e = 0; e < n.length; ++e) {
-            if (o.test(n[e])) throw (t = new SyntaxError('String "' + n[e] + '" contains an invalid character')).code = 5, t.name = "InvalidCharacterError", t;
-          }
+          if (n.length) for (e = 0; e < n.length; ++e) if (o.test(n[e])) throw (t = new SyntaxError('String "' + n[e] + '" contains an invalid character')).code = 5, t.name = "InvalidCharacterError", t;
 
-          for ("" === (a = "object" == _typeof(i[s]) ? ("" + i[s].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[s]).replace(/^\s+|\s+$/g, "").split(o))[0] && (a = []), c = {}, e = 0; e < a.length; ++e) {
-            c[a[e]] = !0;
-          }
+          for ("" === (a = "object" == typeof i[s] ? ("" + i[s].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[s]).replace(/^\s+|\s+$/g, "").split(o))[0] && (a = []), c = {}, e = 0; e < a.length; ++e) c[a[e]] = !0;
 
           l = a.length, d();
         };
@@ -1010,23 +922,17 @@ function nodeListForEach(t, e) {
         }, r.add = function () {
           u.apply(r, t = arguments);
 
-          for (var t, e, n = 0, o = t.length; n < o; ++n) {
-            e = t[n], c[e] || (a.push(e), c[e] = !0);
-          }
+          for (var t, e, n = 0, o = t.length; n < o; ++n) e = t[n], c[e] || (a.push(e), c[e] = !0);
 
-          l !== a.length && (l = a.length >>> 0, "object" == _typeof(i[s]) ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d());
+          l !== a.length && (l = a.length >>> 0, "object" == typeof i[s] ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d());
         }, r.remove = function () {
           u.apply(r, t = arguments);
 
-          for (var t, e = {}, n = 0, o = []; n < t.length; ++n) {
-            e[t[n]] = !0, delete c[t[n]];
-          }
+          for (var t, e = {}, n = 0, o = []; n < t.length; ++n) e[t[n]] = !0, delete c[t[n]];
 
-          for (n = 0; n < a.length; ++n) {
-            e[a[n]] || o.push(a[n]);
-          }
+          for (n = 0; n < a.length; ++n) e[a[n]] || o.push(a[n]);
 
-          l = (a = o).length >>> 0, "object" == _typeof(i[s]) ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d();
+          l = (a = o).length >>> 0, "object" == typeof i[s] ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d();
         }, r.toggle = function (t, e) {
           return u.apply(r, [t]), p !== e ? e ? (r.add(t), !0) : (r.remove(t), !1) : c[t] ? (r.remove(t), !1) : (r.add(t), !0);
         }, r;
@@ -1043,9 +949,7 @@ function nodeListForEach(t, e) {
         var o = t.classList.constructor.prototype.add;
 
         t.classList.constructor.prototype.add = function () {
-          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) {
-            o.call(this, t[n]);
-          }
+          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) o.call(this, t[n]);
         };
       }
     }(), function () {
@@ -1055,15 +959,13 @@ function nodeListForEach(t, e) {
         var o = t.classList.constructor.prototype.remove;
 
         t.classList.constructor.prototype.remove = function () {
-          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) {
-            o.call(this, t[n]);
-          }
+          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) o.call(this, t[n]);
         };
       }
     }());
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function t() {
         return s-- || clearTimeout(e), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), e && document.body.prototype && clearTimeout(e), !!document.body.prototype);
@@ -1077,19 +979,15 @@ function nodeListForEach(t, e) {
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             a = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(t, e) {
+            l = function (t, e) {
           var n,
               o,
               i,
               s = t.childNodes || [],
               r = -1;
-          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) {
-            o = c[n], t[n] = o;
-          }
+          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) o = c[n], t[n] = o;
 
-          for (; i = e && s[++r];) {
-            l(i, e);
-          }
+          for (; i = e && s[++r];) l(i, e);
 
           return t;
         },
@@ -1098,9 +996,7 @@ function nodeListForEach(t, e) {
             s = 100;
 
         a.attachEvent("onpropertychange", function (t) {
-          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) {
-            1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
-          }
+          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) 1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
 
           c[n] = i;
         }), a.constructor = Element, a.hasAttribute || (a.hasAttribute = function r(t) {
@@ -1111,11 +1007,11 @@ function nodeListForEach(t, e) {
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var t;
     "document" in this && "classList" in document.documentElement && "Element" in this && "classList" in Element.prototype && ((t = document.createElement("span")).classList.add("a", "b"), t.classList.contains("b")) || function (t) {
       var d = !0,
-          u = function u(t, e, n, o) {
+          u = function (t, e, n, o) {
         Object.defineProperty ? Object.defineProperty(t, e, {
           configurable: !1 === d || !!o,
           get: n
@@ -1128,7 +1024,7 @@ function nodeListForEach(t, e) {
         d = !1;
       }
 
-      var p = function p(t, c, l) {
+      var p = function (t, c, l) {
         u(t.prototype, c, function () {
           var t,
               e = this,
@@ -1136,11 +1032,9 @@ function nodeListForEach(t, e) {
           if (e[n]) return t;
 
           if (!(e[n] = !0) === d) {
-            for (var o, i = p.mirror || document.createElement("div"), s = i.childNodes, r = s.length, a = 0; a < r; ++a) {
-              if (s[a]._R === e) {
-                o = s[a];
-                break;
-              }
+            for (var o, i = p.mirror || document.createElement("div"), s = i.childNodes, r = s.length, a = 0; a < r; ++a) if (s[a]._R === e) {
+              o = s[a];
+              break;
             }
 
             o || (o = i.appendChild(document.createElement("div"))), t = DOMTokenList.call(o, e, l);
@@ -1154,7 +1048,7 @@ function nodeListForEach(t, e) {
 
       p(t.Element, "classList", "className"), p(t.HTMLElement, "classList", "className"), p(t.HTMLLinkElement, "relList", "rel"), p(t.HTMLAnchorElement, "relList", "rel"), p(t.HTMLAreaElement, "relList", "rel");
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), t.prototype.init = function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), t.prototype.init = function () {
     if (this.$module) {
       this.initControls(), this.initSectionHeaders();
       var t = this.checkIfAllSectionsOpen();
@@ -1241,7 +1135,7 @@ function nodeListForEach(t, e) {
     this.$showAllButton.setAttribute("aria-expanded", t), n.innerHTML = o, t ? e.classList.remove(this.downChevronIconClass) : e.classList.add(this.downChevronIconClass);
   };
   var e = {
-    checkForSessionStorage: function checkForSessionStorage() {
+    checkForSessionStorage: function () {
       var t,
           e = "this is the test string";
 
@@ -1285,9 +1179,7 @@ function nodeListForEach(t, e) {
     this.$module.querySelector(this.showAllControls).classList.add("gem-c-accordion__show-all"), "true" === this.$module.getAttribute("data-anchor-navigation") && (this.openByAnchorOnLoad(), this.addEventListenersForAnchors()), "true" === this.$module.getAttribute("data-track-show-all-clicks") && this.addAccordionOpenAllTracking(), "true" === this.$module.getAttribute("data-track-sections") && this.addEventListenerSections();
     var t = this.$module.getAttribute("data-show-all-attributes");
     if (t) try {
-      for (var e = this.$module.querySelector(this.showAllControls), n = JSON.parse(t), o = Object.keys(n), i = 0; i < o.length; i++) {
-        e.setAttribute("data-" + o[i], n[o[i]]);
-      }
+      for (var e = this.$module.querySelector(this.showAllControls), n = JSON.parse(t), o = Object.keys(n), i = 0; i < o.length; i++) e.setAttribute("data-" + o[i], n[o[i]]);
     } catch (s) {
       console.error("Could not read accordion data attributes error: " + s.message, window.location);
     }
@@ -1312,9 +1204,7 @@ function nodeListForEach(t, e) {
       i && !s.classList.contains(this.sectionExpandedClass) && o.click();
     }
   }, e.prototype.getContainingSection = function (t) {
-    for (; !t.classList.contains(this.sectionClass);) {
-      t = t.parentElement;
-    }
+    for (; !t.classList.contains(this.sectionClass);) t = t.parentElement;
 
     return t;
   }, e.prototype.filterLocale = function (t) {
@@ -1328,9 +1218,7 @@ function nodeListForEach(t, e) {
         label: e ? "Show all sections" : "Hide all sections"
       },
           i = t.target && t.target.getAttribute("data-track-options");
-      if (i) for (var s in i = JSON.parse(i)) {
-        o[s] = i[s];
-      }
+      if (i) for (var s in i = JSON.parse(i)) o[s] = i[s];
       window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && window.GOVUK.analytics.trackEvent("pageElementInteraction", n, o);
     });
   }, e.prototype.addEventListenerSections = function () {
@@ -1344,14 +1232,12 @@ function nodeListForEach(t, e) {
       label: t.querySelector(this.headingText).textContent
     },
         o = t.parentElement && t.parentElement.getAttribute("data-track-options");
-    if (o) for (var i in o = JSON.parse(o)) {
-      n[i] = o[i];
-    }
+    if (o) for (var i in o = JSON.parse(o)) n[i] = o[i];
     window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && window.GOVUK.analytics.trackEvent("pageElementInteraction", e, n);
   }, t.GemAccordion = e;
 }(window.GOVUK.Modules), function (t, e) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Details", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.Details = e());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Details", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.Details = e());
+}(this, function () {
   "use strict";
 
   function o() {
@@ -1379,13 +1265,12 @@ function nodeListForEach(t, e) {
       }
     }() || (a = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", d = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function u(t, e, n) {
       if (a && (t === window || t === document || t === Element.prototype || t instanceof Element)) return a(t, e, n);
-      if (null === t || !(t instanceof Object || "object" == _typeof(t))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === t || !(t instanceof Object || "object" == typeof t)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(e),
           i = "value" in n || "writable" in n,
-          s = "get" in n && _typeof(n.get),
-          r = "set" in n && _typeof(n.set);
+          s = "get" in n && typeof n.get,
+          r = "set" in n && typeof n.set;
 
       if (s) {
         if ("function" !== s) throw new TypeError("Getter must be a function");
@@ -1405,7 +1290,7 @@ function nodeListForEach(t, e) {
 
       return "value" in n && (t[o] = n.value), t;
     });
-  }).call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }).call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function S(e) {
         var n,
@@ -1415,7 +1300,7 @@ function nodeListForEach(t, e) {
             s = t.prototype,
             r = function r() {},
             a = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             d = function d(t) {
           try {
@@ -1441,27 +1326,25 @@ function nodeListForEach(t, e) {
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, v = h.call(arguments, 1), b = function b() {
+        for (var y, v = h.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var t = g.apply(this, f.call(v, h.call(arguments)));
             return o(t) === t ? t : this;
           }
 
           return g.apply(e, f.call(v, h.call(arguments)));
-        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) {
-          m.call(k, "$" + L);
-        }
+        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) m.call(k, "$" + L);
 
         return y = Function("binder", "return function (" + k.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (r.prototype = g.prototype, y.prototype = new r(), r.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Window" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && function (t) {
       t.constructor ? t.Window = t.constructor : (t.Window = t.constructor = new Function("return function Window() {}")()).prototype = this;
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function t() {
         return s-- || clearTimeout(e), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), e && document.body.prototype && clearTimeout(e), !!document.body.prototype);
@@ -1475,19 +1358,15 @@ function nodeListForEach(t, e) {
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             a = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(t, e) {
+            l = function (t, e) {
           var n,
               o,
               i,
               s = t.childNodes || [],
               r = -1;
-          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) {
-            o = c[n], t[n] = o;
-          }
+          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) o = c[n], t[n] = o;
 
-          for (; i = e && s[++r];) {
-            l(i, e);
-          }
+          for (; i = e && s[++r];) l(i, e);
 
           return t;
         },
@@ -1496,9 +1375,7 @@ function nodeListForEach(t, e) {
             s = 100;
 
         a.attachEvent("onpropertychange", function (t) {
-          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) {
-            1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
-          }
+          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) 1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
 
           c[n] = i;
         }), a.constructor = Element, a.hasAttribute || (a.hasAttribute = function r(t) {
@@ -1509,7 +1386,7 @@ function nodeListForEach(t, e) {
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (l) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (l) {
     (function (t) {
       if (!("Event" in t)) return !1;
       if ("function" == typeof t.Event) return !0;
@@ -1521,9 +1398,7 @@ function nodeListForEach(t, e) {
       }
     })(this) || function () {
       function d(t, e) {
-        for (var n = -1, o = t.length; ++n < o;) {
-          if (n in t && t[n] === e) return n;
-        }
+        for (var n = -1, o = t.length; ++n < o;) if (n in t && t[n] === e) return n;
 
         return -1;
       }
@@ -1583,9 +1458,7 @@ function nodeListForEach(t, e) {
               t.cancelBubble = !0;
             }, t.stopImmediatePropagation = function c() {
               t.cancelBubble = !0, t.cancelImmediate = !0;
-            }, t.currentTarget = l, t.relatedTarget = t.fromElement || null, t.target = t.target || t.srcElement || l, t.timeStamp = new Date().getTime(), t.clientX && (t.pageX = t.clientX + document.documentElement.scrollLeft, t.pageY = t.clientY + document.documentElement.scrollTop); ++i < s && !t.cancelImmediate;) {
-              i in o && -1 !== d(n, e = o[i]) && "function" == typeof e && e.call(l, t);
-            }
+            }, t.currentTarget = l, t.relatedTarget = t.fromElement || null, t.target = t.target || t.srcElement || l, t.timeStamp = new Date().getTime(), t.clientX && (t.pageX = t.clientX + document.documentElement.scrollLeft, t.pageY = t.clientY + document.documentElement.scrollTop); ++i < s && !t.cancelImmediate;) i in o && -1 !== d(n, e = o[i]) && "function" == typeof e && e.call(l, t);
           }, l._events[n].list = [], l.attachEvent && l.attachEvent("on" + n, l._events[n])), l._events[n].list.push(o);
         }, window.removeEventListener = Window.prototype.removeEventListener = Document.prototype.removeEventListener = Element.prototype.removeEventListener = function a(t, e) {
           var n,
@@ -1603,7 +1476,7 @@ function nodeListForEach(t, e) {
             if (!t.bubbles) {
               t.cancelBubble = !0;
 
-              var o = function o(t) {
+              var o = function (t) {
                 t.cancelBubble = !0, (e || window).detachEvent("on" + n, o);
               };
 
@@ -1612,9 +1485,7 @@ function nodeListForEach(t, e) {
 
             this.fireEvent("on" + n, t);
           } catch (i) {
-            for (t.target = e; "_events" in (t.currentTarget = e) && "function" == typeof e._events[n] && e._events[n].call(e, t), "function" == typeof e["on" + n] && e["on" + n].call(e, t), (e = 9 === e.nodeType ? e.parentWindow : e.parentNode) && !t.cancelBubble;) {
-              ;
-            }
+            for (t.target = e; "_events" in (t.currentTarget = e) && "function" == typeof e._events[n] && e._events[n].call(e, t), "function" == typeof e["on" + n] && e["on" + n].call(e, t), (e = 9 === e.nodeType ? e.parentWindow : e.parentNode) && !t.cancelBubble;);
           }
 
           return !0;
@@ -1625,7 +1496,7 @@ function nodeListForEach(t, e) {
         }));
       }
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {});
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {});
   var i = 13,
       s = 32;
   return t.prototype.init = function () {
@@ -1661,12 +1532,12 @@ function nodeListForEach(t, e) {
           n = t.getAttribute("data-track-category"),
           o = t.getAttribute("data-track-action"),
           i = t.getAttribute("data-track-options");
-      i && (i = JSON.parse(i)), "object" == _typeof(i) && null !== i || (i = {}), i.label = e, o && n && window.GOVUK.analytics.trackEvent(n, o, i);
+      i && (i = JSON.parse(i)), "object" == typeof i && null !== i || (i = {}), i.label = e, o && n && window.GOVUK.analytics.trackEvent(n, o, i);
     }
   }, t.GemDetails = e;
 }(window.GOVUK.Modules), function (t, e) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.ErrorSummary", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.ErrorSummary = e());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.ErrorSummary", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.ErrorSummary = e());
+}(this, function () {
   "use strict";
 
   function t(t) {
@@ -1686,13 +1557,12 @@ function nodeListForEach(t, e) {
       }
     }() || (a = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", d = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function u(t, e, n) {
       if (a && (t === window || t === document || t === Element.prototype || t instanceof Element)) return a(t, e, n);
-      if (null === t || !(t instanceof Object || "object" == _typeof(t))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === t || !(t instanceof Object || "object" == typeof t)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(e),
           i = "value" in n || "writable" in n,
-          s = "get" in n && _typeof(n.get),
-          r = "set" in n && _typeof(n.set);
+          s = "get" in n && typeof n.get,
+          r = "set" in n && typeof n.set;
 
       if (s) {
         if ("function" !== s) throw new TypeError("Getter must be a function");
@@ -1712,7 +1582,7 @@ function nodeListForEach(t, e) {
 
       return "value" in n && (t[o] = n.value), t;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function S(e) {
         var n,
@@ -1722,7 +1592,7 @@ function nodeListForEach(t, e) {
             s = t.prototype,
             r = function r() {},
             a = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             d = function d(t) {
           try {
@@ -1748,27 +1618,25 @@ function nodeListForEach(t, e) {
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, v = h.call(arguments, 1), b = function b() {
+        for (var y, v = h.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var t = g.apply(this, f.call(v, h.call(arguments)));
             return o(t) === t ? t : this;
           }
 
           return g.apply(e, f.call(v, h.call(arguments)));
-        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) {
-          m.call(k, "$" + L);
-        }
+        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) m.call(k, "$" + L);
 
         return y = Function("binder", "return function (" + k.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (r.prototype = g.prototype, y.prototype = new r(), r.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Window" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && function (t) {
       t.constructor ? t.Window = t.constructor : (t.Window = t.constructor = new Function("return function Window() {}")()).prototype = this;
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function t() {
         return s-- || clearTimeout(e), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), e && document.body.prototype && clearTimeout(e), !!document.body.prototype);
@@ -1782,19 +1650,15 @@ function nodeListForEach(t, e) {
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             a = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(t, e) {
+            l = function (t, e) {
           var n,
               o,
               i,
               s = t.childNodes || [],
               r = -1;
-          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) {
-            o = c[n], t[n] = o;
-          }
+          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) o = c[n], t[n] = o;
 
-          for (; i = e && s[++r];) {
-            l(i, e);
-          }
+          for (; i = e && s[++r];) l(i, e);
 
           return t;
         },
@@ -1803,9 +1667,7 @@ function nodeListForEach(t, e) {
             s = 100;
 
         a.attachEvent("onpropertychange", function (t) {
-          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) {
-            1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
-          }
+          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) 1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
 
           c[n] = i;
         }), a.constructor = Element, a.hasAttribute || (a.hasAttribute = function r(t) {
@@ -1816,7 +1678,7 @@ function nodeListForEach(t, e) {
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (l) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (l) {
     (function (t) {
       if (!("Event" in t)) return !1;
       if ("function" == typeof t.Event) return !0;
@@ -1828,9 +1690,7 @@ function nodeListForEach(t, e) {
       }
     })(this) || function () {
       function d(t, e) {
-        for (var n = -1, o = t.length; ++n < o;) {
-          if (n in t && t[n] === e) return n;
-        }
+        for (var n = -1, o = t.length; ++n < o;) if (n in t && t[n] === e) return n;
 
         return -1;
       }
@@ -1890,9 +1750,7 @@ function nodeListForEach(t, e) {
               t.cancelBubble = !0;
             }, t.stopImmediatePropagation = function c() {
               t.cancelBubble = !0, t.cancelImmediate = !0;
-            }, t.currentTarget = l, t.relatedTarget = t.fromElement || null, t.target = t.target || t.srcElement || l, t.timeStamp = new Date().getTime(), t.clientX && (t.pageX = t.clientX + document.documentElement.scrollLeft, t.pageY = t.clientY + document.documentElement.scrollTop); ++i < s && !t.cancelImmediate;) {
-              i in o && -1 !== d(n, e = o[i]) && "function" == typeof e && e.call(l, t);
-            }
+            }, t.currentTarget = l, t.relatedTarget = t.fromElement || null, t.target = t.target || t.srcElement || l, t.timeStamp = new Date().getTime(), t.clientX && (t.pageX = t.clientX + document.documentElement.scrollLeft, t.pageY = t.clientY + document.documentElement.scrollTop); ++i < s && !t.cancelImmediate;) i in o && -1 !== d(n, e = o[i]) && "function" == typeof e && e.call(l, t);
           }, l._events[n].list = [], l.attachEvent && l.attachEvent("on" + n, l._events[n])), l._events[n].list.push(o);
         }, window.removeEventListener = Window.prototype.removeEventListener = Document.prototype.removeEventListener = Element.prototype.removeEventListener = function a(t, e) {
           var n,
@@ -1910,7 +1768,7 @@ function nodeListForEach(t, e) {
             if (!t.bubbles) {
               t.cancelBubble = !0;
 
-              var o = function o(t) {
+              var o = function (t) {
                 t.cancelBubble = !0, (e || window).detachEvent("on" + n, o);
               };
 
@@ -1919,9 +1777,7 @@ function nodeListForEach(t, e) {
 
             this.fireEvent("on" + n, t);
           } catch (i) {
-            for (t.target = e; "_events" in (t.currentTarget = e) && "function" == typeof e._events[n] && e._events[n].call(e, t), "function" == typeof e["on" + n] && e["on" + n].call(e, t), (e = 9 === e.nodeType ? e.parentWindow : e.parentNode) && !t.cancelBubble;) {
-              ;
-            }
+            for (t.target = e; "_events" in (t.currentTarget = e) && "function" == typeof e._events[n] && e._events[n].call(e, t), "function" == typeof e["on" + n] && e["on" + n].call(e, t), (e = 9 === e.nodeType ? e.parentWindow : e.parentNode) && !t.cancelBubble;);
           }
 
           return !0;
@@ -1932,15 +1788,13 @@ function nodeListForEach(t, e) {
         }));
       }
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "document" in this && "matches" in document.documentElement || (Element.prototype.matches = Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || function i(t) {
-      for (var e = this, n = (e.document || e.ownerDocument).querySelectorAll(t), o = 0; n[o] && n[o] !== e;) {
-        ++o;
-      }
+      for (var e = this, n = (e.document || e.ownerDocument).querySelectorAll(t), o = 0; n[o] && n[o] !== e;) ++o;
 
       return !!n[o];
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "document" in this && "closest" in document.documentElement || (Element.prototype.closest = function n(t) {
       for (var e = this; e;) {
         if (e.matches(t)) return e;
@@ -1949,7 +1803,7 @@ function nodeListForEach(t, e) {
 
       return null;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), t.prototype.init = function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), t.prototype.init = function () {
     var t = this.$module;
     t && (this.setFocus(), t.addEventListener("click", this.handleClick.bind(this)));
   }, t.prototype.setFocus = function () {
@@ -2027,16 +1881,14 @@ function nodeListForEach(t, e) {
     });
   }, t.PrintLink = e;
 }(window.GOVUK.Modules), function (t, e) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Radios", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.Radios = e());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Radios", e) : (t.GOVUKFrontend = t.GOVUKFrontend || {}, t.GOVUKFrontend.Radios = e());
+}(this, function () {
   "use strict";
 
   function e(t, e) {
     if (window.NodeList.prototype.forEach) return t.forEach(e);
 
-    for (var n = 0; n < t.length; n++) {
-      e.call(window, t[n], n, t);
-    }
+    for (var n = 0; n < t.length; n++) e.call(window, t[n], n, t);
   }
 
   function t(t) {
@@ -2056,13 +1908,12 @@ function nodeListForEach(t, e) {
       }
     }() || (a = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", d = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function u(t, e, n) {
       if (a && (t === window || t === document || t === Element.prototype || t instanceof Element)) return a(t, e, n);
-      if (null === t || !(t instanceof Object || "object" == _typeof(t))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === t || !(t instanceof Object || "object" == typeof t)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(e),
           i = "value" in n || "writable" in n,
-          s = "get" in n && _typeof(n.get),
-          r = "set" in n && _typeof(n.set);
+          s = "get" in n && typeof n.get,
+          r = "set" in n && typeof n.set;
 
       if (s) {
         if ("function" !== s) throw new TypeError("Getter must be a function");
@@ -2082,7 +1933,7 @@ function nodeListForEach(t, e) {
 
       return "value" in n && (t[o] = n.value), t;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function S(e) {
         var n,
@@ -2092,7 +1943,7 @@ function nodeListForEach(t, e) {
             s = t.prototype,
             r = function r() {},
             a = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             d = function d(t) {
           try {
@@ -2118,27 +1969,25 @@ function nodeListForEach(t, e) {
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, v = h.call(arguments, 1), b = function b() {
+        for (var y, v = h.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var t = g.apply(this, f.call(v, h.call(arguments)));
             return o(t) === t ? t : this;
           }
 
           return g.apply(e, f.call(v, h.call(arguments)));
-        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) {
-          m.call(k, "$" + L);
-        }
+        }, E = w(0, g.length - v.length), k = [], L = 0; L < E; L++) m.call(k, "$" + L);
 
         return y = Function("binder", "return function (" + k.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (r.prototype = g.prototype, y.prototype = new r(), r.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Window" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && function (t) {
       t.constructor ? t.Window = t.constructor : (t.Window = t.constructor = new Function("return function Window() {}")()).prototype = this;
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function t() {
         return s-- || clearTimeout(e), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), e && document.body.prototype && clearTimeout(e), !!document.body.prototype);
@@ -2152,19 +2001,15 @@ function nodeListForEach(t, e) {
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             a = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(t, e) {
+            l = function (t, e) {
           var n,
               o,
               i,
               s = t.childNodes || [],
               r = -1;
-          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) {
-            o = c[n], t[n] = o;
-          }
+          if (1 === t.nodeType && t.constructor !== Element) for (n in t.constructor = Element, c) o = c[n], t[n] = o;
 
-          for (; i = e && s[++r];) {
-            l(i, e);
-          }
+          for (; i = e && s[++r];) l(i, e);
 
           return t;
         },
@@ -2173,9 +2018,7 @@ function nodeListForEach(t, e) {
             s = 100;
 
         a.attachEvent("onpropertychange", function (t) {
-          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) {
-            1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
-          }
+          for (var e, n = t.propertyName, o = !c.hasOwnProperty(n), i = a[n], s = c[n], r = -1; e = d[++r];) 1 === e.nodeType && (o || e[n] === s) && (e[n] = i);
 
           c[n] = i;
         }), a.constructor = Element, a.hasAttribute || (a.hasAttribute = function r(t) {
@@ -2186,7 +2029,7 @@ function nodeListForEach(t, e) {
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (l) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (l) {
     (function (t) {
       if (!("Event" in t)) return !1;
       if ("function" == typeof t.Event) return !0;
@@ -2198,9 +2041,7 @@ function nodeListForEach(t, e) {
       }
     })(this) || function () {
       function d(t, e) {
-        for (var n = -1, o = t.length; ++n < o;) {
-          if (n in t && t[n] === e) return n;
-        }
+        for (var n = -1, o = t.length; ++n < o;) if (n in t && t[n] === e) return n;
 
         return -1;
       }
@@ -2260,9 +2101,7 @@ function nodeListForEach(t, e) {
               t.cancelBubble = !0;
             }, t.stopImmediatePropagation = function c() {
               t.cancelBubble = !0, t.cancelImmediate = !0;
-            }, t.currentTarget = l, t.relatedTarget = t.fromElement || null, t.target = t.target || t.srcElement || l, t.timeStamp = new Date().getTime(), t.clientX && (t.pageX = t.clientX + document.documentElement.scrollLeft, t.pageY = t.clientY + document.documentElement.scrollTop); ++i < s && !t.cancelImmediate;) {
-              i in o && -1 !== d(n, e = o[i]) && "function" == typeof e && e.call(l, t);
-            }
+            }, t.currentTarget = l, t.relatedTarget = t.fromElement || null, t.target = t.target || t.srcElement || l, t.timeStamp = new Date().getTime(), t.clientX && (t.pageX = t.clientX + document.documentElement.scrollLeft, t.pageY = t.clientY + document.documentElement.scrollTop); ++i < s && !t.cancelImmediate;) i in o && -1 !== d(n, e = o[i]) && "function" == typeof e && e.call(l, t);
           }, l._events[n].list = [], l.attachEvent && l.attachEvent("on" + n, l._events[n])), l._events[n].list.push(o);
         }, window.removeEventListener = Window.prototype.removeEventListener = Document.prototype.removeEventListener = Element.prototype.removeEventListener = function a(t, e) {
           var n,
@@ -2280,7 +2119,7 @@ function nodeListForEach(t, e) {
             if (!t.bubbles) {
               t.cancelBubble = !0;
 
-              var o = function o(t) {
+              var o = function (t) {
                 t.cancelBubble = !0, (e || window).detachEvent("on" + n, o);
               };
 
@@ -2289,9 +2128,7 @@ function nodeListForEach(t, e) {
 
             this.fireEvent("on" + n, t);
           } catch (i) {
-            for (t.target = e; "_events" in (t.currentTarget = e) && "function" == typeof e._events[n] && e._events[n].call(e, t), "function" == typeof e["on" + n] && e["on" + n].call(e, t), (e = 9 === e.nodeType ? e.parentWindow : e.parentNode) && !t.cancelBubble;) {
-              ;
-            }
+            for (t.target = e; "_events" in (t.currentTarget = e) && "function" == typeof e._events[n] && e._events[n].call(e, t), "function" == typeof e["on" + n] && e["on" + n].call(e, t), (e = 9 === e.nodeType ? e.parentWindow : e.parentNode) && !t.cancelBubble;);
           }
 
           return !0;
@@ -2302,15 +2139,15 @@ function nodeListForEach(t, e) {
         }));
       }
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (p) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (p) {
     var t, e, n;
     "DOMTokenList" in this && (!("classList" in (t = document.createElement("x"))) || !t.classList.toggle("x", !1) && !t.className) || ("DOMTokenList" in (e = this) && e.DOMTokenList && (!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg") || document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList) || (e.DOMTokenList = function () {
       var i = !0,
-          n = function n(t, e, _n3, o) {
+          n = function (t, e, n, o) {
         Object.defineProperty ? Object.defineProperty(t, e, {
           configurable: !1 === i || !!o,
-          get: _n3
-        }) : t.__defineGetter__(e, _n3);
+          get: n
+        }) : t.__defineGetter__(e, n);
       };
 
       try {
@@ -2325,28 +2162,22 @@ function nodeListForEach(t, e) {
             c = {},
             l = 0,
             t = 0,
-            e = function e(t) {
+            e = function (t) {
           n(r, t, function () {
             return u(), a[t];
           }, !1);
         },
-            d = function d() {
-          if (t <= l) for (; t < l; ++t) {
-            e(t);
-          }
+            d = function () {
+          if (t <= l) for (; t < l; ++t) e(t);
         },
-            u = function u() {
+            u = function () {
           var t,
               e,
               n = arguments,
               o = /\s+/;
-          if (n.length) for (e = 0; e < n.length; ++e) {
-            if (o.test(n[e])) throw (t = new SyntaxError('String "' + n[e] + '" contains an invalid character')).code = 5, t.name = "InvalidCharacterError", t;
-          }
+          if (n.length) for (e = 0; e < n.length; ++e) if (o.test(n[e])) throw (t = new SyntaxError('String "' + n[e] + '" contains an invalid character')).code = 5, t.name = "InvalidCharacterError", t;
 
-          for ("" === (a = "object" == _typeof(i[s]) ? ("" + i[s].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[s]).replace(/^\s+|\s+$/g, "").split(o))[0] && (a = []), c = {}, e = 0; e < a.length; ++e) {
-            c[a[e]] = !0;
-          }
+          for ("" === (a = "object" == typeof i[s] ? ("" + i[s].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[s]).replace(/^\s+|\s+$/g, "").split(o))[0] && (a = []), c = {}, e = 0; e < a.length; ++e) c[a[e]] = !0;
 
           l = a.length, d();
         };
@@ -2362,23 +2193,17 @@ function nodeListForEach(t, e) {
         }, r.add = function () {
           u.apply(r, t = arguments);
 
-          for (var t, e, n = 0, o = t.length; n < o; ++n) {
-            e = t[n], c[e] || (a.push(e), c[e] = !0);
-          }
+          for (var t, e, n = 0, o = t.length; n < o; ++n) e = t[n], c[e] || (a.push(e), c[e] = !0);
 
-          l !== a.length && (l = a.length >>> 0, "object" == _typeof(i[s]) ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d());
+          l !== a.length && (l = a.length >>> 0, "object" == typeof i[s] ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d());
         }, r.remove = function () {
           u.apply(r, t = arguments);
 
-          for (var t, e = {}, n = 0, o = []; n < t.length; ++n) {
-            e[t[n]] = !0, delete c[t[n]];
-          }
+          for (var t, e = {}, n = 0, o = []; n < t.length; ++n) e[t[n]] = !0, delete c[t[n]];
 
-          for (n = 0; n < a.length; ++n) {
-            e[a[n]] || o.push(a[n]);
-          }
+          for (n = 0; n < a.length; ++n) e[a[n]] || o.push(a[n]);
 
-          l = (a = o).length >>> 0, "object" == _typeof(i[s]) ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d();
+          l = (a = o).length >>> 0, "object" == typeof i[s] ? i[s].baseVal = a.join(" ") : i[s] = a.join(" "), d();
         }, r.toggle = function (t, e) {
           return u.apply(r, [t]), p !== e ? e ? (r.add(t), !0) : (r.remove(t), !1) : c[t] ? (r.remove(t), !1) : (r.add(t), !0);
         }, r;
@@ -2395,9 +2220,7 @@ function nodeListForEach(t, e) {
         var o = t.classList.constructor.prototype.add;
 
         t.classList.constructor.prototype.add = function () {
-          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) {
-            o.call(this, t[n]);
-          }
+          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) o.call(this, t[n]);
         };
       }
     }(), function () {
@@ -2407,17 +2230,15 @@ function nodeListForEach(t, e) {
         var o = t.classList.constructor.prototype.remove;
 
         t.classList.constructor.prototype.remove = function () {
-          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) {
-            o.call(this, t[n]);
-          }
+          for (var t = arguments, e = arguments.length, n = 0; n < e; n++) o.call(this, t[n]);
         };
       }
     }());
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var t;
     "document" in this && "classList" in document.documentElement && "Element" in this && "classList" in Element.prototype && ((t = document.createElement("span")).classList.add("a", "b"), t.classList.contains("b")) || function (t) {
       var d = !0,
-          u = function u(t, e, n, o) {
+          u = function (t, e, n, o) {
         Object.defineProperty ? Object.defineProperty(t, e, {
           configurable: !1 === d || !!o,
           get: n
@@ -2430,7 +2251,7 @@ function nodeListForEach(t, e) {
         d = !1;
       }
 
-      var p = function p(t, c, l) {
+      var p = function (t, c, l) {
         u(t.prototype, c, function () {
           var t,
               e = this,
@@ -2438,11 +2259,9 @@ function nodeListForEach(t, e) {
           if (e[n]) return t;
 
           if (!(e[n] = !0) === d) {
-            for (var o, i = p.mirror || document.createElement("div"), s = i.childNodes, r = s.length, a = 0; a < r; ++a) {
-              if (s[a]._R === e) {
-                o = s[a];
-                break;
-              }
+            for (var o, i = p.mirror || document.createElement("div"), s = i.childNodes, r = s.length, a = 0; a < r; ++a) if (s[a]._R === e) {
+              o = s[a];
+              break;
             }
 
             o || (o = i.appendChild(document.createElement("div"))), t = DOMTokenList.call(o, e, l);
@@ -2456,7 +2275,7 @@ function nodeListForEach(t, e) {
 
       p(t.Element, "classList", "className"), p(t.HTMLElement, "classList", "className"), p(t.HTMLLinkElement, "relList", "rel"), p(t.HTMLAnchorElement, "relList", "rel"), p(t.HTMLAreaElement, "relList", "rel");
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), t.prototype.init = function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), t.prototype.init = function () {
     var t = this.$module;
     e(this.$inputs, function (t) {
       var e = t.getAttribute("data-aria-controls");
@@ -2573,14 +2392,12 @@ function nodeListForEach(t, e) {
       n.outerHTML = '<span class="js-step-title"><button class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" aria-expanded="false" aria-controls="' + o + '"><span class="gem-c-step-nav____title-text-focus"><span class="gem-c-step-nav__title-text js-step-title-text">' + i + '</span><span class="govuk-visually-hidden gem-c-step-nav__section-heading-divider">, </span></span></button></span>';
     }
   }, e.prototype.bindToggleForSteps = function (o) {
-    for (var i = this, t = this.$module.querySelectorAll(".js-toggle-panel"), e = 0; e < t.length; e++) {
-      t[e].addEventListener("click", function (t) {
-        var e = new i.StepView(this.parentNode, i.$module);
-        e.toggle();
-        var n = this.parentNode.hasAttribute("data-optional");
-        new i.StepToggleClick(t, e, o, n, i.$module.stepNavSize).trackClick(), i.setShowHideAllText(), i.rememberStepState(this.parentNode);
-      });
-    }
+    for (var i = this, t = this.$module.querySelectorAll(".js-toggle-panel"), e = 0; e < t.length; e++) t[e].addEventListener("click", function (t) {
+      var e = new i.StepView(this.parentNode, i.$module);
+      e.toggle();
+      var n = this.parentNode.hasAttribute("data-optional");
+      new i.StepToggleClick(t, e, o, n, i.$module.stepNavSize).trackClick(), i.setShowHideAllText(), i.rememberStepState(this.parentNode);
+    });
   }, e.prototype.rememberStepState = function (t) {
     if (this.$module.rememberShownStep) {
       var e = JSON.parse(this.loadFromSessionStorage(this.$module.uniqueId)) || [],
@@ -2592,12 +2409,10 @@ function nodeListForEach(t, e) {
       this.saveToSessionStorage(this.$module.uniqueId, JSON.stringify(e));
     }
   }, e.prototype.bindComponentLinkClicks = function (n) {
-    for (var t = this.$module.querySelectorAll(".js-link"), o = this, e = 0; e < t.length; e++) {
-      t[e].addEventListener("click", function (t) {
-        var e = this.getAttribute("data-position");
-        new o.ComponentLinkClick(t, n, e, o.$module.stepNavSize).trackClick(), "external" !== this.getAttribute("rel") && o.saveToSessionStorage(o.$module.sessionStoreLink, e), this.getAttribute("href") === o.$module.activeLinkHref && (o.setOnlyThisLinkActive(this), o.setActiveStepClass());
-      });
-    }
+    for (var t = this.$module.querySelectorAll(".js-link"), o = this, e = 0; e < t.length; e++) t[e].addEventListener("click", function (t) {
+      var e = this.getAttribute("data-position");
+      new o.ComponentLinkClick(t, n, e, o.$module.stepNavSize).trackClick(), "external" !== this.getAttribute("rel") && o.saveToSessionStorage(o.$module.sessionStoreLink, e), this.getAttribute("href") === o.$module.activeLinkHref && (o.setOnlyThisLinkActive(this), o.setActiveStepClass());
+    });
   }, e.prototype.saveToSessionStorage = function (t, e) {
     window.sessionStorage.setItem(t, e);
   }, e.prototype.loadFromSessionStorage = function (t) {
@@ -2605,9 +2420,7 @@ function nodeListForEach(t, e) {
   }, e.prototype.removeFromSessionStorage = function (t) {
     window.sessionStorage.removeItem(t);
   }, e.prototype.setOnlyThisLinkActive = function (t) {
-    for (var e = this.$module.querySelectorAll("." + this.$module.activeLinkClass), n = 0; n < e.length; n++) {
-      e[n].classList.remove(this.$module.activeLinkClass);
-    }
+    for (var e = this.$module.querySelectorAll("." + this.$module.activeLinkClass), n = 0; n < e.length; n++) e[n].classList.remove(this.$module.activeLinkClass);
 
     t.parentNode.classList.add(this.$module.activeLinkClass);
   }, e.prototype.ensureOnlyOneActiveLink = function () {
@@ -2631,9 +2444,7 @@ function nodeListForEach(t, e) {
       }
     }
   }, e.prototype.setActiveStepClass = function () {
-    for (var t = this.$module.querySelectorAll("." + this.$module.activeStepClass), e = 0; e < t.length; e++) {
-      t[e].classList.remove(this.$module.activeStepClass), t[e].removeAttribute("data-show");
-    }
+    for (var t = this.$module.querySelectorAll("." + this.$module.activeStepClass), e = 0; e < t.length; e++) t[e].classList.remove(this.$module.activeStepClass), t[e].removeAttribute("data-show");
 
     var n = this.$module.querySelectorAll("." + this.$module.activeLinkClass)[0];
 

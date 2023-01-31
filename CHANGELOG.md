@@ -1,6 +1,51 @@
 # NHS.UK prototype kit Changelog
 
+## 4.8.6 - 24 January 2023
+
+:pencil2: **Content**
+
+- Add new 'Publish your prototype online' guidance
+- Replace Atom with Visual Studio Code on HTML text editor page
+
+:wrench: **Maintenance**
+
+- Install NHS.UK frontend v6.2.0
+
+## 4.8.5 - 12 December 2022
+
+:wrench: Fixes
+
+- Update package dependencies `decode-uri-component`and `engine.io`.
+
+:pencil2: **Content**
+
+- Added deployment instructions and test note to readme.
+
+## 4.8.4 - 12 October 2022
+
+:pencil2: **Content**
+
+- Fixed typo in readme
+
+## 4.8.3 - 5 September 2022
+
+:arrow_up: **Version bump**
+
+- Release issues
+
+## 4.8.2 - 5 September 2022
+
+:arrow_up: **Version bump**
+
+## 4.8.1 - 31 August 2022
+
+:pencil2: **Content**
+
+- Removed the 'deploy to Heroku' guidance page in response to [Heroku's upcoming removal of its free tier](https://blog.heroku.com/next-chapter#focus-on-mission-critical)
+
 ## 4.8.0 - 2 February 2022
+
+:new: **New features**
 
 - Install NHS.UK frontend v6.1.0 which includes text align utility class
 
@@ -47,6 +92,7 @@ Node 16.x recently became the long term supported version of Nodejs. The `gulp-s
 
 - Use the correct name for the NHS digital service manual Slack instance
 - Fix GitHub actions/Azure DevOps release pipelines [Issue 180](https://github.com/nhsuk/nhsuk-prototype-kit/issues/180)
+
 ## 4.6.2 - 24 August 2021
 
 :wrench: **Fixes**
@@ -132,6 +178,7 @@ Node 16.x recently became the long term supported version of Nodejs. The `gulp-s
 :wrench: **Fixes**
 
 - Update package dependencies to latest versions
+
 ## 4.0.0 - 27th October 2020
 
 :boom: **Breaking changes**
@@ -277,13 +324,13 @@ Node 16.x recently became the long term supported version of Nodejs. The `gulp-s
 
 :new: **New features**
 
--  [Installation guides update for Windows and Mac following testing with users](https://github.com/nhsuk/nhsuk-prototype-kit/pull/68)
+- [Installation guides update for Windows and Mac following testing with users](https://github.com/nhsuk/nhsuk-prototype-kit/pull/68)
 - The prototype kit now is properly versioned and is the version is indicated in `package.json` `version` field and also on the index page of the docs.
 
 :wrench: **Fixes**
 
--  [Header and footer inconsistency on the branching examples](https://github.com/nhsuk/nhsuk-prototype-kit/issues/71)
--  Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit`
+- [Header and footer inconsistency on the branching examples](https://github.com/nhsuk/nhsuk-prototype-kit/issues/71)
+- Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit`
 
 ## 1.0.0 - Feb 5, 2019
 

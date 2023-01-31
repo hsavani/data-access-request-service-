@@ -1,10 +1,6 @@
-"use strict";
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function parseCookie(e) {
   var t = JSON.parse(e);
-  return "object" != _typeof(t) && (t = JSON.parse(t)), t;
+  return "object" != typeof t && (t = JSON.parse(t)), t;
 }
 
 !function (e) {
@@ -12,18 +8,16 @@ function parseCookie(e) {
 
   var m = e.GOVUK || {};
   m.Modules = m.Modules || {}, m.modules = {
-    find: function find(e) {
+    find: function (e) {
       var t,
           n = "[data-module]";
       t = (e = e || document).querySelectorAll(n);
 
-      for (var o = [], i = 0; i < t.length; i++) {
-        o.push(t[i]);
-      }
+      for (var o = [], i = 0; i < t.length; i++) o.push(t[i]);
 
       return e !== document && e.getAttribute("data-module") && o.push(e), o;
     },
-    start: function start(e) {
+    start: function (e) {
       function t(e) {
         return o(n(e));
       }
@@ -38,12 +32,10 @@ function parseCookie(e) {
         return e.charAt(0).toUpperCase() + e.slice(1);
       }
 
-      for (var i = this.find(e), r = 0, a = i.length; r < a; r++) {
-        for (var s = i[r], c = s.getAttribute("data-module").split(" "), l = 0, u = c.length; l < u; l++) {
-          var d = t(c[l]),
-              p = s.getAttribute("data-" + c[l] + "-module-started");
-          "function" != typeof m.Modules[d] || p || m.Modules[d].prototype.init && (new m.Modules[d](s).init(), s.setAttribute("data-" + c[l] + "-module-started", !0));
-        }
+      for (var i = this.find(e), r = 0, a = i.length; r < a; r++) for (var s = i[r], c = s.getAttribute("data-module").split(" "), l = 0, u = c.length; l < u; l++) {
+        var d = t(c[l]),
+            p = s.getAttribute("data-" + c[l] + "-module-started");
+        "function" != typeof m.Modules[d] || p || m.Modules[d].prototype.init && (new m.Modules[d](s).init(), s.setAttribute("data-" + c[l] + "-module-started", !0));
       }
     }
   }, e.GOVUK = m;
@@ -121,15 +113,11 @@ function parseCookie(e) {
       return null;
     }
 
-    return "object" != _typeof(e) && null !== e && (e = JSON.parse(e)), e;
+    return "object" != typeof e && null !== e && (e = JSON.parse(e)), e;
   }, window.GOVUK.setConsentCookie = function (e) {
     var t = window.GOVUK.getConsentCookie();
 
-    for (var n in t || (t = JSON.parse(JSON.stringify(i))), e) {
-      if (t[n] = e[n], !e[n]) for (var o in r) {
-        r[o] === n && window.GOVUK.deleteCookie(o);
-      }
-    }
+    for (var n in t || (t = JSON.parse(JSON.stringify(i))), e) if (t[n] = e[n], !e[n]) for (var o in r) r[o] === n && window.GOVUK.deleteCookie(o);
 
     window.GOVUK.setCookie("cookies_policy", JSON.stringify(t), {
       days: 365
@@ -168,9 +156,7 @@ function parseCookie(e) {
     }
   }, window.GOVUK.getCookie = function (e) {
     for (var t = e + "=", n = document.cookie.split(";"), o = 0, i = n.length; o < i; o++) {
-      for (var r = n[o]; " " === r.charAt(0);) {
-        r = r.substring(1, r.length);
-      }
+      for (var r = n[o]; " " === r.charAt(0);) r = r.substring(1, r.length);
 
       if (0 === r.indexOf(t)) return decodeURIComponent(r.substring(t.length));
     }
@@ -183,11 +169,7 @@ function parseCookie(e) {
   }, window.GOVUK.deleteUnconsentedCookies = function () {
     var e = window.GOVUK.getConsentCookie();
 
-    for (var t in e) {
-      if (!e[t]) for (var n in r) {
-        r[n] === t && window.GOVUK.deleteCookie(n);
-      }
-    }
+    for (var t in e) if (!e[t]) for (var n in r) r[n] === t && window.GOVUK.deleteCookie(n);
   };
 }(window), function () {
   "use strict";
@@ -195,11 +177,7 @@ function parseCookie(e) {
   window.GOVUK = window.GOVUK || {}, window.GOVUK.extendObject = function (e) {
     e = e || {};
 
-    for (var t = 1; t < arguments.length; t++) {
-      if (arguments[t]) for (var n in arguments[t]) {
-        Object.prototype.hasOwnProperty.call(arguments[t], n) && (e[n] = arguments[t][n]);
-      }
-    }
+    for (var t = 1; t < arguments.length; t++) if (arguments[t]) for (var n in arguments[t]) Object.prototype.hasOwnProperty.call(arguments[t], n) && (e[n] = arguments[t][n]);
 
     return e;
   };
@@ -219,9 +197,7 @@ function parseCookie(e) {
         t = !1;
     e && (t = e.getAttribute("content"));
     var n = [];
-    if (t) for (var o = t.split(","), i = 0; i < o.length; i++) {
-      n.push(o[i].trim());
-    }
+    if (t) for (var o = t.split(","), i = 0; i < o.length; i++) n.push(o[i].trim());
     return n;
   }
 
@@ -233,12 +209,12 @@ function parseCookie(e) {
       l = /reset_password_token=[a-zA-Z0-9-]+/g,
       u = /unlock_token=[a-zA-Z0-9-]+/g,
       d = /state=.[^&]+/g,
-      p = function p() {
+      p = function () {
     this.stripDatePII = t(), this.stripPostcodePII = n(), this.queryStringParametersToStrip = o();
   };
 
   p.prototype.stripPII = function (e) {
-    return "string" == typeof e ? this.stripPIIFromString(e) : "[object Array]" === Object.prototype.toString.call(e) || "[object Arguments]" === Object.prototype.toString.call(e) ? this.stripPIIFromArray(e) : "object" == _typeof(e) ? this.stripPIIFromObject(e) : e;
+    return "string" == typeof e ? this.stripPIIFromString(e) : "[object Array]" === Object.prototype.toString.call(e) || "[object Arguments]" === Object.prototype.toString.call(e) ? this.stripPIIFromArray(e) : "object" == typeof e ? this.stripPIIFromObject(e) : e;
   }, p.prototype.stripPIIFromString = function (e) {
     var t = e.replace(r, "[email]");
     return t = (t = (t = t.replace(l, "reset_password_token=[reset_password_token]")).replace(u, "unlock_token=[unlock_token]")).replace(d, "state=[state]"), t = this.stripQueryStringParameters(t), !0 === this.stripDatePII && (t = t.replace(s, "[date]")), !0 === this.stripPostcodePII && (t = t.replace(a, "[postcode]")), t;
@@ -279,9 +255,9 @@ function parseCookie(e) {
 
   var l,
       u = s.GOVUK || {},
-      e = function e(_e, t) {
+      e = function (e, t) {
     function n() {
-      c("create", _e, t);
+      c("create", e, t);
     }
 
     function o() {
@@ -319,9 +295,7 @@ function parseCookie(e) {
     function o(e) {
       if (void 0 === e) return !0;
 
-      for (var t in e) {
-        if (Object.prototype.hasOwnProperty.call(e, t)) return !1;
-      }
+      for (var t in e) if (Object.prototype.hasOwnProperty.call(e, t)) return !1;
 
       return JSON.stringify(e) === JSON.stringify({});
     }
@@ -330,7 +304,7 @@ function parseCookie(e) {
         r = "";
     "string" == typeof e && (i = {
       page: e
-    }), "string" == typeof t && ((i = i || {}).title = t), "object" == _typeof(n) && (i = u.extendObject(i || {}, n), "string" == typeof n.trackerName && (r = n.trackerName + ".", delete n.trackerName)), o(i) ? c(r + "send", "pageview") : c(r + "send", "pageview", i);
+    }), "string" == typeof t && ((i = i || {}).title = t), "object" == typeof n && (i = u.extendObject(i || {}, n), "string" == typeof n.trackerName && (r = n.trackerName + ".", delete n.trackerName)), o(i) ? c(r + "send", "pageview") : c(r + "send", "pageview", i);
   }, e.prototype.trackEvent = function (e, t, n) {
     var o,
         i = "",
@@ -339,7 +313,7 @@ function parseCookie(e) {
       eventCategory: e,
       eventAction: t
     };
-    "string" == typeof (n = n || {}).label && (r.eventLabel = n.label, delete n.label), (n.value || 0 === n.value) && ("number" != typeof (o = parseInt(n.value, 10)) || isNaN(o) || (n.eventValue = o), delete n.value), "string" == typeof n.trackerName && (i = n.trackerName + ".", delete n.trackerName), n.nonInteraction && (n.nonInteraction = 1), "object" == _typeof(n) && (r = u.extendObject(r, n)), c(i + "send", r);
+    "string" == typeof (n = n || {}).label && (r.eventLabel = n.label, delete n.label), (n.value || 0 === n.value) && ("number" != typeof (o = parseInt(n.value, 10)) || isNaN(o) || (n.eventValue = o), delete n.value), "string" == typeof n.trackerName && (i = n.trackerName + ".", delete n.trackerName), n.nonInteraction && (n.nonInteraction = 1), "object" == typeof n && (r = u.extendObject(r, n)), c(i + "send", r);
   }, e.prototype.trackSocial = function (e, t, n, o) {
     var i = {
       hitType: "social",
@@ -359,13 +333,13 @@ function parseCookie(e) {
   "use strict";
 
   var o = n.GOVUK || {},
-      e = function e(_e2) {
-    if (this.pii = new o.Pii(), this.trackers = [], "undefined" != typeof _e2.universalId) {
-      var t = _e2.universalId;
-      delete _e2.universalId, this.trackers.push(new o.GoogleAnalyticsUniversalTracker(t, _e2));
+      e = function (e) {
+    if (this.pii = new o.Pii(), this.trackers = [], "undefined" != typeof e.universalId) {
+      var t = e.universalId;
+      delete e.universalId, this.trackers.push(new o.GoogleAnalyticsUniversalTracker(t, e));
     }
   },
-      t = function t(e) {
+      t = function (e) {
     this.value = e;
   };
 
@@ -396,7 +370,7 @@ function parseCookie(e) {
 
   var i = o.GOVUK || {};
   i.analyticsPlugins = i.analyticsPlugins || {}, i.analyticsPlugins.printIntent = function () {
-    var t = function t() {
+    var t = function () {
       i.analytics.trackEvent("Print Intent", document.location.pathname), i.analytics.trackPageview("/print" + document.location.pathname);
     };
 
@@ -422,7 +396,7 @@ function parseCookie(e) {
     }
 
     var t = (e = e || {}).filenameMustMatch,
-        n = function n(e) {
+        n = function (e) {
       var t = e.filename,
           n = t + ": " + e.lineno;
       o(t) && r.analytics.trackEvent("JavaScript Error", e.message, {
@@ -434,19 +408,15 @@ function parseCookie(e) {
 
     i.addEventListener ? i.addEventListener("error", n, !1) : i.attachEvent ? i.attachEvent("onerror", n) : i.onerror = n;
   }, i.GOVUK = r;
-}(window), (void 0).Element && function (e) {
+}(window), this.Element && function (e) {
   e.matches = e.matches || e.matchesSelector || e.webkitMatchesSelector || e.msMatchesSelector || function (e) {
-    for (var t = this, n = (t.parentNode || t.document).querySelectorAll(e), o = -1; n[++o] && n[o] != t;) {
-      ;
-    }
+    for (var t = this, n = (t.parentNode || t.document).querySelectorAll(e), o = -1; n[++o] && n[o] != t;);
 
     return !!n[o];
   };
-}(Element.prototype), (void 0).Element && function (e) {
+}(Element.prototype), this.Element && function (e) {
   e.closest = e.closest || function (e) {
-    for (var t = this; t.matches && !t.matches(e);) {
-      t = t.parentNode;
-    }
+    for (var t = this; t.matches && !t.matches(e);) t = t.parentNode;
 
     return t.matches ? t : null;
   };
@@ -473,19 +443,17 @@ function parseCookie(e) {
     });
   }, e.GOVUK = i;
 }(window), function (e, t) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? t() : "function" == typeof define && define.amd ? define("GOVUKFrontend", t) : t();
+  "object" == typeof exports && "undefined" != typeof module ? t() : "function" == typeof define && define.amd ? define("GOVUKFrontend", t) : t();
 }(0, function () {
   "use strict";
 
   (function () {
     "document" in this && "matches" in document.documentElement || (Element.prototype.matches = Element.prototype.webkitMatchesSelector || Element.prototype.oMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || function i(e) {
-      for (var t = this, n = (t.document || t.ownerDocument).querySelectorAll(e), o = 0; n[o] && n[o] !== t;) {
-        ++o;
-      }
+      for (var t = this, n = (t.document || t.ownerDocument).querySelectorAll(e), o = 0; n[o] && n[o] !== t;) ++o;
 
       return !!n[o];
     });
-  }).call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }).call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "document" in this && "closest" in document.documentElement || (Element.prototype.closest = function n(e) {
       for (var t = this; t;) {
         if (t.matches(e)) return t;
@@ -494,7 +462,7 @@ function parseCookie(e) {
 
       return null;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {});
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {});
 }), function (e) {
   "use strict";
 
@@ -544,11 +512,9 @@ function parseCookie(e) {
         i = t.split(",");
     t && document.querySelector("body").addEventListener("click", function (e) {
       var t = e.target;
-      if ("A" !== t.tagName && (t = t.closest("a")), t) for (var n = 0; n < i.length; n++) {
-        if (t.matches(i[n].trim())) {
-          o(t);
-          break;
-        }
+      if ("A" !== t.tagName && (t = t.closest("a")), t) for (var n = 0; n < i.length; n++) if (t.matches(i[n].trim())) {
+        o(t);
+        break;
       }
     });
   }, e.GOVUK = r;
@@ -634,7 +600,7 @@ function parseCookie(e) {
 
   window.GOVUK = window.GOVUK || {};
 
-  var t = function t() {};
+  var t = function () {};
 
   t.getNumberOfSections = function () {
     switch (!0) {
@@ -864,7 +830,7 @@ function parseCookie(e) {
 
   window.GOVUK = window.GOVUK || {};
 
-  var e = function e() {};
+  var e = function () {};
 
   e.getAndExtendDefaultTrackingOptions = function (e) {
     var t = this.customDimensions();
@@ -872,9 +838,7 @@ function parseCookie(e) {
   }, e.customDimensions = function () {
     var e = GOVUK.extendObject({}, n(), o(), i(), r());
 
-    for (var t in e) {
-      e[t] = new GOVUK.Analytics.PIISafe(String(e[t]));
-    }
+    for (var t in e) e[t] = new GOVUK.Analytics.PIISafe(String(e[t]));
 
     return e;
   }, GOVUK.CustomDimensions = e;
@@ -892,7 +856,7 @@ function parseCookie(e) {
 
   window.GOVUK = window.GOVUK || {};
 
-  var n = function n(e) {
+  var n = function (e) {
     var t = window.GOVUK.getConsentCookie();
     t && !t.usage || (this.analytics = new GOVUK.Analytics(e));
     var n = o();
@@ -928,7 +892,7 @@ function parseCookie(e) {
   }, n.prototype.addLinkedTrackerDomain = function (e, t, n, o) {
     this.analytics.addLinkedTrackerDomain(e, t, n, o);
   }, n.prototype.setOptionsForNextPageview = function (e) {
-    if ("object" == _typeof(e)) {
+    if ("object" == typeof e) {
       var t = o();
       t = GOVUK.extendObject(t, e), this.setCookie("analytics_next_page_call", t);
     }
@@ -950,7 +914,7 @@ function parseCookie(e) {
 
   var v = "Site search results",
       g = "Results",
-      n = function n() {
+      n = function () {
     function l(e, t, n, o, i, r, a) {
       var s = {
         position: n,
@@ -1006,7 +970,7 @@ function parseCookie(e) {
   }, GOVUK.Ecommerce = n;
 }();
 
-var analyticsInit = function analyticsInit() {
+var analyticsInit = function () {
   "use strict";
 
   if (window.GOVUK.analyticsVars || !1) var e = window.GOVUK.analyticsVars.gaProperty || !1,
@@ -1024,12 +988,12 @@ var analyticsInit = function analyticsInit() {
   }, window.GOVUK.Analytics.checkDigitalIdentityConsent(window.location);
   var o = window.GOVUK.getConsentCookie(),
       i = {
-    addLinkedTrackerDomain: function addLinkedTrackerDomain() {},
-    setDimension: function setDimension() {},
-    setOptionsForNextPageView: function setOptionsForNextPageView() {},
-    trackEvent: function trackEvent() {},
-    trackPageview: function trackPageview() {},
-    trackShare: function trackShare() {}
+    addLinkedTrackerDomain: function () {},
+    setDimension: function () {},
+    setOptionsForNextPageView: function () {},
+    trackEvent: function () {},
+    trackPageview: function () {},
+    trackShare: function () {}
   },
       r = "ga-disable-" + e;
 
@@ -1126,13 +1090,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
 
     return e;
   }, o.Heading.prototype.findAllowedHeadings = function () {
-    for (var e = [], t = ["h1", "h2", "h3", "h4", "h5", "h6"], n = this.config.trackHeadings, o = 0; o < this.config.allowHeadingsInside.length; o++) {
-      for (var i = document.querySelectorAll(this.config.allowHeadingsInside[o]), r = 0; r < i.length; r++) {
-        for (var a = i[r].querySelectorAll(t), s = 0; s < a.length; s++) {
-          n ? n.includes(a[s].textContent.trim()) && e.push(a[s]) : e.push(a[s]);
-        }
-      }
-    }
+    for (var e = [], t = ["h1", "h2", "h3", "h4", "h5", "h6"], n = this.config.trackHeadings, o = 0; o < this.config.allowHeadingsInside.length; o++) for (var i = document.querySelectorAll(this.config.allowHeadingsInside[o]), r = 0; r < i.length; r++) for (var a = i[r].querySelectorAll(t), s = 0; s < a.length; s++) n ? n.includes(a[s].textContent.trim()) && e.push(a[s]) : e.push(a[s]);
 
     return e;
   }, o.Heading.prototype.visible = function (e) {
@@ -1213,9 +1171,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
           s = e.getAttribute("data-track-dimension"),
           c = e.getAttribute("data-track-dimension-index"),
           l = e.getAttribute("data-track-options");
-      if (r && (n.label = r), a && (n.value = a), s && c && (n["dimension" + c] = s), l) for (var u in l = JSON.parse(l)) {
-        n[u] = l[u];
-      }
+      if (r && (n.label = r), a && (n.value = a), s && c && (n["dimension" + c] = s), l) for (var u in l = JSON.parse(l)) n[u] = l[u];
       window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && window.GOVUK.analytics.trackEvent(o, i, n);
     }
   }, e.GemTrackClick = t;
@@ -1240,9 +1196,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         a = e.getAttribute("data-track-dimension"),
         s = e.getAttribute("data-track-dimension-index"),
         c = e.getAttribute("data-track-options");
-    if (i && (t.label = i), r && (t.value = r), a && s && (t["dimension" + s] = a), c) for (var l in c = JSON.parse(c)) {
-      t[l] = c[l];
-    }
+    if (i && (t.label = i), r && (t.value = r), a && s && (t["dimension" + s] = a), c) for (var l in c = JSON.parse(c)) t[l] = c[l];
     window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && window.GOVUK.analytics.trackEvent(n, o, t);
   }, e.TrackSelectChange = t;
 }(window.GOVUK.Modules), window.GOVUK = window.GOVUK || {}, window.GOVUK.Modules = window.GOVUK.Modules || {}, function (r) {
@@ -1255,9 +1209,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
   }, e.prototype.isTrackable = function (e) {
     if (e.getAttribute("href") && e.getAttribute("data-tracking-code") && e.getAttribute("data-tracking-name")) return !0;
   }, e.prototype.findTrackableElements = function () {
-    for (var e = this.$module.querySelectorAll("a"), t = 0; t < e.length; t++) {
-      this.isTrackable(e[t]) && this.addLinkedTrackerDomain(e[t]);
-    }
+    for (var e = this.$module.querySelectorAll("a"), t = 0; t < e.length; t++) this.isTrackable(e[t]) && this.addLinkedTrackerDomain(e[t]);
   }, e.prototype.addLinkedTrackerDomain = function (e) {
     var n = e.getAttribute("data-tracking-name"),
         t = e.getAttribute("data-tracking-code"),
@@ -1281,14 +1233,14 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
   "use strict";
 
   var e = {
-    load: function load() {
+    load: function () {
       var e = document.getElementsByTagName("script")[0],
           t = document.createElement("script");
 
       if (t.async = !0, window.GOVUK.analyticsGa4.vars.gtag_id) {
         window.dataLayer = window.dataLayer || [];
 
-        var n = function n() {
+        var n = function () {
           window.dataLayer.push(arguments);
         };
 
@@ -1305,10 +1257,10 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         });
       }
     },
-    sendData: function sendData(e) {
+    sendData: function (e) {
       e.govuk_gem_version = this.getGemVersion(), window.dataLayer.push(e);
     },
-    getGemVersion: function getGemVersion() {
+    getGemVersion: function () {
       return window.GOVUK.analyticsGa4.vars.gem_version || "not found";
     }
   };
@@ -1317,7 +1269,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
   "use strict";
 
   var t = e.GOVUK || {},
-      n = function n() {
+      n = function () {
     this.undefined = undefined;
   };
 
@@ -1354,9 +1306,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         t = !1;
     e && (t = e.getAttribute("content"));
     var n = [];
-    if (t) for (var o = t.split(","), i = 0; i < o.length; i++) {
-      n.push(o[i].trim());
-    }
+    if (t) for (var o = t.split(","), i = 0; i < o.length; i++) n.push(o[i].trim());
     return n;
   }
 
@@ -1368,14 +1318,14 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
       l = /reset_password_token=[a-zA-Z0-9-]+/g,
       u = /unlock_token=[a-zA-Z0-9-]+/g,
       d = /state=.[^&]+/g,
-      p = function p() {
+      p = function () {
     this.stripDatePII = t(), this.stripPostcodePII = n(), this.queryStringParametersToStrip = o();
   };
 
   p.prototype.PIISafe = function (e) {
     this.value = e;
   }, p.prototype.stripPII = function (e) {
-    return "string" == typeof e ? this.stripPIIFromString(e) : "[object Array]" === Object.prototype.toString.call(e) || "[object Arguments]" === Object.prototype.toString.call(e) ? this.stripPIIFromArray(e) : "object" == _typeof(e) ? this.stripPIIFromObject(e) : e;
+    return "string" == typeof e ? this.stripPIIFromString(e) : "[object Array]" === Object.prototype.toString.call(e) || "[object Arguments]" === Object.prototype.toString.call(e) ? this.stripPIIFromArray(e) : "object" == typeof e ? this.stripPIIFromObject(e) : e;
   }, p.prototype.stripPIIWithOverride = function (e, t, n) {
     var o = this.stripDatePII,
         i = this.stripPostcodePII;
@@ -1419,7 +1369,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
   var t = {
     PIIRemover: new window.GOVUK.analyticsGa4.PIIRemover(),
     nullValue: undefined,
-    init: function init() {
+    init: function () {
       if (window.dataLayer) {
         var e = {
           event: "page_view",
@@ -1455,33 +1405,33 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         window.GOVUK.analyticsGa4.core.sendData(e);
       }
     },
-    getLocation: function getLocation() {
+    getLocation: function () {
       return this.PIIRemover.stripPII(document.location.href);
     },
-    getReferrer: function getReferrer() {
+    getReferrer: function () {
       return this.PIIRemover.stripPIIWithOverride(document.referrer, !0, !0);
     },
-    getTitle: function getTitle() {
+    getTitle: function () {
       return this.PIIRemover.stripPII(document.title);
     },
-    getStatusCode: function getStatusCode() {
+    getStatusCode: function () {
       return window.httpStatusCode ? window.httpStatusCode.toString() : "200";
     },
-    getMetaContent: function getMetaContent(e) {
+    getMetaContent: function (e) {
       var t = document.querySelector('meta[name="govuk:' + e + '"]');
       return t ? t.getAttribute("content") : this.nullValue;
     },
-    getLanguage: function getLanguage() {
+    getLanguage: function () {
       var e = document.getElementById("content");
       return e && e.getAttribute("lang") || this.nullValue;
     },
-    getHistory: function getHistory() {
+    getHistory: function () {
       return "true" === this.getMetaContent("content-has-history") ? "true" : "false";
     },
-    getWithDrawn: function getWithDrawn() {
+    getWithDrawn: function () {
       return "withdrawn" === this.getMetaContent("withdrawn") ? "true" : "false";
     },
-    stripTimeFrom: function stripTimeFrom(e) {
+    stripTimeFrom: function (e) {
       return e !== undefined ? e.split("T")[0] : this.nullValue;
     }
   };
@@ -1490,13 +1440,13 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
   "use strict";
 
   var e = {
-    init: function init(e) {
+    init: function (e) {
       window.dataLayer && (e = e || {}, this.internalDomains = e.internalDomains || [], this.internalDomains.push(this.getHostname()), this.appendDomainsWithoutWWW(this.internalDomains), this.internalDownloadPaths = e.internalDownloadPaths || ["/government/uploads/"], this.dedicatedDownloadDomains = e.dedicatedDownloadDomains || ["assets.publishing.service.gov.uk"], this.appendDomainsWithoutWWW(this.dedicatedDownloadDomains), this.handleClick = this.handleClick.bind(this), this.handleMousedown = this.handleMousedown.bind(this), e.disableListeners || (document.querySelector("body").addEventListener("click", this.handleClick), document.querySelector("body").addEventListener("contextmenu", this.handleClick), document.querySelector("body").addEventListener("mousedown", this.handleMousedown)));
     },
-    stopTracking: function stopTracking() {
+    stopTracking: function () {
       document.querySelector("body").removeEventListener("click", this.handleClick), document.querySelector("body").removeEventListener("contextmenu", this.handleClick), document.querySelector("body").removeEventListener("mousedown", this.handleMousedown);
     },
-    handleClick: function handleClick(e) {
+    handleClick: function (e) {
       var t = e.target;
 
       if ("A" !== t.tagName && (t = t.closest("a")), t) {
@@ -1509,16 +1459,14 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
           if (i ? (i = JSON.parse(i), "populated-via-js" === (n = window.GOVUK.extendObject(n, i)).external && n.url && (n.external = this.isExternalLink(n.url) ? "true" : "false"), "populated-via-js" === n.link_method && (n.link_method = this.getClickType(e)), n.index && (n.index = parseInt(i.index)), n.index_total && (n.index_total = parseInt(i.index_total))) : this.isMailToLink(o) ? (n.event_name = "navigation", n.type = "email", n.external = "true", n.url = o, n.text = t.textContent.trim(), n.link_method = this.getClickType(e)) : this.isDownloadLink(o) ? (n.event_name = "file_download", n.type = this.isPreviewLink(o) ? "preview" : "generic download", n.external = this.isExternalLink(o) ? "true" : "false", n.url = o, n.text = t.textContent.trim(), n.link_method = this.getClickType(e)) : this.isExternalLink(o) && (n.event_name = "navigation", n.type = "generic link", n.external = "true", n.url = o, n.text = t.textContent.trim(), n.link_method = this.getClickType(e)), 0 < Object.keys(n).length) {
             var r = new window.GOVUK.analyticsGa4.Schemas().eventSchema();
 
-            for (var a in r.event = "event_data", n) {
-              a in r.event_data && (r.event_data[a] = n[a]);
-            }
+            for (var a in r.event = "event_data", n) a in r.event_data && (r.event_data[a] = n[a]);
 
             window.GOVUK.analyticsGa4.core.sendData(r);
           }
         }
       }
     },
-    appendDomainsWithoutWWW: function appendDomainsWithoutWWW(e) {
+    appendDomainsWithoutWWW: function (e) {
       for (var t = 0; t < e.length; t++) {
         var n = e[t];
 
@@ -1528,7 +1476,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         }
       }
     },
-    getClickType: function getClickType(e) {
+    getClickType: function (e) {
       switch (e.type) {
         case "click":
           return e.ctrlKey ? "ctrl click" : e.metaKey ? "command/win click" : e.shiftKey ? "shift click" : "primary click";
@@ -1540,13 +1488,13 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
           return "secondary click";
       }
     },
-    handleMousedown: function handleMousedown(e) {
+    handleMousedown: function (e) {
       1 === e.button && this.handleClick(e);
     },
-    isMailToLink: function isMailToLink(e) {
+    isMailToLink: function (e) {
       return "mailto:" === e.substring(0, 7);
     },
-    isDownloadLink: function isDownloadLink(e) {
+    isDownloadLink: function (e) {
       if (this.isInternalLink(e) && this.hrefPointsToDownloadPath(e)) return !0;
 
       for (var t = !1, n = 0; n < this.dedicatedDownloadDomains.length; n++) {
@@ -1556,7 +1504,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
 
       return t;
     },
-    isInternalLink: function isInternalLink(e) {
+    isInternalLink: function (e) {
       if (this.hrefIsRelative(e) || this.hrefIsAnchor(e)) return !0;
 
       for (var t = !1, n = 0; n < this.internalDomains.length; n++) {
@@ -1566,20 +1514,20 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
 
       return t;
     },
-    isExternalLink: function isExternalLink(e) {
+    isExternalLink: function (e) {
       return !this.isInternalLink(e);
     },
-    isPreviewLink: function isPreviewLink(e) {
+    isPreviewLink: function (e) {
       return /\.\w+\/preview/i.test(e);
     },
-    hrefPointsToDomain: function hrefPointsToDomain(e, t) {
+    hrefPointsToDomain: function (e, t) {
       "/" !== t.substring(t.length) && (t += "/"), "/" !== e.substring(e.length) && (e += "/");
       var n = "http://" + t,
           o = "https://" + t,
           i = "//" + t;
       return this.stringStartsWith(e, t) || this.stringStartsWith(e, n) || this.stringStartsWith(e, o) || this.stringStartsWith(e, i);
     },
-    hrefPointsToDownloadPath: function hrefPointsToDownloadPath(e) {
+    hrefPointsToDownloadPath: function (e) {
       for (var t = !1, n = 0; n < this.internalDownloadPaths.length; n++) {
         var o = this.internalDownloadPaths[n];
         -1 !== e.indexOf(o) && (t = !0);
@@ -1587,16 +1535,16 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
 
       return t;
     },
-    stringStartsWith: function stringStartsWith(e, t) {
+    stringStartsWith: function (e, t) {
       return e.substring(0, t.length) === t;
     },
-    hrefIsRelative: function hrefIsRelative(e) {
+    hrefIsRelative: function (e) {
       return "/" === e[0] && "/" !== e[1];
     },
-    hrefIsAnchor: function hrefIsAnchor(e) {
+    hrefIsAnchor: function (e) {
       return "#" === e[0];
     },
-    getHostname: function getHostname() {
+    getHostname: function () {
       return window.location.hostname;
     }
   };
@@ -1626,9 +1574,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         return void console.error("GA4 configuration error: " + u.message, window.location);
       }
 
-      for (var i in n.event = "event_data", o) {
-        i in n.event_data && (n.event_data[i] = o[i]);
-      }
+      for (var i in n.event = "event_data", o) i in n.event_data && (n.event_data[i] = o[i]);
 
       if (t.closest(".gem-c-accordion")) var r = this.getClosestAttribute(t, "aria-expanded");
       var a = t.closest("details");
@@ -1663,7 +1609,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
   p.analyticsGa4 = p.analyticsGa4 || {}, p.analyticsGa4.Ga4EcommerceTracker = {
     PIIRemover: new p.analyticsGa4.PIIRemover(),
     DEFAULT_LIST_TITLE: "Site search results",
-    init: function init(e) {
+    init: function (e) {
       if (window.dataLayer) {
         if (this.searchResultsBlocks = document.querySelectorAll("[data-ga4-ecommerce]"), this.isNewPageLoad = e, 0 === !this.searchResultsBlocks.length) return;
 
@@ -1672,16 +1618,14 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
           t && t.init();
         }
 
-        for (var n = 0; n < this.searchResultsBlocks.length; n++) {
-          this.trackSearchResults(this.searchResultsBlocks[n]), this.isNewPageLoad && this.searchResultsBlocks[n].addEventListener("click", this.handleClick.bind(this));
-        }
+        for (var n = 0; n < this.searchResultsBlocks.length; n++) this.trackSearchResults(this.searchResultsBlocks[n]), this.isNewPageLoad && this.searchResultsBlocks[n].addEventListener("click", this.handleClick.bind(this));
       }
     },
-    trackSearchResults: function trackSearchResults(e) {
+    trackSearchResults: function (e) {
       var t = this.populateEcommerceSchema(e, !1, null);
       this.clearPreviousEcommerceObject(), window.dataLayer.push(t);
     },
-    handleClick: function handleClick(e) {
+    handleClick: function (e) {
       var t = e.target.closest("[data-ga4-ecommerce]");
 
       if (e.target.getAttribute("data-ecommerce-path")) {
@@ -1690,7 +1634,7 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
         this.clearPreviousEcommerceObject(), window.dataLayer.push(o);
       }
     },
-    populateEcommerceSchema: function populateEcommerceSchema(e, t, n) {
+    populateEcommerceSchema: function (e, t, n) {
       var o = this.PIIRemover.stripPII(e.getAttribute("data-search-query")).substring(0, 100).toLowerCase(),
           i = e.getAttribute("data-ecommerce-variant") || undefined,
           r = e.querySelectorAll("[data-ecommerce-row]"),
@@ -1726,24 +1670,24 @@ window.GOVUK.analyticsInit = analyticsInit, window.GOVUK = window.GOVUK || {}, w
       }
       return c;
     },
-    getIndex: function getIndex(e, t) {
+    getIndex: function (e, t) {
       return parseInt(e.getAttribute("data-ecommerce-index")) + t - 1;
     },
-    clearPreviousEcommerceObject: function clearPreviousEcommerceObject() {
+    clearPreviousEcommerceObject: function () {
       window.dataLayer.push({
         search_results: {
           ecommerce: null
         }
       });
     },
-    getResultsCount: function getResultsCount(e) {
+    getResultsCount: function (e) {
       var t = e.querySelector("#js-result-count");
       return t ? (t = (t = t.textContent.replace(",", "")).split(" ")[0], parseInt(t)) : null;
     }
   }, e.GOVUK = p;
 }(window), window.GOVUK = window.GOVUK || {}, window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
-var initFunction = function initFunction() {
+var initFunction = function () {
   var e = window.GOVUK.getConsentCookie();
 
   if (e && e.usage) {
@@ -1763,8 +1707,8 @@ window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}, window.GOVUK.anal
 var gtm_id = "GTM-MG7HG5W",
     gtag_id = null;
 (gtm_id || gtag_id) && "undefined" != typeof window.GOVUK.analyticsGa4.init && (window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}, window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}, window.GOVUK.analyticsGa4.vars.gem_version = "31.1.1", gtag_id ? window.GOVUK.analyticsGa4.vars.gtag_id = gtag_id : (window.GOVUK.analyticsGa4.vars.id = gtm_id, window.GOVUK.analyticsGa4.vars.auth = "", window.GOVUK.analyticsGa4.vars.preview = ""), window.GOVUK.analyticsGa4.init()), function (e, t) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Button", t) : (e.GOVUKFrontend = e.GOVUKFrontend || {}, e.GOVUKFrontend.Button = t());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Button", t) : (e.GOVUKFrontend = e.GOVUKFrontend || {}, e.GOVUKFrontend.Button = t());
+}(this, function () {
   "use strict";
 
   function e(e) {
@@ -1775,9 +1719,9 @@ var gtm_id = "GTM-MG7HG5W",
     "Window" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && function (e) {
       e.constructor ? e.Window = e.constructor : (e.Window = e.constructor = new Function("return function Window() {}")()).prototype = this;
     }(this);
-  }).call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }).call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function e() {
         return r-- || clearTimeout(t), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), t && document.body.prototype && clearTimeout(t), !!document.body.prototype);
@@ -1791,19 +1735,15 @@ var gtm_id = "GTM-MG7HG5W",
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             s = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(e, t) {
+            l = function (e, t) {
           var n,
               o,
               i,
               r = e.childNodes || [],
               a = -1;
-          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) {
-            o = c[n], e[n] = o;
-          }
+          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) o = c[n], e[n] = o;
 
-          for (; i = t && r[++a];) {
-            l(i, t);
-          }
+          for (; i = t && r[++a];) l(i, t);
 
           return e;
         },
@@ -1812,9 +1752,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = 100;
 
         s.attachEvent("onpropertychange", function (e) {
-          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) {
-            1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
-          }
+          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) 1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
 
           c[n] = i;
         }), s.constructor = Element, s.hasAttribute || (s.hasAttribute = function a(e) {
@@ -1825,7 +1763,7 @@ var gtm_id = "GTM-MG7HG5W",
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var s, c, l, u;
     "defineProperty" in Object && function () {
       try {
@@ -1838,13 +1776,12 @@ var gtm_id = "GTM-MG7HG5W",
       }
     }() || (s = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", u = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function d(e, t, n) {
       if (s && (e === window || e === document || e === Element.prototype || e instanceof Element)) return s(e, t, n);
-      if (null === e || !(e instanceof Object || "object" == _typeof(e))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === e || !(e instanceof Object || "object" == typeof e)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(t),
           i = "value" in n || "writable" in n,
-          r = "get" in n && _typeof(n.get),
-          a = "set" in n && _typeof(n.set);
+          r = "get" in n && typeof n.get,
+          a = "set" in n && typeof n.set;
 
       if (r) {
         if ("function" !== r) throw new TypeError("Getter must be a function");
@@ -1864,7 +1801,7 @@ var gtm_id = "GTM-MG7HG5W",
 
       return "value" in n && (e[o] = n.value), e;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (l) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (l) {
     (function (e) {
       if (!("Event" in e)) return !1;
       if ("function" == typeof e.Event) return !0;
@@ -1876,9 +1813,7 @@ var gtm_id = "GTM-MG7HG5W",
       }
     })(this) || function () {
       function u(e, t) {
-        for (var n = -1, o = e.length; ++n < o;) {
-          if (n in e && e[n] === t) return n;
-        }
+        for (var n = -1, o = e.length; ++n < o;) if (n in e && e[n] === t) return n;
 
         return -1;
       }
@@ -1938,9 +1873,7 @@ var gtm_id = "GTM-MG7HG5W",
               e.cancelBubble = !0;
             }, e.stopImmediatePropagation = function c() {
               e.cancelBubble = !0, e.cancelImmediate = !0;
-            }, e.currentTarget = l, e.relatedTarget = e.fromElement || null, e.target = e.target || e.srcElement || l, e.timeStamp = new Date().getTime(), e.clientX && (e.pageX = e.clientX + document.documentElement.scrollLeft, e.pageY = e.clientY + document.documentElement.scrollTop); ++i < r && !e.cancelImmediate;) {
-              i in o && -1 !== u(n, t = o[i]) && "function" == typeof t && t.call(l, e);
-            }
+            }, e.currentTarget = l, e.relatedTarget = e.fromElement || null, e.target = e.target || e.srcElement || l, e.timeStamp = new Date().getTime(), e.clientX && (e.pageX = e.clientX + document.documentElement.scrollLeft, e.pageY = e.clientY + document.documentElement.scrollTop); ++i < r && !e.cancelImmediate;) i in o && -1 !== u(n, t = o[i]) && "function" == typeof t && t.call(l, e);
           }, l._events[n].list = [], l.attachEvent && l.attachEvent("on" + n, l._events[n])), l._events[n].list.push(o);
         }, window.removeEventListener = Window.prototype.removeEventListener = Document.prototype.removeEventListener = Element.prototype.removeEventListener = function s(e, t) {
           var n,
@@ -1958,7 +1891,7 @@ var gtm_id = "GTM-MG7HG5W",
             if (!e.bubbles) {
               e.cancelBubble = !0;
 
-              var o = function o(e) {
+              var o = function (e) {
                 e.cancelBubble = !0, (t || window).detachEvent("on" + n, o);
               };
 
@@ -1967,9 +1900,7 @@ var gtm_id = "GTM-MG7HG5W",
 
             this.fireEvent("on" + n, e);
           } catch (i) {
-            for (e.target = t; "_events" in (e.currentTarget = t) && "function" == typeof t._events[n] && t._events[n].call(t, e), "function" == typeof t["on" + n] && t["on" + n].call(t, e), (t = 9 === t.nodeType ? t.parentWindow : t.parentNode) && !e.cancelBubble;) {
-              ;
-            }
+            for (e.target = t; "_events" in (e.currentTarget = t) && "function" == typeof t._events[n] && t._events[n].call(t, e), "function" == typeof t["on" + n] && t["on" + n].call(t, e), (t = 9 === t.nodeType ? t.parentWindow : t.parentNode) && !e.cancelBubble;);
           }
 
           return !0;
@@ -1980,7 +1911,7 @@ var gtm_id = "GTM-MG7HG5W",
         }));
       }
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function G(t) {
         var n,
@@ -1990,7 +1921,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = e.prototype,
             a = function a() {},
             s = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             u = function u(e) {
           try {
@@ -2016,21 +1947,19 @@ var gtm_id = "GTM-MG7HG5W",
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, w = m.call(arguments, 1), b = function b() {
+        for (var y, w = m.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var e = g.apply(this, f.call(w, m.call(arguments)));
             return o(e) === e ? e : this;
           }
 
           return g.apply(t, f.call(w, m.call(arguments)));
-        }, k = v(0, g.length - w.length), E = [], O = 0; O < k; O++) {
-          h.call(E, "$" + O);
-        }
+        }, k = v(0, g.length - w.length), E = [], O = 0; O < k; O++) h.call(E, "$" + O);
 
         return y = Function("binder", "return function (" + E.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (a.prototype = g.prototype, y.prototype = new a(), a.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {});
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {});
   var n = 32,
       t = 1;
   return e.prototype.handleKeyDown = function (e) {
@@ -2051,9 +1980,7 @@ var gtm_id = "GTM-MG7HG5W",
   t.prototype.init = function () {
     this.$module.hideCookieMessage = this.hideCookieMessage.bind(this), this.$module.showConfirmationMessage = this.showConfirmationMessage.bind(this), this.$module.setCookieConsent = this.setCookieConsent.bind(this), this.$module.rejectCookieConsent = this.rejectCookieConsent.bind(this), this.setupCookieMessage();
   }, t.prototype.setupCookieMessage = function () {
-    if (this.$hideLinks = this.$module.querySelectorAll("button[data-hide-cookie-banner]"), this.$hideLinks && this.$hideLinks.length) for (var e = 0; e < this.$hideLinks.length; e++) {
-      this.$hideLinks[e].addEventListener("click", this.$module.hideCookieMessage);
-    }
+    if (this.$hideLinks = this.$module.querySelectorAll("button[data-hide-cookie-banner]"), this.$hideLinks && this.$hideLinks.length) for (var e = 0; e < this.$hideLinks.length; e++) this.$hideLinks[e].addEventListener("click", this.$module.hideCookieMessage);
     this.$acceptCookiesButton = this.$module.querySelector("button[data-accept-cookies]"), this.$acceptCookiesButton && (this.$acceptCookiesButton.style.display = "block", this.$acceptCookiesButton.addEventListener("click", this.$module.setCookieConsent)), this.$rejectCookiesButton = this.$module.querySelector("button[data-reject-cookies]"), this.$rejectCookiesButton && (this.$rejectCookiesButton.style.display = "block", this.$rejectCookiesButton.addEventListener("click", this.$module.rejectCookieConsent)), this.showCookieMessage();
   }, t.prototype.showCookieMessage = function () {
     this.isInCookiesPage() || this.isInIframe() ? this.$module.style.display = "none" : this.$module && "true" !== window.GOVUK.cookie("cookies_preferences_set") ? (this.$module.style.display = "block", window.GOVUK.cookie("cookies_policy") || window.GOVUK.setDefaultConsentCookie(), window.GOVUK.deleteUnconsentedCookies()) : this.$module.style.display = "none";
@@ -2084,30 +2011,24 @@ var gtm_id = "GTM-MG7HG5W",
   t.prototype.init = function () {
     this.setInitialAriaAttributes(), this.setHiddenValues(), this.prompt.hidden = !1;
 
-    for (var e = 0; e < this.promptQuestions.length; e++) {
-      this.promptQuestions[e].hidden = !1;
-    }
+    for (var e = 0; e < this.promptQuestions.length; e++) this.promptQuestions[e].hidden = !1;
 
     this.surveyForm.hidden = !0;
 
-    for (var t = 0; t < this.toggleForms.length; t++) {
-      this.toggleForms[t].addEventListener("click", function (e) {
-        e.preventDefault();
-        var t = e.target.closest("button");
-        this.toggleForm(t.getAttribute("aria-controls")), this.trackEvent(this.getTrackEventParams(t)), this.updateAriaAttributes(t);
-      }.bind(this));
-    }
+    for (var t = 0; t < this.toggleForms.length; t++) this.toggleForms[t].addEventListener("click", function (e) {
+      e.preventDefault();
+      var t = e.target.closest("button");
+      this.toggleForm(t.getAttribute("aria-controls")), this.trackEvent(this.getTrackEventParams(t)), this.updateAriaAttributes(t);
+    }.bind(this));
 
-    for (var n = 0; n < this.closeForms.length; n++) {
-      this.closeForms[n].hidden = !1, this.closeForms[n].addEventListener("click", function (e) {
-        e.preventDefault();
-        var t = e.target,
-            n = t.getAttribute("aria-controls");
-        this.toggleForm(n), this.trackEvent(this.getTrackEventParams(t)), this.setInitialAriaAttributes(), this.revealInitialPrompt();
-        var o = ".js-" + n;
-        this.$module.querySelector(o).focus();
-      }.bind(this));
-    }
+    for (var n = 0; n < this.closeForms.length; n++) this.closeForms[n].hidden = !1, this.closeForms[n].addEventListener("click", function (e) {
+      e.preventDefault();
+      var t = e.target,
+          n = t.getAttribute("aria-controls");
+      this.toggleForm(n), this.trackEvent(this.getTrackEventParams(t)), this.setInitialAriaAttributes(), this.revealInitialPrompt();
+      var o = ".js-" + n;
+      this.$module.querySelector(o).focus();
+    }.bind(this));
 
     if (this.pageIsUsefulButton.addEventListener("click", function (e) {
       e.preventDefault(), this.trackEvent(this.getTrackEventParams(this.pageIsUsefulButton)), this.showFormSuccess(), this.revealInitialPrompt();
@@ -2119,18 +2040,16 @@ var gtm_id = "GTM-MG7HG5W",
       this.timerInterval = setInterval(function () {
         this.timer = this.timer + 1, this.timerHoneyPot.setAttribute("value", this.timer);
       }.bind(this), 1e3);
-    }.bind(this)), "function" == typeof window.URLSearchParams) for (var o = 0; o < this.forms.length; o++) {
-      this.forms[o].addEventListener("submit", function (e) {
-        e.preventDefault();
-        var t = e.target,
-            n = new XMLHttpRequest(),
-            o = t.getAttribute("action"),
-            i = new FormData(t);
-        i = new URLSearchParams(i).toString(), this.done = function () {
-          200 === n.status ? (this.trackEvent(this.getTrackEventParams(t)), this.showFormSuccess(n.message), this.revealInitialPrompt(), this.setInitialAriaAttributes(), this.activeForm.hidden = !0, clearInterval(this.timerInterval)) : (this.showError(n), this.enableSubmitFormButton(t));
-        }.bind(this), n.addEventListener("loadend", this.done), n.open("POST", o, !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), this.disableSubmitFormButton(t), n.send(i);
-      }.bind(this));
-    }
+    }.bind(this)), "function" == typeof window.URLSearchParams) for (var o = 0; o < this.forms.length; o++) this.forms[o].addEventListener("submit", function (e) {
+      e.preventDefault();
+      var t = e.target,
+          n = new XMLHttpRequest(),
+          o = t.getAttribute("action"),
+          i = new FormData(t);
+      i = new URLSearchParams(i).toString(), this.done = function () {
+        200 === n.status ? (this.trackEvent(this.getTrackEventParams(t)), this.showFormSuccess(n.message), this.revealInitialPrompt(), this.setInitialAriaAttributes(), this.activeForm.hidden = !0, clearInterval(this.timerInterval)) : (this.showError(n), this.enableSubmitFormButton(t));
+      }.bind(this), n.addEventListener("loadend", this.done), n.open("POST", o, !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), this.disableSubmitFormButton(t), n.send(i);
+    }.bind(this));
   }, t.prototype.disableSubmitFormButton = function (e) {
     e.querySelector('[type="submit"]').setAttribute("disabled", !0);
   }, t.prototype.enableSubmitFormButton = function (e) {
@@ -2168,21 +2087,19 @@ var gtm_id = "GTM-MG7HG5W",
     window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && window.GOVUK.analytics.trackEvent(e.category, e.action);
   }, t.prototype.showError = function (e) {
     var t = ["<h2>Sorry, we\u2019re unable to receive your message right now.</h2>", " <p>If the problem persists, we have other ways for you to provide", ' feedback on the <a href="/contact/govuk">contact page</a>.</p>'].join("");
-    e = "response" in e ? "object" == _typeof(e.response) && null !== e.response ? "email survey sign up failure" === e.response.message ? t : e.response.message : t : 422 === e.status && this.activeForm.invalidInfoError || t;
+    e = "response" in e ? "object" == typeof e.response && null !== e.response ? "email survey sign up failure" === e.response.message ? t : e.response.message : t : 422 === e.status && this.activeForm.invalidInfoError || t;
     var n = this.activeForm.querySelector(".js-errors");
     n.innerHTML = e, n.hidden = !1, n.focus();
   }, t.prototype.showFormSuccess = function () {
-    for (var e = 0; e < this.promptQuestions.length; e++) {
-      this.promptQuestions[e].hidden = !0;
-    }
+    for (var e = 0; e < this.promptQuestions.length; e++) this.promptQuestions[e].hidden = !0;
 
     this.promptSuccessMessage.hidden = !1, this.promptSuccessMessage.focus();
   }, t.prototype.revealInitialPrompt = function () {
     this.prompt.hidden = !1, this.prompt.focus();
   }, e.Feedback = t;
 }(window.GOVUK.Modules), function (e, t) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Header", t) : (e.GOVUKFrontend = e.GOVUKFrontend || {}, e.GOVUKFrontend.Header = t());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("GOVUKFrontend.Header", t) : (e.GOVUKFrontend = e.GOVUKFrontend || {}, e.GOVUKFrontend.Header = t());
+}(this, function () {
   "use strict";
 
   function e(e) {
@@ -2193,9 +2110,9 @@ var gtm_id = "GTM-MG7HG5W",
     "Window" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && function (e) {
       e.constructor ? e.Window = e.constructor : (e.Window = e.constructor = new Function("return function Window() {}")()).prototype = this;
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function e() {
         return r-- || clearTimeout(t), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), t && document.body.prototype && clearTimeout(t), !!document.body.prototype);
@@ -2209,19 +2126,15 @@ var gtm_id = "GTM-MG7HG5W",
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             s = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(e, t) {
+            l = function (e, t) {
           var n,
               o,
               i,
               r = e.childNodes || [],
               a = -1;
-          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) {
-            o = c[n], e[n] = o;
-          }
+          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) o = c[n], e[n] = o;
 
-          for (; i = t && r[++a];) {
-            l(i, t);
-          }
+          for (; i = t && r[++a];) l(i, t);
 
           return e;
         },
@@ -2230,9 +2143,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = 100;
 
         s.attachEvent("onpropertychange", function (e) {
-          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) {
-            1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
-          }
+          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) 1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
 
           c[n] = i;
         }), s.constructor = Element, s.hasAttribute || (s.hasAttribute = function a(e) {
@@ -2243,7 +2154,7 @@ var gtm_id = "GTM-MG7HG5W",
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var s, c, l, u;
     "defineProperty" in Object && function () {
       try {
@@ -2256,13 +2167,12 @@ var gtm_id = "GTM-MG7HG5W",
       }
     }() || (s = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", u = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function d(e, t, n) {
       if (s && (e === window || e === document || e === Element.prototype || e instanceof Element)) return s(e, t, n);
-      if (null === e || !(e instanceof Object || "object" == _typeof(e))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === e || !(e instanceof Object || "object" == typeof e)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(t),
           i = "value" in n || "writable" in n,
-          r = "get" in n && _typeof(n.get),
-          a = "set" in n && _typeof(n.set);
+          r = "get" in n && typeof n.get,
+          a = "set" in n && typeof n.set;
 
       if (r) {
         if ("function" !== r) throw new TypeError("Getter must be a function");
@@ -2282,7 +2192,7 @@ var gtm_id = "GTM-MG7HG5W",
 
       return "value" in n && (e[o] = n.value), e;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (l) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (l) {
     (function (e) {
       if (!("Event" in e)) return !1;
       if ("function" == typeof e.Event) return !0;
@@ -2294,9 +2204,7 @@ var gtm_id = "GTM-MG7HG5W",
       }
     })(this) || function () {
       function u(e, t) {
-        for (var n = -1, o = e.length; ++n < o;) {
-          if (n in e && e[n] === t) return n;
-        }
+        for (var n = -1, o = e.length; ++n < o;) if (n in e && e[n] === t) return n;
 
         return -1;
       }
@@ -2356,9 +2264,7 @@ var gtm_id = "GTM-MG7HG5W",
               e.cancelBubble = !0;
             }, e.stopImmediatePropagation = function c() {
               e.cancelBubble = !0, e.cancelImmediate = !0;
-            }, e.currentTarget = l, e.relatedTarget = e.fromElement || null, e.target = e.target || e.srcElement || l, e.timeStamp = new Date().getTime(), e.clientX && (e.pageX = e.clientX + document.documentElement.scrollLeft, e.pageY = e.clientY + document.documentElement.scrollTop); ++i < r && !e.cancelImmediate;) {
-              i in o && -1 !== u(n, t = o[i]) && "function" == typeof t && t.call(l, e);
-            }
+            }, e.currentTarget = l, e.relatedTarget = e.fromElement || null, e.target = e.target || e.srcElement || l, e.timeStamp = new Date().getTime(), e.clientX && (e.pageX = e.clientX + document.documentElement.scrollLeft, e.pageY = e.clientY + document.documentElement.scrollTop); ++i < r && !e.cancelImmediate;) i in o && -1 !== u(n, t = o[i]) && "function" == typeof t && t.call(l, e);
           }, l._events[n].list = [], l.attachEvent && l.attachEvent("on" + n, l._events[n])), l._events[n].list.push(o);
         }, window.removeEventListener = Window.prototype.removeEventListener = Document.prototype.removeEventListener = Element.prototype.removeEventListener = function s(e, t) {
           var n,
@@ -2376,7 +2282,7 @@ var gtm_id = "GTM-MG7HG5W",
             if (!e.bubbles) {
               e.cancelBubble = !0;
 
-              var o = function o(e) {
+              var o = function (e) {
                 e.cancelBubble = !0, (t || window).detachEvent("on" + n, o);
               };
 
@@ -2385,9 +2291,7 @@ var gtm_id = "GTM-MG7HG5W",
 
             this.fireEvent("on" + n, e);
           } catch (i) {
-            for (e.target = t; "_events" in (e.currentTarget = t) && "function" == typeof t._events[n] && t._events[n].call(t, e), "function" == typeof t["on" + n] && t["on" + n].call(t, e), (t = 9 === t.nodeType ? t.parentWindow : t.parentNode) && !e.cancelBubble;) {
-              ;
-            }
+            for (e.target = t; "_events" in (e.currentTarget = t) && "function" == typeof t._events[n] && t._events[n].call(t, e), "function" == typeof t["on" + n] && t["on" + n].call(t, e), (t = 9 === t.nodeType ? t.parentWindow : t.parentNode) && !e.cancelBubble;);
           }
 
           return !0;
@@ -2398,15 +2302,15 @@ var gtm_id = "GTM-MG7HG5W",
         }));
       }
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (p) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (p) {
     var e, t, n;
     "DOMTokenList" in this && (!("classList" in (e = document.createElement("x"))) || !e.classList.toggle("x", !1) && !e.className) || ("DOMTokenList" in (t = this) && t.DOMTokenList && (!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg") || document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList) || (t.DOMTokenList = function () {
       var i = !0,
-          n = function n(e, t, _n, o) {
+          n = function (e, t, n, o) {
         Object.defineProperty ? Object.defineProperty(e, t, {
           configurable: !1 === i || !!o,
-          get: _n
-        }) : e.__defineGetter__(t, _n);
+          get: n
+        }) : e.__defineGetter__(t, n);
       };
 
       try {
@@ -2421,28 +2325,22 @@ var gtm_id = "GTM-MG7HG5W",
             c = {},
             l = 0,
             e = 0,
-            t = function t(e) {
+            t = function (e) {
           n(a, e, function () {
             return d(), s[e];
           }, !1);
         },
-            u = function u() {
-          if (e <= l) for (; e < l; ++e) {
-            t(e);
-          }
+            u = function () {
+          if (e <= l) for (; e < l; ++e) t(e);
         },
-            d = function d() {
+            d = function () {
           var e,
               t,
               n = arguments,
               o = /\s+/;
-          if (n.length) for (t = 0; t < n.length; ++t) {
-            if (o.test(n[t])) throw (e = new SyntaxError('String "' + n[t] + '" contains an invalid character')).code = 5, e.name = "InvalidCharacterError", e;
-          }
+          if (n.length) for (t = 0; t < n.length; ++t) if (o.test(n[t])) throw (e = new SyntaxError('String "' + n[t] + '" contains an invalid character')).code = 5, e.name = "InvalidCharacterError", e;
 
-          for ("" === (s = "object" == _typeof(i[r]) ? ("" + i[r].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[r]).replace(/^\s+|\s+$/g, "").split(o))[0] && (s = []), c = {}, t = 0; t < s.length; ++t) {
-            c[s[t]] = !0;
-          }
+          for ("" === (s = "object" == typeof i[r] ? ("" + i[r].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[r]).replace(/^\s+|\s+$/g, "").split(o))[0] && (s = []), c = {}, t = 0; t < s.length; ++t) c[s[t]] = !0;
 
           l = s.length, u();
         };
@@ -2458,23 +2356,17 @@ var gtm_id = "GTM-MG7HG5W",
         }, a.add = function () {
           d.apply(a, e = arguments);
 
-          for (var e, t, n = 0, o = e.length; n < o; ++n) {
-            t = e[n], c[t] || (s.push(t), c[t] = !0);
-          }
+          for (var e, t, n = 0, o = e.length; n < o; ++n) t = e[n], c[t] || (s.push(t), c[t] = !0);
 
-          l !== s.length && (l = s.length >>> 0, "object" == _typeof(i[r]) ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u());
+          l !== s.length && (l = s.length >>> 0, "object" == typeof i[r] ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u());
         }, a.remove = function () {
           d.apply(a, e = arguments);
 
-          for (var e, t = {}, n = 0, o = []; n < e.length; ++n) {
-            t[e[n]] = !0, delete c[e[n]];
-          }
+          for (var e, t = {}, n = 0, o = []; n < e.length; ++n) t[e[n]] = !0, delete c[e[n]];
 
-          for (n = 0; n < s.length; ++n) {
-            t[s[n]] || o.push(s[n]);
-          }
+          for (n = 0; n < s.length; ++n) t[s[n]] || o.push(s[n]);
 
-          l = (s = o).length >>> 0, "object" == _typeof(i[r]) ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u();
+          l = (s = o).length >>> 0, "object" == typeof i[r] ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u();
         }, a.toggle = function (e, t) {
           return d.apply(a, [e]), p !== t ? t ? (a.add(e), !0) : (a.remove(e), !1) : c[e] ? (a.remove(e), !1) : (a.add(e), !0);
         }, a;
@@ -2491,9 +2383,7 @@ var gtm_id = "GTM-MG7HG5W",
         var o = e.classList.constructor.prototype.add;
 
         e.classList.constructor.prototype.add = function () {
-          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) {
-            o.call(this, e[n]);
-          }
+          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) o.call(this, e[n]);
         };
       }
     }(), function () {
@@ -2503,17 +2393,15 @@ var gtm_id = "GTM-MG7HG5W",
         var o = e.classList.constructor.prototype.remove;
 
         e.classList.constructor.prototype.remove = function () {
-          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) {
-            o.call(this, e[n]);
-          }
+          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) o.call(this, e[n]);
         };
       }
     }());
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var e;
     "document" in this && "classList" in document.documentElement && "Element" in this && "classList" in Element.prototype && ((e = document.createElement("span")).classList.add("a", "b"), e.classList.contains("b")) || function (e) {
       var u = !0,
-          d = function d(e, t, n, o) {
+          d = function (e, t, n, o) {
         Object.defineProperty ? Object.defineProperty(e, t, {
           configurable: !1 === u || !!o,
           get: n
@@ -2526,7 +2414,7 @@ var gtm_id = "GTM-MG7HG5W",
         u = !1;
       }
 
-      var p = function p(e, c, l) {
+      var p = function (e, c, l) {
         d(e.prototype, c, function () {
           var e,
               t = this,
@@ -2534,11 +2422,9 @@ var gtm_id = "GTM-MG7HG5W",
           if (t[n]) return e;
 
           if (!(t[n] = !0) === u) {
-            for (var o, i = p.mirror || document.createElement("div"), r = i.childNodes, a = r.length, s = 0; s < a; ++s) {
-              if (r[s]._R === t) {
-                o = r[s];
-                break;
-              }
+            for (var o, i = p.mirror || document.createElement("div"), r = i.childNodes, a = r.length, s = 0; s < a; ++s) if (r[s]._R === t) {
+              o = r[s];
+              break;
             }
 
             o || (o = i.appendChild(document.createElement("div"))), e = DOMTokenList.call(o, t, l);
@@ -2552,7 +2438,7 @@ var gtm_id = "GTM-MG7HG5W",
 
       p(e.Element, "classList", "className"), p(e.HTMLElement, "classList", "className"), p(e.HTMLLinkElement, "relList", "rel"), p(e.HTMLAnchorElement, "relList", "rel"), p(e.HTMLAreaElement, "relList", "rel");
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function G(t) {
         var n,
@@ -2562,7 +2448,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = e.prototype,
             a = function a() {},
             s = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             u = function u(e) {
           try {
@@ -2588,21 +2474,19 @@ var gtm_id = "GTM-MG7HG5W",
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, w = m.call(arguments, 1), b = function b() {
+        for (var y, w = m.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var e = g.apply(this, f.call(w, m.call(arguments)));
             return o(e) === e ? e : this;
           }
 
           return g.apply(t, f.call(w, m.call(arguments)));
-        }, k = v(0, g.length - w.length), E = [], O = 0; O < k; O++) {
-          h.call(E, "$" + O);
-        }
+        }, k = v(0, g.length - w.length), E = [], O = 0; O < k; O++) h.call(E, "$" + O);
 
         return y = Function("binder", "return function (" + E.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (a.prototype = g.prototype, y.prototype = new a(), a.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), e.prototype.init = function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), e.prototype.init = function () {
     this.$module && this.$menuButton && this.$menu && ("matchMedia" in window ? (this.mql = window.matchMedia("(min-width: 48.0625em)"), "addEventListener" in this.mql ? this.mql.addEventListener("change", this.syncState.bind(this)) : this.mql.addListener(this.syncState.bind(this)), this.syncState(), this.$menuButton.addEventListener("click", this.handleMenuButtonClick.bind(this))) : this.$menuButton.setAttribute("hidden", ""));
   }, e.prototype.syncState = function () {
     this.mql.matches ? (this.$menu.removeAttribute("hidden"), this.$menuButton.setAttribute("hidden", "")) : (this.$menuButton.removeAttribute("hidden"), this.$menuButton.setAttribute("aria-expanded", this.menuIsOpen), this.menuIsOpen ? this.$menu.removeAttribute("hidden") : this.$menu.setAttribute("hidden", ""));
@@ -2610,7 +2494,7 @@ var gtm_id = "GTM-MG7HG5W",
     this.menuIsOpen = !this.menuIsOpen, this.syncState();
   }, e;
 }), window.GOVUK = window.GOVUK || {}, window.GOVUK.Modules = window.GOVUK.Modules || {}, window.GOVUK.Modules.GovukHeader = window.GOVUKFrontend.Header, function (e, t) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? t() : "function" == typeof define && define.amd ? define("GOVUKFrontend", t) : t();
+  "object" == typeof exports && "undefined" != typeof module ? t() : "function" == typeof define && define.amd ? define("GOVUKFrontend", t) : t();
 }(0, function () {
   "use strict";
 
@@ -2627,13 +2511,12 @@ var gtm_id = "GTM-MG7HG5W",
       }
     }() || (s = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", u = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function d(e, t, n) {
       if (s && (e === window || e === document || e === Element.prototype || e instanceof Element)) return s(e, t, n);
-      if (null === e || !(e instanceof Object || "object" == _typeof(e))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === e || !(e instanceof Object || "object" == typeof e)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(t),
           i = "value" in n || "writable" in n,
-          r = "get" in n && _typeof(n.get),
-          a = "set" in n && _typeof(n.set);
+          r = "get" in n && typeof n.get,
+          a = "set" in n && typeof n.set;
 
       if (r) {
         if ("function" !== r) throw new TypeError("Getter must be a function");
@@ -2653,15 +2536,15 @@ var gtm_id = "GTM-MG7HG5W",
 
       return "value" in n && (e[o] = n.value), e;
     });
-  }).call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (p) {
+  }).call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (p) {
     var e, t, n;
     "DOMTokenList" in this && (!("classList" in (e = document.createElement("x"))) || !e.classList.toggle("x", !1) && !e.className) || ("DOMTokenList" in (t = this) && t.DOMTokenList && (!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg") || document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList) || (t.DOMTokenList = function () {
       var i = !0,
-          n = function n(e, t, _n2, o) {
+          n = function (e, t, n, o) {
         Object.defineProperty ? Object.defineProperty(e, t, {
           configurable: !1 === i || !!o,
-          get: _n2
-        }) : e.__defineGetter__(t, _n2);
+          get: n
+        }) : e.__defineGetter__(t, n);
       };
 
       try {
@@ -2676,28 +2559,22 @@ var gtm_id = "GTM-MG7HG5W",
             c = {},
             l = 0,
             e = 0,
-            t = function t(e) {
+            t = function (e) {
           n(a, e, function () {
             return d(), s[e];
           }, !1);
         },
-            u = function u() {
-          if (e <= l) for (; e < l; ++e) {
-            t(e);
-          }
+            u = function () {
+          if (e <= l) for (; e < l; ++e) t(e);
         },
-            d = function d() {
+            d = function () {
           var e,
               t,
               n = arguments,
               o = /\s+/;
-          if (n.length) for (t = 0; t < n.length; ++t) {
-            if (o.test(n[t])) throw (e = new SyntaxError('String "' + n[t] + '" contains an invalid character')).code = 5, e.name = "InvalidCharacterError", e;
-          }
+          if (n.length) for (t = 0; t < n.length; ++t) if (o.test(n[t])) throw (e = new SyntaxError('String "' + n[t] + '" contains an invalid character')).code = 5, e.name = "InvalidCharacterError", e;
 
-          for ("" === (s = "object" == _typeof(i[r]) ? ("" + i[r].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[r]).replace(/^\s+|\s+$/g, "").split(o))[0] && (s = []), c = {}, t = 0; t < s.length; ++t) {
-            c[s[t]] = !0;
-          }
+          for ("" === (s = "object" == typeof i[r] ? ("" + i[r].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[r]).replace(/^\s+|\s+$/g, "").split(o))[0] && (s = []), c = {}, t = 0; t < s.length; ++t) c[s[t]] = !0;
 
           l = s.length, u();
         };
@@ -2713,23 +2590,17 @@ var gtm_id = "GTM-MG7HG5W",
         }, a.add = function () {
           d.apply(a, e = arguments);
 
-          for (var e, t, n = 0, o = e.length; n < o; ++n) {
-            t = e[n], c[t] || (s.push(t), c[t] = !0);
-          }
+          for (var e, t, n = 0, o = e.length; n < o; ++n) t = e[n], c[t] || (s.push(t), c[t] = !0);
 
-          l !== s.length && (l = s.length >>> 0, "object" == _typeof(i[r]) ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u());
+          l !== s.length && (l = s.length >>> 0, "object" == typeof i[r] ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u());
         }, a.remove = function () {
           d.apply(a, e = arguments);
 
-          for (var e, t = {}, n = 0, o = []; n < e.length; ++n) {
-            t[e[n]] = !0, delete c[e[n]];
-          }
+          for (var e, t = {}, n = 0, o = []; n < e.length; ++n) t[e[n]] = !0, delete c[e[n]];
 
-          for (n = 0; n < s.length; ++n) {
-            t[s[n]] || o.push(s[n]);
-          }
+          for (n = 0; n < s.length; ++n) t[s[n]] || o.push(s[n]);
 
-          l = (s = o).length >>> 0, "object" == _typeof(i[r]) ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u();
+          l = (s = o).length >>> 0, "object" == typeof i[r] ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u();
         }, a.toggle = function (e, t) {
           return d.apply(a, [e]), p !== t ? t ? (a.add(e), !0) : (a.remove(e), !1) : c[e] ? (a.remove(e), !1) : (a.add(e), !0);
         }, a;
@@ -2746,9 +2617,7 @@ var gtm_id = "GTM-MG7HG5W",
         var o = e.classList.constructor.prototype.add;
 
         e.classList.constructor.prototype.add = function () {
-          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) {
-            o.call(this, e[n]);
-          }
+          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) o.call(this, e[n]);
         };
       }
     }(), function () {
@@ -2758,15 +2627,13 @@ var gtm_id = "GTM-MG7HG5W",
         var o = e.classList.constructor.prototype.remove;
 
         e.classList.constructor.prototype.remove = function () {
-          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) {
-            o.call(this, e[n]);
-          }
+          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) o.call(this, e[n]);
         };
       }
     }());
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function e() {
         return r-- || clearTimeout(t), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), t && document.body.prototype && clearTimeout(t), !!document.body.prototype);
@@ -2780,19 +2647,15 @@ var gtm_id = "GTM-MG7HG5W",
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             s = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(e, t) {
+            l = function (e, t) {
           var n,
               o,
               i,
               r = e.childNodes || [],
               a = -1;
-          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) {
-            o = c[n], e[n] = o;
-          }
+          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) o = c[n], e[n] = o;
 
-          for (; i = t && r[++a];) {
-            l(i, t);
-          }
+          for (; i = t && r[++a];) l(i, t);
 
           return e;
         },
@@ -2801,9 +2664,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = 100;
 
         s.attachEvent("onpropertychange", function (e) {
-          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) {
-            1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
-          }
+          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) 1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
 
           c[n] = i;
         }), s.constructor = Element, s.hasAttribute || (s.hasAttribute = function a(e) {
@@ -2814,11 +2675,11 @@ var gtm_id = "GTM-MG7HG5W",
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var e;
     "document" in this && "classList" in document.documentElement && "Element" in this && "classList" in Element.prototype && ((e = document.createElement("span")).classList.add("a", "b"), e.classList.contains("b")) || function (e) {
       var u = !0,
-          d = function d(e, t, n, o) {
+          d = function (e, t, n, o) {
         Object.defineProperty ? Object.defineProperty(e, t, {
           configurable: !1 === u || !!o,
           get: n
@@ -2831,7 +2692,7 @@ var gtm_id = "GTM-MG7HG5W",
         u = !1;
       }
 
-      var p = function p(e, c, l) {
+      var p = function (e, c, l) {
         d(e.prototype, c, function () {
           var e,
               t = this,
@@ -2839,11 +2700,9 @@ var gtm_id = "GTM-MG7HG5W",
           if (t[n]) return e;
 
           if (!(t[n] = !0) === u) {
-            for (var o, i = p.mirror || document.createElement("div"), r = i.childNodes, a = r.length, s = 0; s < a; ++s) {
-              if (r[s]._R === t) {
-                o = r[s];
-                break;
-              }
+            for (var o, i = p.mirror || document.createElement("div"), r = i.childNodes, a = r.length, s = 0; s < a; ++s) if (r[s]._R === t) {
+              o = r[s];
+              break;
             }
 
             o || (o = i.appendChild(document.createElement("div"))), e = DOMTokenList.call(o, t, l);
@@ -2857,7 +2716,7 @@ var gtm_id = "GTM-MG7HG5W",
 
       p(e.Element, "classList", "className"), p(e.HTMLElement, "classList", "className"), p(e.HTMLLinkElement, "relList", "rel"), p(e.HTMLAnchorElement, "relList", "rel"), p(e.HTMLAreaElement, "relList", "rel");
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {});
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {});
 }), window.GOVUK = window.GOVUK || {}, window.GOVUK.Modules = window.GOVUK.Modules || {}, function (e) {
   function t(e) {
     this.$module = e, this.$navigationToggle = this.$module.querySelector("#super-navigation-menu-toggle"), this.$navigationMenu = this.$module.querySelector("#super-navigation-menu"), this.$searchToggle = this.$module.querySelector("#super-search-menu-toggle"), this.$searchMenu = this.$module.querySelector("#super-search-menu"), this.$buttons = this.$module.querySelectorAll("button[aria-controls][data-toggle-mobile-group][data-toggle-desktop-group]"), this.hiddenButtons = this.$module.querySelectorAll("button[hidden]"), this.lastWindowSize = null;
@@ -2872,36 +2731,36 @@ var gtm_id = "GTM-MG7HG5W",
       show: "data-text-for-show"
     }
   },
-      n = function n(e, t) {
+      n = function (e, t) {
     var n = e.getAttribute(o.label[t]);
     n && e.setAttribute("aria-label", n);
   },
-      l = function l(e, t) {
+      l = function (e, t) {
     e.setAttribute("aria-expanded", !1), e.classList.remove("gem-c-layout-super-navigation-header__open-button"), t.setAttribute("hidden", "hidden"), n(e, "show");
   },
-      i = function i(e, t) {
+      i = function (e, t) {
     e.setAttribute("aria-expanded", !0), e.classList.add("gem-c-layout-super-navigation-header__open-button"), t.removeAttribute("hidden"), n(e, "hide");
   },
-      u = function u(e, t) {
+      u = function (e, t) {
     var n = "true" === e.getAttribute("aria-expanded"),
         o = e.getAttribute("data-tracking-key");
     n ? l(e, t) : i(e, t), window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && o && window.GOVUK.analytics.trackEvent("headerClicked", o + (n ? "Closed" : "Opened"), {
       label: "none"
     });
   },
-      d = function d(e, t) {
+      d = function (e, t) {
     return e.tagName.toLowerCase() === t.toLowerCase() ? e : d(e.parentNode, t);
   },
-      r = function r(e, t) {
+      r = function (e, t) {
     if (null === e) return null;
     if (1 === e.nodeType && e.tagName.toLowerCase() === t.toLowerCase()) return e;
     var n = e.previousElementSibling || e.previousSibling;
     return r(n, t);
   },
-      a = function a(e) {
+      a = function (e) {
     return 0 < e.querySelectorAll('button[aria-expanded="true"]').length;
   },
-      s = function s() {
+      s = function () {
     return document.documentElement.clientWidth >= o.breakpoint.desktop ? "desktop" : "mobile";
   };
 
@@ -2942,8 +2801,8 @@ var gtm_id = "GTM-MG7HG5W",
     }), this.$module.classList.add("js-module-initialised");
   }, e.SuperNavigationMegaMenu = t;
 }(window.GOVUK.Modules), function (e, t) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("GOVUKFrontend.SkipLink", t) : (e.GOVUKFrontend = e.GOVUKFrontend || {}, e.GOVUKFrontend.SkipLink = t());
-}(void 0, function () {
+  "object" == typeof exports && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("GOVUKFrontend.SkipLink", t) : (e.GOVUKFrontend = e.GOVUKFrontend || {}, e.GOVUKFrontend.SkipLink = t());
+}(this, function () {
   "use strict";
 
   function e(e) {
@@ -2963,13 +2822,12 @@ var gtm_id = "GTM-MG7HG5W",
       }
     }() || (s = Object.defineProperty, c = Object.prototype.hasOwnProperty("__defineGetter__"), l = "Getters & setters cannot be defined on this javascript engine", u = "A property cannot both have accessors and be writable or have a value", Object.defineProperty = function d(e, t, n) {
       if (s && (e === window || e === document || e === Element.prototype || e instanceof Element)) return s(e, t, n);
-      if (null === e || !(e instanceof Object || "object" == _typeof(e))) throw new TypeError("Object.defineProperty called on non-object");
+      if (null === e || !(e instanceof Object || "object" == typeof e)) throw new TypeError("Object.defineProperty called on non-object");
       if (!(n instanceof Object)) throw new TypeError("Property description must be an object");
-
       var o = String(t),
           i = "value" in n || "writable" in n,
-          r = "get" in n && _typeof(n.get),
-          a = "set" in n && _typeof(n.set);
+          r = "get" in n && typeof n.get,
+          a = "set" in n && typeof n.set;
 
       if (r) {
         if ("function" !== r) throw new TypeError("Getter must be a function");
@@ -2989,7 +2847,7 @@ var gtm_id = "GTM-MG7HG5W",
 
       return "value" in n && (e[o] = n.value), e;
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "bind" in Function.prototype || Object.defineProperty(Function.prototype, "bind", {
       value: function G(t) {
         var n,
@@ -2999,7 +2857,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = e.prototype,
             a = function a() {},
             s = i.toString,
-            c = "function" == typeof Symbol && "symbol" == _typeof(Symbol.toStringTag),
+            c = "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag,
             l = Function.prototype.toString,
             u = function u(e) {
           try {
@@ -3025,29 +2883,27 @@ var gtm_id = "GTM-MG7HG5W",
             g = this;
         if (!n(g)) throw new TypeError("Function.prototype.bind called on incompatible " + g);
 
-        for (var y, w = m.call(arguments, 1), b = function b() {
+        for (var y, w = m.call(arguments, 1), b = function () {
           if (this instanceof y) {
             var e = g.apply(this, f.call(w, m.call(arguments)));
             return o(e) === e ? e : this;
           }
 
           return g.apply(t, f.call(w, m.call(arguments)));
-        }, k = v(0, g.length - w.length), E = [], O = 0; O < k; O++) {
-          h.call(E, "$" + O);
-        }
+        }, k = v(0, g.length - w.length), E = [], O = 0; O < k; O++) h.call(E, "$" + O);
 
         return y = Function("binder", "return function (" + E.join(",") + "){ return binder.apply(this, arguments); }")(b), g.prototype && (a.prototype = g.prototype, y.prototype = new a(), a.prototype = null), y;
       }
     });
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (p) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (p) {
     var e, t, n;
     "DOMTokenList" in this && (!("classList" in (e = document.createElement("x"))) || !e.classList.toggle("x", !1) && !e.className) || ("DOMTokenList" in (t = this) && t.DOMTokenList && (!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg") || document.createElementNS("http://www.w3.org/2000/svg", "svg").classList instanceof DOMTokenList) || (t.DOMTokenList = function () {
       var i = !0,
-          n = function n(e, t, _n3, o) {
+          n = function (e, t, n, o) {
         Object.defineProperty ? Object.defineProperty(e, t, {
           configurable: !1 === i || !!o,
-          get: _n3
-        }) : e.__defineGetter__(t, _n3);
+          get: n
+        }) : e.__defineGetter__(t, n);
       };
 
       try {
@@ -3062,28 +2918,22 @@ var gtm_id = "GTM-MG7HG5W",
             c = {},
             l = 0,
             e = 0,
-            t = function t(e) {
+            t = function (e) {
           n(a, e, function () {
             return d(), s[e];
           }, !1);
         },
-            u = function u() {
-          if (e <= l) for (; e < l; ++e) {
-            t(e);
-          }
+            u = function () {
+          if (e <= l) for (; e < l; ++e) t(e);
         },
-            d = function d() {
+            d = function () {
           var e,
               t,
               n = arguments,
               o = /\s+/;
-          if (n.length) for (t = 0; t < n.length; ++t) {
-            if (o.test(n[t])) throw (e = new SyntaxError('String "' + n[t] + '" contains an invalid character')).code = 5, e.name = "InvalidCharacterError", e;
-          }
+          if (n.length) for (t = 0; t < n.length; ++t) if (o.test(n[t])) throw (e = new SyntaxError('String "' + n[t] + '" contains an invalid character')).code = 5, e.name = "InvalidCharacterError", e;
 
-          for ("" === (s = "object" == _typeof(i[r]) ? ("" + i[r].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[r]).replace(/^\s+|\s+$/g, "").split(o))[0] && (s = []), c = {}, t = 0; t < s.length; ++t) {
-            c[s[t]] = !0;
-          }
+          for ("" === (s = "object" == typeof i[r] ? ("" + i[r].baseVal).replace(/^\s+|\s+$/g, "").split(o) : ("" + i[r]).replace(/^\s+|\s+$/g, "").split(o))[0] && (s = []), c = {}, t = 0; t < s.length; ++t) c[s[t]] = !0;
 
           l = s.length, u();
         };
@@ -3099,23 +2949,17 @@ var gtm_id = "GTM-MG7HG5W",
         }, a.add = function () {
           d.apply(a, e = arguments);
 
-          for (var e, t, n = 0, o = e.length; n < o; ++n) {
-            t = e[n], c[t] || (s.push(t), c[t] = !0);
-          }
+          for (var e, t, n = 0, o = e.length; n < o; ++n) t = e[n], c[t] || (s.push(t), c[t] = !0);
 
-          l !== s.length && (l = s.length >>> 0, "object" == _typeof(i[r]) ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u());
+          l !== s.length && (l = s.length >>> 0, "object" == typeof i[r] ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u());
         }, a.remove = function () {
           d.apply(a, e = arguments);
 
-          for (var e, t = {}, n = 0, o = []; n < e.length; ++n) {
-            t[e[n]] = !0, delete c[e[n]];
-          }
+          for (var e, t = {}, n = 0, o = []; n < e.length; ++n) t[e[n]] = !0, delete c[e[n]];
 
-          for (n = 0; n < s.length; ++n) {
-            t[s[n]] || o.push(s[n]);
-          }
+          for (n = 0; n < s.length; ++n) t[s[n]] || o.push(s[n]);
 
-          l = (s = o).length >>> 0, "object" == _typeof(i[r]) ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u();
+          l = (s = o).length >>> 0, "object" == typeof i[r] ? i[r].baseVal = s.join(" ") : i[r] = s.join(" "), u();
         }, a.toggle = function (e, t) {
           return d.apply(a, [e]), p !== t ? t ? (a.add(e), !0) : (a.remove(e), !1) : c[e] ? (a.remove(e), !1) : (a.add(e), !0);
         }, a;
@@ -3132,9 +2976,7 @@ var gtm_id = "GTM-MG7HG5W",
         var o = e.classList.constructor.prototype.add;
 
         e.classList.constructor.prototype.add = function () {
-          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) {
-            o.call(this, e[n]);
-          }
+          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) o.call(this, e[n]);
         };
       }
     }(), function () {
@@ -3144,15 +2986,13 @@ var gtm_id = "GTM-MG7HG5W",
         var o = e.classList.constructor.prototype.remove;
 
         e.classList.constructor.prototype.remove = function () {
-          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) {
-            o.call(this, e[n]);
-          }
+          for (var e = arguments, t = arguments.length, n = 0; n < t; n++) o.call(this, e[n]);
         };
       }
     }());
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Document" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && (this.HTMLDocument ? this.Document = this.HTMLDocument : (this.Document = this.HTMLDocument = document.constructor = new Function("return function Document() {}")(), this.Document.prototype = document));
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Element" in this && "HTMLElement" in this || function () {
       function e() {
         return r-- || clearTimeout(t), !(!document.body || document.body.prototype || !/(complete|interactive)/.test(document.readyState)) && (l(document, !0), t && document.body.prototype && clearTimeout(t), !!document.body.prototype);
@@ -3166,19 +3006,15 @@ var gtm_id = "GTM-MG7HG5W",
             o = n.appendChild(document.createElement("iframe")).contentWindow.document,
             s = Element.prototype = o.appendChild(o.createElement("*")),
             c = {},
-            l = function l(e, t) {
+            l = function (e, t) {
           var n,
               o,
               i,
               r = e.childNodes || [],
               a = -1;
-          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) {
-            o = c[n], e[n] = o;
-          }
+          if (1 === e.nodeType && e.constructor !== Element) for (n in e.constructor = Element, c) o = c[n], e[n] = o;
 
-          for (; i = t && r[++a];) {
-            l(i, t);
-          }
+          for (; i = t && r[++a];) l(i, t);
 
           return e;
         },
@@ -3187,9 +3023,7 @@ var gtm_id = "GTM-MG7HG5W",
             r = 100;
 
         s.attachEvent("onpropertychange", function (e) {
-          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) {
-            1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
-          }
+          for (var t, n = e.propertyName, o = !c.hasOwnProperty(n), i = s[n], r = c[n], a = -1; t = u[++a];) 1 === t.nodeType && (o || t[n] === r) && (t[n] = i);
 
           c[n] = i;
         }), s.constructor = Element, s.hasAttribute || (s.hasAttribute = function a(e) {
@@ -3200,11 +3034,11 @@ var gtm_id = "GTM-MG7HG5W",
         }, document.removeChild(n);
       } else window.HTMLElement = window.Element;
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     var e;
     "document" in this && "classList" in document.documentElement && "Element" in this && "classList" in Element.prototype && ((e = document.createElement("span")).classList.add("a", "b"), e.classList.contains("b")) || function (e) {
       var u = !0,
-          d = function d(e, t, n, o) {
+          d = function (e, t, n, o) {
         Object.defineProperty ? Object.defineProperty(e, t, {
           configurable: !1 === u || !!o,
           get: n
@@ -3217,7 +3051,7 @@ var gtm_id = "GTM-MG7HG5W",
         u = !1;
       }
 
-      var p = function p(e, c, l) {
+      var p = function (e, c, l) {
         d(e.prototype, c, function () {
           var e,
               t = this,
@@ -3225,11 +3059,9 @@ var gtm_id = "GTM-MG7HG5W",
           if (t[n]) return e;
 
           if (!(t[n] = !0) === u) {
-            for (var o, i = p.mirror || document.createElement("div"), r = i.childNodes, a = r.length, s = 0; s < a; ++s) {
-              if (r[s]._R === t) {
-                o = r[s];
-                break;
-              }
+            for (var o, i = p.mirror || document.createElement("div"), r = i.childNodes, a = r.length, s = 0; s < a; ++s) if (r[s]._R === t) {
+              o = r[s];
+              break;
             }
 
             o || (o = i.appendChild(document.createElement("div"))), e = DOMTokenList.call(o, t, l);
@@ -3243,11 +3075,11 @@ var gtm_id = "GTM-MG7HG5W",
 
       p(e.Element, "classList", "className"), p(e.HTMLElement, "classList", "className"), p(e.HTMLLinkElement, "relList", "rel"), p(e.HTMLAnchorElement, "relList", "rel"), p(e.HTMLAreaElement, "relList", "rel");
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function () {
     "Window" in this || "undefined" == typeof WorkerGlobalScope && "function" != typeof importScripts && function (e) {
       e.constructor ? e.Window = e.constructor : (e.Window = e.constructor = new Function("return function Window() {}")()).prototype = this;
     }(this);
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), function (l) {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), function (l) {
     (function (e) {
       if (!("Event" in e)) return !1;
       if ("function" == typeof e.Event) return !0;
@@ -3259,9 +3091,7 @@ var gtm_id = "GTM-MG7HG5W",
       }
     })(this) || function () {
       function u(e, t) {
-        for (var n = -1, o = e.length; ++n < o;) {
-          if (n in e && e[n] === t) return n;
-        }
+        for (var n = -1, o = e.length; ++n < o;) if (n in e && e[n] === t) return n;
 
         return -1;
       }
@@ -3321,9 +3151,7 @@ var gtm_id = "GTM-MG7HG5W",
               e.cancelBubble = !0;
             }, e.stopImmediatePropagation = function c() {
               e.cancelBubble = !0, e.cancelImmediate = !0;
-            }, e.currentTarget = l, e.relatedTarget = e.fromElement || null, e.target = e.target || e.srcElement || l, e.timeStamp = new Date().getTime(), e.clientX && (e.pageX = e.clientX + document.documentElement.scrollLeft, e.pageY = e.clientY + document.documentElement.scrollTop); ++i < r && !e.cancelImmediate;) {
-              i in o && -1 !== u(n, t = o[i]) && "function" == typeof t && t.call(l, e);
-            }
+            }, e.currentTarget = l, e.relatedTarget = e.fromElement || null, e.target = e.target || e.srcElement || l, e.timeStamp = new Date().getTime(), e.clientX && (e.pageX = e.clientX + document.documentElement.scrollLeft, e.pageY = e.clientY + document.documentElement.scrollTop); ++i < r && !e.cancelImmediate;) i in o && -1 !== u(n, t = o[i]) && "function" == typeof t && t.call(l, e);
           }, l._events[n].list = [], l.attachEvent && l.attachEvent("on" + n, l._events[n])), l._events[n].list.push(o);
         }, window.removeEventListener = Window.prototype.removeEventListener = Document.prototype.removeEventListener = Element.prototype.removeEventListener = function s(e, t) {
           var n,
@@ -3341,7 +3169,7 @@ var gtm_id = "GTM-MG7HG5W",
             if (!e.bubbles) {
               e.cancelBubble = !0;
 
-              var o = function o(e) {
+              var o = function (e) {
                 e.cancelBubble = !0, (t || window).detachEvent("on" + n, o);
               };
 
@@ -3350,9 +3178,7 @@ var gtm_id = "GTM-MG7HG5W",
 
             this.fireEvent("on" + n, e);
           } catch (i) {
-            for (e.target = t; "_events" in (e.currentTarget = t) && "function" == typeof t._events[n] && t._events[n].call(t, e), "function" == typeof t["on" + n] && t["on" + n].call(t, e), (t = 9 === t.nodeType ? t.parentWindow : t.parentNode) && !e.cancelBubble;) {
-              ;
-            }
+            for (e.target = t; "_events" in (e.currentTarget = t) && "function" == typeof t._events[n] && t._events[n].call(t, e), "function" == typeof t["on" + n] && t["on" + n].call(t, e), (t = 9 === t.nodeType ? t.parentWindow : t.parentNode) && !e.cancelBubble;);
           }
 
           return !0;
@@ -3363,7 +3189,7 @@ var gtm_id = "GTM-MG7HG5W",
         }));
       }
     }();
-  }.call("object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && window || "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self || "object" == (typeof global === "undefined" ? "undefined" : _typeof(global)) && global || {}), e.prototype.init = function () {
+  }.call("object" == typeof window && window || "object" == typeof self && self || "object" == typeof global && global || {}), e.prototype.init = function () {
     this.$module && (this.$linkedElement = this.getLinkedElement(), this.$linkedElement && this.$module.addEventListener("click", this.focusLinkedElement.bind(this)));
   }, e.prototype.getLinkedElement = function () {
     var e = this.getFragmentFromUrl();
@@ -3451,13 +3277,13 @@ var gtm_id = "GTM-MG7HG5W",
 var BANNER_VERSION = 8,
     GLOBAL_BAR_SEEN_COOKIE = "global_bar_seen",
     globalBarInit = {
-  getBannerVersion: function getBannerVersion() {
+  getBannerVersion: function () {
     return BANNER_VERSION;
   },
-  getLatestCookie: function getLatestCookie() {
+  getLatestCookie: function () {
     return window.GOVUK.cookie("cookies_policy") || window.GOVUK.setDefaultConsentCookie(), window.GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE);
   },
-  urlBlockList: function urlBlockList() {
+  urlBlockList: function () {
     var e = ["^/coronavirus/.*$", "^/brexit(.cy)?$", "^/transition-check/.*$", "^/eubusiness(\\..*)?$", "^/account/.*$"],
         t = document.querySelector(".js-call-to-action");
 
@@ -3468,7 +3294,7 @@ var BANNER_VERSION = 8,
 
     return new RegExp(e.join("|")).test(window.location.pathname);
   },
-  setBannerCookie: function setBannerCookie() {
+  setBannerCookie: function () {
     var e,
         t = window.GOVUK.getCookieCategory(GLOBAL_BAR_SEEN_COOKIE),
         n = GOVUK.getConsentCookie();
@@ -3482,10 +3308,10 @@ var BANNER_VERSION = 8,
       days: 84
     }));
   },
-  makeBannerVisible: function makeBannerVisible() {
+  makeBannerVisible: function () {
     document.documentElement.className = document.documentElement.className.concat(" show-global-bar");
   },
-  init: function init() {
+  init: function () {
     if (globalBarInit.urlBlockList()) null === globalBarInit.getLatestCookie() ? globalBarInit.setBannerCookie() : parseCookie(globalBarInit.getLatestCookie()).version !== globalBarInit.getBannerVersion() && globalBarInit.setBannerCookie();else if (null === globalBarInit.getLatestCookie()) globalBarInit.setBannerCookie(), globalBarInit.makeBannerVisible();else {
       if (parseCookie(globalBarInit.getLatestCookie()).version !== globalBarInit.getBannerVersion() && globalBarInit.setBannerCookie(), 999 === parseCookie(globalBarInit.getLatestCookie()).count) {
         var e = document.querySelector(".global-bar-additional");
@@ -3503,10 +3329,10 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
 
   window.GOVUK = window.GOVUK || {};
 
-  var e = function e(_e3, t) {
-    return "<a " + (t = t ? 'class="' + t + '"' : "") + ' href="{{surveyUrl}}" id="take-survey" target="_blank" rel="noopener noreferrer">' + _e3 + "</a>";
+  var e = function (e, t) {
+    return "<a " + (t = t ? 'class="' + t + '"' : "") + ' href="{{surveyUrl}}" id="take-survey" target="_blank" rel="noopener noreferrer">' + e + "</a>";
   },
-      t = function t(e) {
+      t = function (e) {
     return '<section id="user-satisfaction-survey" class="visible" aria-hidden="false">  <div class="survey-wrapper govuk-width-container">    <a class="govuk-link survey-close-button" href="#user-survey-cancel" aria-labelledby="survey-title user-survey-cancel" id="user-survey-cancel" role="button">Close</a>    <h2 class="survey-title" id="survey-title">{{title}}</h2>' + e + "  </div></section>";
   },
       o = t("<p>" + e("{{surveyCta}}", "govuk-link survey-primary-link") + ' <span class="postscript-cta">{{surveyCtaPostscript}}</span></p>'),
@@ -3521,7 +3347,7 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
       surveyType: "email"
     },
     smallSurveys: [],
-    init: function init() {
+    init: function () {
       if (u.canShowAnySurvey()) {
         var e = u.getActiveSurvey(u.defaultSurvey, u.smallSurveys);
 
@@ -3531,20 +3357,18 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
         }
       }
     },
-    canShowAnySurvey: function canShowAnySurvey() {
+    canShowAnySurvey: function () {
       var e = document.getElementById("user-satisfaction-survey-container");
       return !u.pathInBlocklist() && !u.otherNotificationVisible() && !u.userCompletedTransaction() && !!e;
     },
-    processTemplate: function processTemplate(e, t) {
-      for (var n in e) {
-        t = t.replace(new RegExp("{{" + n + "}}", "g"), e[n]);
-      }
+    processTemplate: function (e, t) {
+      for (var n in e) t = t.replace(new RegExp("{{" + n + "}}", "g"), e[n]);
 
       return t;
     },
-    getUrlSurveyTemplate: function getUrlSurveyTemplate() {
+    getUrlSurveyTemplate: function () {
       return {
-        render: function render(e) {
+        render: function (e) {
           var t = {
             title: "Tell us what you think of GOV.UK",
             surveyCta: "Take the 3 minute survey",
@@ -3556,9 +3380,9 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
         }
       };
     },
-    getEmailSurveyTemplate: function getEmailSurveyTemplate() {
+    getEmailSurveyTemplate: function () {
       return {
-        render: function render(e) {
+        render: function (e) {
           var t = {
             title: "Tell us what you think of GOV.UK",
             surveyCta: "Take a short survey to give us your feedback",
@@ -3578,23 +3402,23 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
         }
       };
     },
-    getActiveSurveys: function getActiveSurveys(e) {
+    getActiveSurveys: function (e) {
       return e.filter(function (e) {
         return u.currentTime() >= e.startTime && u.currentTime() <= e.endTime && u.activeWhen(e);
       });
     },
-    getDisplayableSurveys: function getDisplayableSurveys(e) {
+    getDisplayableSurveys: function (e) {
       return e.filter(function (e) {
         return u.isSurveyToBeDisplayed(e);
       });
     },
-    getActiveSurvey: function getActiveSurvey(e, t) {
+    getActiveSurvey: function (e, t) {
       var n = u.getActiveSurveys(t),
           o = [e].concat(n),
           i = u.getDisplayableSurveys(o);
       return i.length < 2 ? i[0] : i[Math.floor(Math.random() * i.length)];
     },
-    displaySurvey: function displaySurvey(e) {
+    displaySurvey: function (e) {
       var t = document.getElementById("user-satisfaction-survey-container");
       if ("email" === e.surveyType) u.displayEmailSurvey(e, t);else {
         if ("url" !== e.surveyType && e.surveyType !== undefined) return;
@@ -3602,19 +3426,19 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
       }
       u.incrementSurveySeenCounter(e), u.trackEvent(e.identifier, "banner_shown", "Banner has been shown");
     },
-    displayURLSurvey: function displayURLSurvey(e, t) {
+    displayURLSurvey: function (e, t) {
       var n = u.getUrlSurveyTemplate();
       t.innerHTML = n.render(e), u.setURLSurveyEventHandlers(e);
     },
-    displayEmailSurvey: function displayEmailSurvey(e, t) {
+    displayEmailSurvey: function (e, t) {
       var n = u.getEmailSurveyTemplate();
       t.innerHTML = n.render(e), u.setEmailSurveyEventHandlers(e);
     },
-    addParamsToURL: function addParamsToURL(e) {
+    addParamsToURL: function (e) {
       var t = e.replace(/\{\{currentPath\}\}/g, u.currentPath());
       return -1 !== e.indexOf("?c=") ? t + "&gcl=" + GOVUK.analytics.gaClientId : t + "?gcl=" + GOVUK.analytics.gaClientId;
     },
-    setEmailSurveyEventHandlers: function setEmailSurveyEventHandlers(a) {
+    setEmailSurveyEventHandlers: function (a) {
       var e = document.getElementById("email-survey-open"),
           t = document.getElementById("user-survey-cancel"),
           n = document.getElementById("email-survey-pre"),
@@ -3630,10 +3454,10 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
       }), t && t.addEventListener("click", function (e) {
         u.setSurveyTakenCookie(a), u.hideSurvey(a), a.surveyExpanded ? u.trackEvent(a.identifier, "email_survey_cancel", "Email survey cancelled") : u.trackEvent(a.identifier, "banner_no_thanks", "No thanks clicked"), e.stopPropagation(), e.preventDefault();
       }), s && s.addEventListener("submit", function (e) {
-        var t = function t() {
+        var t = function () {
           s.classList.add("js-hidden"), s.setAttribute("aria-hidden", "true"), c.classList.remove("js-hidden"), c.setAttribute("aria-hidden", "false"), c.focus(), u.setSurveyTakenCookie(a), u.trackEvent(a.identifier, "email_survey_taken", "Email survey taken"), u.trackEvent(a.identifier, "banner_taken", "User taken survey");
         },
-            n = function n() {
+            n = function () {
           s.classList.add("js-hidden"), s.setAttribute("aria-hidden", "true"), l.classList.remove("js-hidden"), l.setAttribute("aria-hidden", "false"), l.focus();
         },
             o = s.getAttribute("action");
@@ -3646,7 +3470,7 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
         }, i.send(r), e.stopPropagation(), e.preventDefault();
       });
     },
-    setURLSurveyEventHandlers: function setURLSurveyEventHandlers(t) {
+    setURLSurveyEventHandlers: function (t) {
       var e = document.getElementById("user-survey-cancel"),
           n = document.getElementById("take-survey");
       e && e.addEventListener("click", function (e) {
@@ -3655,13 +3479,13 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
         u.setSurveyTakenCookie(t), u.hideSurvey(t), u.trackEvent(t.identifier, "banner_taken", "User taken survey");
       });
     },
-    isSurveyToBeDisplayed: function isSurveyToBeDisplayed(e) {
+    isSurveyToBeDisplayed: function (e) {
       return !(u.isBeingViewedOnMobile() && !u.surveyIsAllowedOnMobile(e)) && "true" !== GOVUK.cookie(u.surveyTakenCookieName(e)) && !u.surveyHasBeenSeenTooManyTimes(e) && u.randomNumberMatches(e.frequency);
     },
-    pathInBlocklist: function pathInBlocklist() {
+    pathInBlocklist: function () {
       return new RegExp("^/(?:" + /service-manual/.source + /|coronavirus/.source + /|account/.source + ")(?:/|$)").test(u.currentPath());
     },
-    userCompletedTransaction: function userCompletedTransaction() {
+    userCompletedTransaction: function () {
       function e(e, t) {
         return -1 < e.indexOf(t);
       }
@@ -3669,19 +3493,19 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
       var t = u.currentPath();
       if (e(t, "/done") || e(t, "/transaction-finished") || e(t, "/driving-transaction-finished")) return !0;
     },
-    trackEvent: function trackEvent(e, t, n) {
+    trackEvent: function (e, t, n) {
       window.GOVUK.analytics.trackEvent(e, t, {
         label: n,
         value: 1,
         nonInteraction: !0
       });
     },
-    setSurveyTakenCookie: function setSurveyTakenCookie(e) {
+    setSurveyTakenCookie: function (e) {
       window.GOVUK.cookie(u.surveyTakenCookieName(e), !0, {
         days: 90
       });
     },
-    incrementSurveySeenCounter: function incrementSurveySeenCounter(e) {
+    incrementSurveySeenCounter: function (e) {
       var t = u.surveySeenCookieName(e),
           n = u.surveySeenCount(e) + 1,
           o = u.seenTooManyTimesCooloff(e);
@@ -3691,20 +3515,20 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
         days: 730
       });
     },
-    seenTooManyTimesCooloff: function seenTooManyTimesCooloff(e) {
+    seenTooManyTimesCooloff: function (e) {
       return e.seenTooManyTimesCooloff ? s(e.seenTooManyTimesCooloff, undefined, 1) : undefined;
     },
-    hideSurvey: function hideSurvey() {
+    hideSurvey: function () {
       var e = document.getElementById("user-satisfaction-survey");
       e.classList.remove("visible"), e.setAttribute("aria-hidden", "true");
     },
-    randomNumberMatches: function randomNumberMatches(e) {
+    randomNumberMatches: function (e) {
       return 0 === Math.floor(Math.random() * e);
     },
-    getSurveyUrl: function getSurveyUrl(e) {
+    getSurveyUrl: function (e) {
       return e.url instanceof Array ? e.url[Math.floor(Math.random() * e.url.length)] : e.url;
     },
-    otherNotificationVisible: function otherNotificationVisible() {
+    otherNotificationVisible: function () {
       function e(e) {
         return null !== e.offsetParent;
       }
@@ -3716,57 +3540,55 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
 
       return 0 < n;
     },
-    surveyHasBeenSeenTooManyTimes: function surveyHasBeenSeenTooManyTimes(e) {
+    surveyHasBeenSeenTooManyTimes: function (e) {
       return u.surveySeenCount(e) >= u.surveySeenTooManyTimesLimit(e);
     },
-    surveySeenTooManyTimesLimit: function surveySeenTooManyTimesLimit(e) {
+    surveySeenTooManyTimesLimit: function (e) {
       var t = e.seenTooManyTimesLimit;
       return "unlimited" === String(t).toLowerCase() ? Infinity : s(t, n, 1);
     },
-    surveySeenCount: function surveySeenCount(e) {
+    surveySeenCount: function (e) {
       return s(GOVUK.cookie(u.surveySeenCookieName(e)), 0, 0);
     },
-    surveyTakenCookieName: function surveyTakenCookieName(e) {
+    surveyTakenCookieName: function (e) {
       return a("taken_" + e.identifier);
     },
-    surveySeenCookieName: function surveySeenCookieName(e) {
+    surveySeenCookieName: function (e) {
       return a("survey_seen_" + e.identifier);
     },
-    isBeingViewedOnMobile: function isBeingViewedOnMobile() {
+    isBeingViewedOnMobile: function () {
       return window.matchMedia(r).matches;
     },
-    surveyIsAllowedOnMobile: function surveyIsAllowedOnMobile(e) {
+    surveyIsAllowedOnMobile: function (e) {
       return e.hasOwnProperty("allowedOnMobile") && !0 === e.allowedOnMobile;
     },
-    pathMatch: function pathMatch(e) {
+    pathMatch: function (e) {
       function t(e) {
         return /[\^$]/.test(e) ? "(?:" + e + ")" : "(?:/" + e + "(?:/|$))";
       }
 
       if (e === undefined) return !1;
 
-      for (var n = [], o = 0; o < e.length; o++) {
-        n.push(t(e[o]));
-      }
+      for (var n = [], o = 0; o < e.length; o++) n.push(t(e[o]));
 
       return (n = new RegExp(n.join("|"))).test(u.currentPath());
     },
-    breadcrumbMatch: function breadcrumbMatch(e) {
+    breadcrumbMatch: function (e) {
       return e !== undefined && new RegExp(e.join("|"), "i").test(u.currentBreadcrumb());
     },
-    sectionMatch: function sectionMatch(e) {
+    sectionMatch: function (e) {
       if (e === undefined) return !1;
       var t = new RegExp(e.join("|"), "i");
       return t.test(u.currentSection()) || t.test(u.currentThemes());
     },
-    organisationMatch: function organisationMatch(e) {
+    organisationMatch: function (e) {
       return e !== undefined && new RegExp(e.join("|")).test(u.currentOrganisation());
     },
-    tlsCookieMatch: function tlsCookieMatch(e) {
+    tlsCookieMatch: function (e) {
       var t = u.currentTlsVersion();
       return e !== undefined && "" !== t && t < e[0];
     },
-    activeWhen: function activeWhen(e) {
+    activeWhen: function (e) {
       if (e.hasOwnProperty("activeWhen")) {
         if (e.activeWhen.hasOwnProperty("path") || e.activeWhen.hasOwnProperty("breadcrumb") || e.activeWhen.hasOwnProperty("section") || e.activeWhen.hasOwnProperty("organisation") || e.activeWhen.hasOwnProperty("tlsCookieVersionLimit")) {
           var t = e.activeWhen.matchType || "include",
@@ -3784,39 +3606,39 @@ window.GOVUK.globalBarInit = globalBarInit, window.GOVUK.globalBarInit.init(), f
 
       return !0;
     },
-    currentTime: function currentTime() {
+    currentTime: function () {
       return new Date().getTime();
     },
-    currentPath: function currentPath() {
+    currentPath: function () {
       return window.location.pathname;
     },
-    currentBreadcrumb: function currentBreadcrumb() {
+    currentBreadcrumb: function () {
       var e = document.querySelector(".gem-c-breadcrumbs");
       return e ? e.textContent : "";
     },
-    currentSection: function currentSection() {
+    currentSection: function () {
       var e = document.querySelector('meta[name="govuk:section"]');
       return e ? e.getAttribute("content") : "";
     },
-    currentThemes: function currentThemes() {
+    currentThemes: function () {
       var e = document.querySelector('meta[name="govuk:themes"]');
       return e ? e.getAttribute("content") : "";
     },
-    currentOrganisation: function currentOrganisation() {
+    currentOrganisation: function () {
       var e = document.querySelector('meta[name="govuk:analytics:organisations"]');
       return e ? e.getAttribute("content") : "";
     },
-    currentTlsVersion: function currentTlsVersion() {
+    currentTlsVersion: function () {
       var e = GOVUK.getCookie("TLSversion");
       return null === e || "unknown" === e ? "" : parseFloat(e.replace("TLSv", "")) || "";
     }
   },
-      a = function a(e) {
+      a = function (e) {
     return "govuk_" + e.replace(/(_\w)/g, function (e) {
       return e.charAt(1).toUpperCase();
     });
   },
-      s = function s(e, t, n) {
+      s = function (e, t, n) {
     var o = parseInt(e, 10);
     return isNaN(o) || o < n ? t : o;
   };
