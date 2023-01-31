@@ -23,10 +23,30 @@ DARS - NHS
 <link rel="apple-touch-icon" href="/nhsuk-frontend/assets/favicons/apple-touch-icon-180x180.png">
 <link rel="mask-icon" href="/nhsuk-frontend/assets/favicons/favicon.svg" color="#005eb8">
 <link rel="icon" sizes="192x192" href="/nhsuk-frontend/assets/favicons/favicon-192x192.png">
+<style type="text/css">
+  .nhsuk-grid-column-one-third{
+    padding: 0px !important;
+  }
+    .bt-save-continue{
+  color: #fff !important;
+}
+</style>
+<script>
+    function myFunction() {
 
+      if(document.getElementById('optionthree').checked) {
+            document.getElementById('linkid').href = "/dataset/tech-nontech-details-pag";
+        }
 
+        if(document.getElementById('optionone').checked) {
+            document.getElementById('linkid').href = "/dataset/historic-data";
+        }
 
-
+      if(document.getElementById('optiontwo').checked) {
+            document.getElementById('linkid').href = "/dataset/frequency";
+        }
+    }
+</script>
 
 </head>
 <body class="">
@@ -134,12 +154,6 @@ Signout
 </svg>
 </a>
 </li>
-
-
-
-
-
-
 </ul>
 </div>
 </nav>
@@ -157,59 +171,80 @@ Signout
 
 <div class="nhsuk-width-container ">
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
-<a class="nhsuk-back-link__link" href="/identifiable-data/legal-bases-identifiable-data">
+<a class="nhsuk-back-link__link" href="/dataset/system-access-or-extract">
 <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
 <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
 </svg>
 Go back</a>
-</div>   
+
+</div>        
 
 
 <main class="nhsuk-main-wrapper " id="maincontent" role="main">
 <div class="nhsuk-grid-row">
 <div class="nhsuk-grid-column-two-thirds">
-
-
-
-<br />
+<div class="nhsuk-u-padding-bottom-4"></div>
 <h1><span class="nhsuk-caption-l nhsuk-caption--bottom ">
-Identifiable Data</span>
-Lorem Ipsum
+Data set > Cancer Registration Data</span>
+Data duration
 </h1>
 
-
-<div class="nhsuk-inset-text">
+<!-- <div class="nhsuk-inset-text">
   <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>Lorem Ipsum</p>
+  <p>This is a predicted view of data released which is subject to your DSA being approved for these dates </p>
+  <p>Start: 02/11/2022 <br/> End: 01/11/2025</p>
+</div> -->
+
+<form>
+  <div class="nhsuk-hint" id="example-hint">
+Select all data duration options that are relevant to you. You can select more than one option.
 </div>
+<div class="nhsuk-u-padding-bottom-4"></div>
+
+  <div class="nhsuk-form-group">
+
+    <fieldset class="nhsuk-fieldset" aria-describedby="nationality-hint">
+
+      <div class="nhsuk-checkboxes">
+    
+        <div class="nhsuk-checkboxes__item">
+          <input class="nhsuk-checkboxes__input"name="checkbox" id="optionthree" type="checkbox">
+          <label class="nhsuk-label nhsuk-checkboxes__label" for="optionone">
+            Latest available 
+          </label>
+          <div class="nhsuk-hint nhsuk-checkboxes__hint" id="nationality-1-item-hint">
+        ‘Latest available’ generates different data results depending on the data set. When you select ‘Latest available’, we will provide the latest available data. This might mean you receive data as recent as the current month and year, or only as recent as 6 months ago.
+          </div>
+        </div>
+
+        <div class="nhsuk-checkboxes__item">
+          <input class="nhsuk-checkboxes__input" id="optionone" name="nationality" type="checkbox" value="irish">
+          <label class="nhsuk-label nhsuk-checkboxes__label" for="nationality-2">
+            Historic annual data
+          </label>
+          <div class="nhsuk-hint nhsuk-checkboxes__hint" id="nationality-1-item-hint">
+            You will receive the full year's data from your chosen year.
+          </div>
+        </div>
+
+        
+
+      </div>
+    </fieldset>
+
+  </div>
+
+</form>
 
 
 
-<div class="nhsuk-form-group">
-<label class="nhsuk-label" for="file-upload-1">
-<p>Document required</p>
-</label>
-<details class="nhsuk-details" open>
-<summary class="nhsuk-details__summary">
-<span class="nhsuk-details__summary-text">
-View file guidance
-</span>
-</summary>
-
-<div class="nhsuk-details__text">
-<p>A file should not exceed 3 MB and should be one of the following acceptable file formats: PDF, Word, Excel</p>
-</div>
-</details>
+<div class="nhsuk-u-padding-bottom-6"></div>
+<p><a href="#" class="nhsuk-button" onclick='myFunction()' id="linkid">Continue</a>
 <br />
-<input class="nhsuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-</div>
-<p><a class="nhsuk-button nhsuk-button--secondary" type="submit" href="#">Upload</a></p>
-
-<div class="nhsuk-u-padding-bottom-9"></div>
-<p>
-<a href="/identifiable-data/have-you-completed-this-section-id" class="nhsuk-button">Continue</a><br />
 <a href="#">Return to this application later</a>
 </p>
+
+
 
 
 </div>  
