@@ -23,10 +23,16 @@ DARS - NHS
 <link rel="apple-touch-icon" href="/nhsuk-frontend/assets/favicons/apple-touch-icon-180x180.png">
 <link rel="mask-icon" href="/nhsuk-frontend/assets/favicons/favicon.svg" color="#005eb8">
 <link rel="icon" sizes="192x192" href="/nhsuk-frontend/assets/favicons/favicon-192x192.png">
+<style type="text/css">
+  .statuses-nhs-tag {
+float: left !important;
 
-
-
-
+}
+.l-signout{
+  float: right !important; 
+  color: #fff !important;
+}
+</style>
 
 </head>
 <body class="">
@@ -65,13 +71,13 @@ Data Access Request Service
 <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
 </svg>
-<span class="nhsuk-u-visually-hidden">Close menu </span>
+<span class="nhsuk-u-visually-hidden">Close menu</span>
 </button>
 </p>
 <ul class="nhsuk-header__navigation-list">
 
 
-<li class="nhsuk-header__navigation-item app-header__navigation-item__item--current">
+<li class="nhsuk-header__navigation-item ">
 <a class="nhsuk-header__navigation-link" href="/dashboard/">
 Apply for or Manage DSA
 <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"  width="34" height="34">
@@ -89,7 +95,7 @@ Active DSAs
 </a>
 </li>
 
-<li class="nhsuk-header__navigation-item">
+<li class="nhsuk-header__navigation-item app-header__navigation-item__item--current">
 <a class="nhsuk-header__navigation-link" href="/dashboard/dsfc">
 Data Sharing Framework Contract
 <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"  width="34" height="34">
@@ -137,80 +143,144 @@ Signout
 
 
 
-
-
-
 </ul>
 </div>
-</nav>
+</nav> 
 
 </header>
-<nav class="nhsuk-breadcrumb app-breadcrumb">
-<div class="nhsuk-width-container">
-<ol class="nhsuk-breadcrumb__list">
-<li class="nhsuk-breadcrumb__item"><strong>Reference Number:</strong> DARS-NIC-209174-W2H3G</li>
-<li class="nhsuk-breadcrumb__item" style="float: right;"><strong>Total Estimated Cost:</strong> £1234.50</li>
-</ol>
-</div>
-</nav>
 
+
+
+
+
+
+
+<!-- Start Main Section-->
 
 <div class="nhsuk-width-container ">
-<div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
-<a class="nhsuk-back-link__link" href="/dataset/legal-bases-identifiable-data">
-<svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
-<path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
-</svg>
-Go back</a>
-</div>   
 
 
 <main class="nhsuk-main-wrapper " id="maincontent" role="main">
 <div class="nhsuk-grid-row">
 <div class="nhsuk-grid-column-two-thirds">
 
-
-
 <br />
-<h1><span class="nhsuk-caption-l nhsuk-caption--bottom ">
-Identifiable Data</span>
-Lorem Ipsum
-</h1>
+<h1 class="nhsuk-heading-xl"><span class="nhsuk-caption-l nhsuk-caption--bottom">
+University of Leeds
+</span>Approve Data Sharing <br />Framework Contract</h1>
 
 
-<div class="nhsuk-inset-text">
-  <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>You must upload a template of every version of the consent form that has been used and make clear which Patient Information Sheets (PIS) were used with each consent form. </p>
-  <p>Documents should include a document date, version number, an approval date and any comments (if left). </p>
+<div class="nhsuk-warning-callout">
+  <h3 class="nhsuk-warning-callout__label">
+    <span role="text">
+      <span class="nhsuk-u-visually-hidden">Important: </span>
+      Data Sharing Framework Contract (DSFC) approval 
+    </span>
+  </h3>
+  <p>The DSFC has being signed by another Approver.</p>
+<p>No further action is required. </p>
+</div>
 </div>
 
+<div class="nhsuk-grid-column-full">
+<br />
+<table role="table" class="nhsuk-table-responsive">
+  <caption class="nhsuk-table__caption"></caption>
+  <thead role="rowgroup" class="nhsuk-table__head">
+    <tr role="row">
+      <th role="columnheader" class="" scope="col">
+        Reference number
+      </th>
+      <th role="columnheader" class="" scope="col">
+        Organisation
+      </th>
+      <th role="columnheader" class="" scope="col">
+        End date
+      </th>
+      <th role="columnheader" class="" scope="col">
+        Status
+      </th>
+      <th role="columnheader" class="" scope="col">
+        Action
+      </th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr role="row" class="nhsuk-table__row">
+      <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading"> Reference number </span>DARS-CON-6587-KNGF-v1.1
+      </td>
+      <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Title </span>University of Leeds
+      </td>
+      <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Submitted </span>23/12/2023
+      </td>
+      <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Status </span><strong class="nhsuk-tag statuses-nhs-tag">Active&nbsp;Contract</strong>&nbsp; 
+      </td>
+      <td role="cell" class="nhsuk-table__cell">
+        <span class="nhsuk-table-responsive__heading">Action </span><a href="/dashboard/dsfc/active-download">Download&nbsp;(PDF)</a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 
-<div class="nhsuk-form-group">
-<label class="nhsuk-label" for="file-upload-1">
-<p>Document required</p>
-</label>
-<details class="nhsuk-details" open>
-<summary class="nhsuk-details__summary">
-<span class="nhsuk-details__summary-text">
-View file guidance
-</span>
-</summary>
+
+<br /><br />&nbsp;<br />
+<p><a href="/dashboard" class="nhsuk-button nhsuk-button-save-continue">New contract</a></p>
+    
+
+
+<details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+     What do these statuses mean?
+    </span>
+  </summary>
 
 <div class="nhsuk-details__text">
-<p>A file should not exceed 3 MB and should be one of the following acceptable file formats: PDF, Word, Excel</p>
+  
+  <table class="nhsuk-table ">
+  <tbody class="nhsuk-table__body">
+    <tr role="row" class="nhsuk-table__row">
+    <td class="nhsuk-table__cell"><strong class="nhsuk-tag nhsuk-tag--blue statuses-nhs-tag">In&nbsp;progress</strong></td>
+    <td class="nhsuk-table__cell ">Application has been started but is not yet completed</td>
+    </tr>
+    <tr role="row" class="nhsuk-table__row">
+       <td class="nhsuk-table__cell"><strong class="nhsuk-tag statuses-nhs-tag">Submitted</strong></td>
+      <td class="nhsuk-table__cell ">Application has been completed and submitted to DARS</td>
+    </tr>
+    
+    <tr role="row" class="nhsuk-table__row">
+      <td class="nhsuk-table__cell "><strong class="nhsuk-tag statuses-nhs-tag">Final&nbsp;Checks</strong></td>
+      <td class="nhsuk-table__cell ">Application is undergoing final checks, we may ask you for more information</td>
+    </tr>
+    <tr role="row" class="nhsuk-table__row">
+      <td class="nhsuk-table__cell "><strong class="nhsuk-tag nhsuk-tag--orange statuses-nhs-tag">Ready to sign</strong></td>
+      <td class="nhsuk-table__cell ">Application has been approved and awaits signature by all Controllers</td>
+    </tr>
+    <tr role="row" class="nhsuk-table__row">
+      <td class="nhsuk-table__cell "><strong class="nhsuk-tag statuses-nhs-tag">Active&nbsp;Contract</strong></td>
+      <td class="nhsuk-table__cell ">You have an existing Data Sharing Framework Contract (DSFC). You will need an active Data Sharing Agreement (DSA) before any agreed data is shared</td>
+    </tr>
+    <tr role="row" class="nhsuk-table__row">
+      <td class="nhsuk-table__cell "><strong class="nhsuk-tag nhsuk-tag--orange statuses-nhs-tag">Contract&nbsp;Expiring</strong></td>
+      <td class="nhsuk-table__cell ">Your contract is due to expire </td>
+    </tr>  
+    <tr role="row" class="nhsuk-table__row">
+      <td class="nhsuk-table__cell "><strong class="nhsuk-tag nhsuk-tag--grey statuses-nhs-tag">Contract&nbsp;Expired</strong></td>
+      <td class="nhsuk-table__cell ">Your contract has expired </td>
+    </tr> 
+
+    
+  </tbody>
+</table>
+
 </div>
 </details>
-<br />
-<input class="nhsuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-</div>
-<p><a class="nhsuk-button nhsuk-button--secondary" type="submit" href="#">Upload</a></p>
-
-<div class="nhsuk-u-padding-bottom-9"></div>
-<p>
-<a href="/dataset/have-you-completed-this-section-id" class="nhsuk-button">Continue</a><br />
-<a href="#">Return to this application later</a>
-</p>
 
 
 </div>  
@@ -218,28 +288,26 @@ View file guidance
 </main>
 </div>
 
-
-
+<!-- End Main Section-->
 
 <footer role="contentinfo">
-<div class="nhsuk-footer" id="nhsuk-footer">
-<div class="nhsuk-width-container">
-<h2 class="nhsuk-u-visually-hidden">Support links</h2>
-<ul class="nhsuk-footer__list nhsuk-footer__list--three-columns">
-<li class="nhsuk-footer__list-item"><a href="/about-us" class="nhsuk-footer__list-item-link" target="_blank">About us</a></li>
-<li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Accessibility</a></li>
-<li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/contact-us/freedom-of-information" class="nhsuk-footer__list-item-link" target="_blank">Freedom of information</a></li>
-<li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/privacy-and-cookies" class="nhsuk-footer__list-item-link" target="_blank">Privacy and cookies</a></li>
-<li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Change cookie settings</a></li>
-<li class="nhsuk-footer__list-item"><a href="/contact-us" class="nhsuk-footer__list-item-link" target="_blank">Contact us </a></li>
-<li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/terms-and-conditions" class="nhsuk-footer__list-item-link" target="_blank">Terms and conditions </a></li>
-<li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/data" class="nhsuk-footer__list-item-link" target="_blank">Data</a></li>
-</ul>
-<p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
-</div>
-</div>
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container">
+      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+      <ul class="nhsuk-footer__list nhsuk-footer__list--three-columns">
+        <li class="nhsuk-footer__list-item"><a href="/about-us" class="nhsuk-footer__list-item-link" target="_blank">About us</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Accessibility</a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/contact-us/freedom-of-information" class="nhsuk-footer__list-item-link" target="_blank">Freedom of information</a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/privacy-and-cookies" class="nhsuk-footer__list-item-link" target="_blank">Privacy and cookies</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Change cookie settings</a></li>
+        <li class="nhsuk-footer__list-item"><a href="/contact-us" class="nhsuk-footer__list-item-link" target="_blank">Contact us </a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/about-nhs-digital/terms-and-conditions" class="nhsuk-footer__list-item-link" target="_blank">Terms and conditions </a></li>
+        <li class="nhsuk-footer__list-item"><a href="https://digital.nhs.uk/data" class="nhsuk-footer__list-item-link" target="_blank">Data</a></li>
+      </ul>
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
 </footer>
-
 
 
 
