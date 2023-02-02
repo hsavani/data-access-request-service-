@@ -5,6 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
+<style>
+   
+    .lower-latin {list-style-type:lower-latin; padding-left: 40px;}
+    .circle {list-style-type:disc; padding-left: 80px;}
+    ol.lower-latin-brackets {counter-reset:list;}
+    ol.lower-latin-brackets > li {list-style: none; position:relative; padding-left: 40px;}
+    ol.lower-latin-brackets >li:before {counter-increment: list; content:counter(list, lower-alpha)")"; position:absolute; left: -0.1em; }
+
+</style>
 
 <title>
 DARS - NHS
@@ -143,7 +152,7 @@ Guidance
 
 <div class="nhsuk-width-container ">
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
-<a class="nhsuk-back-link__link" href="/why-you-are-applying/commercial">
+<a class="nhsuk-back-link__link" href="/why-you-are-applying/processing-activities">
 <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
 <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
 </svg>
@@ -160,35 +169,65 @@ Go back</a>
 
 <br />
 <h1><span class="nhsuk-caption-l nhsuk-caption--bottom ">
-Commercial implications
+Expected outcomes
 </span>
-Please explain
+Outputs
 </h1>
 
 
 <div class="nhsuk-inset-text">
-  <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p><strong>Commercial Purposes</strong></p>
-<p>NHS Digital is not permitted to release data for solely commercial purposes.  We therefore need to understand any commercial arrangements relating to this data release.</p>
-<p>For example:
-  <ul>
-  <li>Will you charge for any products/tools/analyses produced with this data?</li> 
-  <li>Will it be used for marketing purposes (in which case it is unlikely that any data would be released)?</li> 
-  <li>Is your application a research project funded by a commercial body?</li>
-  </ul>
-</p>
- </div>
-
-<div class="nhsuk-form-group">
-  <label class="nhsuk-label" for="example">
-    Commercial purposes  
-  </label>
-    
-    <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+    <span class="nhsuk-u-visually-hidden">Information: </span>
+    <p><strong>Standard Description:</strong></p>
+    <p>This section shall clearly explain the following:</p>
+        <ol>
+        <li>What will be produced as a result of the data processing. This may include (but is not limited to) the following:</li>
+            <ol class="lower-latin">
+                <li>Reports</li>
+                <li>Submissions to peer reviewed journals</li>
+                <li>Presentations</li>
+                <li>Conferences</li>
+                <li>Dashboards</li>
+            </ol>
+        <li>What level of data will be contained in the outputs – likely to be aggregate data with small numbers supressed/other standard wording relevant to the disclosure rules for the dataset in question.</li>
+        
+        <li>The applicant shall demonstrate its dissemination and communication approach, which will include developed plans that align the intended results of the research with clearly defined tasks. The applicant should be able to demonstrate any exploitation plans that may result from the research even in the long-run which may include:</li>
+            <ol class="lower-latin-brackets">
+                <li>Dissemination of results/outputs - The applicant shall aim to facilitate the dissemination of the research and/or scientific work to stakeholders during the project and after its completion. The dissemination activities will target an audience of researchers, scientists, innovative technology-focused organisations, research participants. Activities should also reach beyond the scientific community to engage with policy makers. The aim of the dissemination activities shall be two-fold: to enable the engagement with the scientific and policy-making communities / to ensure that knowledge developed by the research can benefit these communities. Dissemination channels: journals, workshops, webinars, social media, public reports, direct bilateral engagement using new and established relationships, industry newsletters, briefing documents, co-hosted events, open source frameworks, etc.</li>
+                <li>Communication of results/outputs - Active communication activities will ensure that: any information about the project and its results reaches interested groups and civil society; - the applicant engages with these groups in knowledge-sharing and dialogue. Communication channels: website and newsletters, open lectures and talks, exhibition at public events, posters, press/media engagement and other public promotion of the research, stakeholder mailing list, etc.</li>
+                <li>Exploitation of results/outputs - Increasingly, research can be about the development of algorithms, the testing and development of tools and new technologies. This may involve: the creation of evaluation environments for the assessment and validation of processes, tools and technologies; the development of a service offering; the creation of commercial exploitation pathways of outputs when these are tools, new processes and new technologies (during the lifetime of the project or beyond the project’s completion); further research and development in the same/similar context. Issues to explore include:</li>
+            </ol>
+            <ol class="circle">
+                <li>Data and knowledge ownership</li>
+                <li>Data and knowledge management</li>
+                <li>Access rights</li>
+                <li>Open access</li>
+                <li>Rights usage</li>
+            </ol>
+        
+        
+        <p>How these are allocated among the project partners what the expectations of the funders are.</p>
+        
+        <li>What are the target dates for the production of the outputs?</li>
+        
+        <li>For a renewal/extension, have previously stated target dates/deliverables been realised?</li>
+        
+       <li>Where projects have EU funding please see the EU funding standard for additional requirements/consideration</li>
+    </ol>
+   
 </div>
+  
+<div class="nhsuk-form-group">
+    <label class="nhsuk-label" for="example">
+        Specific outputs expected, including target date 
+      </label>
+    <div class="nhsuk-hint">
+       Recommended length (alternatively a character counter)
+    </div>
+    <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+  </div>
 
 <br /><br />
-<p><a href="/why-you-are-applying/processing-why" class="nhsuk-button"> Continue</a><br />
+<p><a href="/why-you-are-applying/benefits" class="nhsuk-button"> Continue</a><br />
 <a href="#">Return to this application later</a></p>
 
 
