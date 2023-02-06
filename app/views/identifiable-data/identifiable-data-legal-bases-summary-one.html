@@ -25,7 +25,17 @@ DARS - NHS
 <link rel="icon" sizes="192x192" href="/nhsuk-frontend/assets/favicons/favicon-192x192.png">
 
 
-
+<style>
+.nhsuk-summary-list__key {
+    width: 60% !important;
+}
+.nhsuk-summary-list__value {
+    width: 25% !important;
+}
+.nhsuk-summary-list__actions {
+    width: 10 !important%;
+}
+</style>
 
 
 </head>
@@ -157,7 +167,7 @@ Signout
 
 <div class="nhsuk-width-container ">
 <div class="nhsuk-back-link nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0">
-<a class="nhsuk-back-link__link" href="/identifiable-data/legal-bases-identifiable-data">
+<a class="nhsuk-back-link__link" href="/identifiable-data/identifiable-data-legal-bases-upload-one">
 <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
 <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
 </svg>
@@ -174,40 +184,33 @@ Go back</a>
 <br />
 <h1><span class="nhsuk-caption-l nhsuk-caption--bottom ">
 Identifiable Data</span>
-Mixture of confidential data flow(s) with consent and flow(s) with support under Section 251 of the NHS Act 2006
+You have added the below Legal basis(s)
 </h1>
 
 
-<div class="nhsuk-inset-text">
-  <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>Lorem Ipsum</p>
-</div>
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+     Consent (Reasonable Expectation)
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <p>1234.pdf</p>
+      <p>consent.pdf</p>
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+      <a href="/identifiable-data/identifiable-data-legal-bases-upload-one">
+        Change<span class="nhsuk-u-visually-hidden"> sign</span>
+      </a>
+    </dd>
+  </div>   
+</dl>
 
 
 
-<div class="nhsuk-form-group">
-<label class="nhsuk-label" for="file-upload-1">
-<p>Document required</p>
-</label>
-<details class="nhsuk-details" open>
-<summary class="nhsuk-details__summary">
-<span class="nhsuk-details__summary-text">
-View file guidance
-</span>
-</summary>
-
-<div class="nhsuk-details__text">
-<p>A file should not exceed 3 MB and should be one of the following acceptable file formats: PDF, Word, Excel</p>
-</div>
-</details>
-<br />
-<input class="nhsuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-</div>
-<p><a class="nhsuk-button nhsuk-button--secondary" type="submit" href="#">Upload</a></p>
 
 <div class="nhsuk-u-padding-bottom-9"></div>
 <p>
-<a href="/" class="nhsuk-button">Continue</a><br />
+<a href="/identifiable-data/have-you-completed-this-section-id" class="nhsuk-button">Continue</a><br />
 <a href="#">Return to this application later</a>
 </p>
 
